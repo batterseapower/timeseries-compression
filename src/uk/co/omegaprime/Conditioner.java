@@ -7,49 +7,26 @@ import java.io.OutputStream;
 public class Conditioner {
     private Conditioner() {}
 
-    // FIXME: adapt for 23 bits
-
-    private static int twos2unsigned(int x) {
-        if (true) return x;
-
-        // Packs positive 2s complement numbers into odd unsigned numbers
-        // and negative numbers into even unsigned numbers.
-        //
-        // Imagine this operating on nibbles rather than ints. Then:
-        //   x      = 0100b
-        //   result = 1000b - 1
-        //          = 0111b (which is odd)
-        //
-        //   x      = 1110b
-        //   (so -1110b = 0001b + 1 = 0010b)
-        //   result = -1110b      << 1
-        //          = (0001b + 1) << 1
-        //          = 0010b       << 1
-        //          = 0100b (which is even)
-        //
-        // Note that this tends to turn 2s complement numbers that are close to 0
-        // into unsigned numbers that are close to 0.
-        return x <= 0 ? (-x) << 1 : (x << 1) - 1;
+    // https://graphics.stanford.edu/~seander/bithacks.html#VariableSignExtend
+    private static int signExtend23(int x) {
+        final int m = 1 << 22;   // Pre-computed mask
+        x = x & ((1 << 23) - 1); // Ensure bits in x above bit 23 are already zero.
+        return (x ^ m) - m;
     }
 
-    private static int unsigned2twos(int x) {
-        if (true) return x;
+    // Zig-zag encoding, as seen in Protocol buffers (https://developers.google.com/protocol-buffers/docs/encoding)
+    // Numbers >= 0 are encoded as even numbers and numbers < are encoded as odd numbers. Numbers with a small absolute
+    // value in a 2s complement sense are small in an unsigned sense after this transformation.
+    //
+    // Adapted for 23 bit integers (i.e. float mantissas)
 
-        // Likewise, if this worked on nibbles we would have:
-        //   x      = 0111b
-        //   result = (0111b + 1) >>> 1
-        //          = 1000b >>> 1
-        //          = 0100b
-        //
-        //   x      = 0100b
-        //   result = (0100b & 1000b) | -(0100b >> 1)
-        //          = 0000b           | -0010b
-        //          = 0000b           | (1101b + 1)
-        //          = 0000b           | 1110b
-        //          = 1110b
-        //
-        // So this is indeed the inverse of the above.
-        return (x & 1) == 0 ? (x & 0x80000000) | -(x >> 1) : (x + 1) >>> 1;
+    static int twos2unsigned23(int x) {
+        return ((x << 1) ^ (signExtend23(x) >> 22)) & 0x7FFFFF;
+    }
+
+    static int unsigned2twos23(int x) {
+        return (x & 1) == 0 ?   (x >> 1) & 0x3FFFFF
+                            : (~(x >> 1) & 0x3FFFFF) | 0x400000;
     }
 
     private static int descriptor(float x) {
@@ -113,7 +90,7 @@ public class Conditioner {
                 final float x = xs[i];
                 if (x != 0.0 && !Float.isNaN(x)) {
                     final int mantissa = Float.floatToRawIntBits(x) & 0x007FFFFF;
-                    toWrite[j++] = twos2unsigned(mantissa - lastMantissa);
+                    toWrite[j++] = twos2unsigned23(mantissa - lastMantissa);
                     lastMantissa = mantissa;
                 }
             }
@@ -188,7 +165,7 @@ public class Conditioner {
                 final float x = xs[i];
                 if (x != 0.0 && !Float.isNaN(x)) {
                     final int read = toRead[j];
-                    if (j++ > 0) { lastMantissa = (lastMantissa + unsigned2twos(read)) & 0x007FFFFF; }
+                    if (j++ > 0) { lastMantissa = (lastMantissa + unsigned2twos23(read)) & 0x007FFFFF; }
                     xs[i] = Float.intBitsToFloat((x < 0 ? 0x80000000 : 0x00000000) | read & 0x7F800000 | lastMantissa);
                 }
             }
