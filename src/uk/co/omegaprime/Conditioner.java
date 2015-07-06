@@ -14,11 +14,17 @@ public class Conditioner {
         return (x ^ m) - m;
     }
 
+    private static long signExtend52(long x) {
+        final long m = 1L << 51;   // Pre-computed mask
+        x = x & ((1L << 52) - 1); // Ensure bits in x above bit 52 are already zero.
+        return (x ^ m) - m;
+    }
+
     // Zig-zag encoding, as seen in Protocol buffers (https://developers.google.com/protocol-buffers/docs/encoding)
     // Numbers >= 0 are encoded as even numbers and numbers < are encoded as odd numbers. Numbers with a small absolute
     // value in a 2s complement sense are small in an unsigned sense after this transformation.
     //
-    // Adapted for 23 bit integers (i.e. float mantissas)
+    // Adapted for 23 & 52 bit integers (i.e. float/double mantissas)
 
     static int twos2unsigned23(int x) {
         return ((x << 1) ^ (signExtend23(x) >> 22)) & 0x7FFFFF;
@@ -29,13 +35,32 @@ public class Conditioner {
                             : (~(x >> 1) & 0x3FFFFF) | 0x400000;
     }
 
+    static long twos2unsigned52(long x) {
+        return ((x << 1) ^ (signExtend52(x) >> 51)) & 0xFFFFFFFFFFFFFL;
+    }
+
+    static long unsigned2twos52(long x) {
+        return (x & 1) == 0 ?   (x >> 1) & 0x7FFFFFFFFFFFFL
+                            : (~(x >> 1) & 0x7FFFFFFFFFFFFL) | 0x8000000000000L;
+    }
+
     private static int descriptor(float x) {
-        if (x == 0.0) {
+        if (x == 0f) {
             return 0;
         } else if (Float.isNaN(x)) {
             return 1;
         } else {
             return 2 | ((Float.floatToRawIntBits(x) & 0x80000000) >>> 31);
+        }
+    }
+
+    private static int descriptor(double x) {
+        if (x == 0.0) {
+            return 0;
+        } else if (Double.isNaN(x)) {
+            return 1;
+        } else {
+            return 2 | (int)((Double.doubleToRawLongBits(x) & 0x8000000000000000L) >>> 63);
         }
     }
 
@@ -101,11 +126,92 @@ public class Conditioner {
         }
     }
 
+    public static void condition(double[] xs, OutputStream os) throws IOException {
+        // 1. Write descriptors (0, NaN or else positive/negative flag)
+        {
+            int i;
+            for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
+                os.write((descriptor(xs[i + 0]) << 6) |
+                         (descriptor(xs[i + 1]) << 4) |
+                         (descriptor(xs[i + 2]) << 2) |
+                         (descriptor(xs[i + 3]) << 0));
+            }
+
+            if (i < xs.length) {
+                int acc = 0;
+                for (; i < xs.length; i++) {
+                    acc = (acc << 2) | descriptor(xs[i]);
+                }
+                os.write(acc);
+            }
+        }
+
+        // 2. Count useful entries
+        int defined = 0;
+        for (int i = 0; i < xs.length; i++) {
+            final double x = xs[i];
+            if (x != 0.0 && !Double.isNaN(x)) {
+                defined++;
+            }
+        }
+
+        if (defined > 0) {
+            // 4. Write delta-encoded mantissas *and* exponents (packed together, unlike in the float case)
+            int i;
+            long lastMantissa = 0;
+            for (i = 0; i < xs.length; i++) {
+                final double x = xs[i];
+                if (x != 0.0 && !Double.isNaN(x)) {
+                    final long bits = Double.doubleToRawLongBits(x) & 0x7FFFFFFFFFFFFFFFL;
+                    lastMantissa = bits & 0xFFFFFFFFFFFFFL;
+                    os.write((int)((bits >>>  0) & 0xFF));
+                    os.write((int)((bits >>>  8) & 0xFF));
+                    os.write((int)((bits >>> 16) & 0xFF));
+                    os.write((int)((bits >>> 24) & 0xFF));
+                    os.write((int)((bits >>> 32) & 0xFF));
+                    os.write((int)((bits >>> 40) & 0xFF));
+                    os.write((int)((bits >>> 48) & 0xFF));
+                    os.write((int)((bits >>> 56) & 0x7F));
+                    break;
+                }
+            }
+
+            int j = 0;
+            final long[] toWrite = new long[defined - 1];
+            for (i = i + 1; i < xs.length; i++) {
+                final double x = xs[i];
+                if (x != 0.0 && !Double.isNaN(x)) {
+                    final long bits = Double.doubleToRawLongBits(x) & 0x7FFFFFFFFFFFFFFFL;
+                    final long mantissa = bits & 0xFFFFFFFFFFFFFL;
+                    toWrite[j++] = twos2unsigned52(mantissa - lastMantissa) | (bits & 0x7FF0000000000000L);
+                    lastMantissa = mantissa;
+                }
+            }
+
+            for (j = 0; j < toWrite.length; j++) { os.write((int)((toWrite[j] >>>  0) & 0xFF)); }
+            for (j = 0; j < toWrite.length; j++) { os.write((int)((toWrite[j] >>>  8) & 0xFF)); }
+            for (j = 0; j < toWrite.length; j++) { os.write((int)((toWrite[j] >>> 16) & 0xFF)); }
+            for (j = 0; j < toWrite.length; j++) { os.write((int)((toWrite[j] >>> 24) & 0xFF)); }
+            for (j = 0; j < toWrite.length; j++) { os.write((int)((toWrite[j] >>> 32) & 0xFF)); }
+            for (j = 0; j < toWrite.length; j++) { os.write((int)((toWrite[j] >>> 40) & 0xFF)); }
+            for (j = 0; j < toWrite.length; j++) { os.write((int)((toWrite[j] >>> 48) & 0xFF)); }
+            for (j = 0; j < toWrite.length; j++) { os.write((int)((toWrite[j] >>> 56) & 0x7F)); }
+        }
+    }
+
     private static int undescriptor(float[] xs, int i, int descriptor) {
         switch (descriptor & 0x3) {
             case 0: return 0;
             case 1: xs[i] = Float.NaN; return 0;
             default: xs[i] = (descriptor & 0x1) == 0 ? 1f : -1f; return 1;
+        }
+    }
+
+    private static int undescriptor(double[] xs, int i, int descriptor) {
+        switch (descriptor & 0x3) {
+            case 0: return 0;
+            case 1: xs[i] = Double.NaN; return 0;
+            default: xs[i] = (descriptor & 0x1) == 0 ? 1.0 : -1.0; return 1;
         }
     }
 
@@ -167,6 +273,77 @@ public class Conditioner {
                     final int read = toRead[j];
                     if (j++ > 0) { lastMantissa = (lastMantissa + unsigned2twos23(read)) & 0x007FFFFF; }
                     xs[i] = Float.intBitsToFloat((x < 0 ? 0x80000000 : 0x00000000) | read & 0x7F800000 | lastMantissa);
+                }
+            }
+        }
+    }
+
+    public static void uncondition(double[] xs, InputStream is) throws IOException {
+        // 1. Read descriptors
+        int defined = 0;
+        {
+            int i;
+            for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
+                final int b = is.read();
+
+                defined += undescriptor(xs, i + 0, b >>> 6);
+                defined += undescriptor(xs, i + 1, b >>> 4);
+                defined += undescriptor(xs, i + 2, b >>> 2);
+                defined += undescriptor(xs, i + 3, b >>> 0);
+            }
+
+            if (i < xs.length) {
+                final int b = is.read();
+                switch (xs.length - i) {
+                    case 1:
+                        defined += undescriptor(xs, i + 0, b >>> 0);
+                        break;
+                    case 2:
+                        defined += undescriptor(xs, i + 0, b >>> 2);
+                        defined += undescriptor(xs, i + 1, b >>> 0);
+                        break;
+                    default: // 3
+                        defined += undescriptor(xs, i + 0, b >>> 4);
+                        defined += undescriptor(xs, i + 1, b >>> 2);
+                        defined += undescriptor(xs, i + 2, b >>> 0);
+                        break;
+                }
+            }
+        }
+
+        if (defined > 0) {
+            // 3. Read exponents and delta-encoded mantissas
+            long[] toRead = new long[defined];
+            final long firstBits = ((long)(is.read() & 0xFF) <<  0) |
+                                   ((long)(is.read() & 0xFF) <<  8) |
+                                   ((long)(is.read() & 0xFF) << 16) |
+                                   ((long)(is.read() & 0xFF) << 24) |
+                                   ((long)(is.read() & 0xFF) << 32) |
+                                   ((long)(is.read() & 0xFF) << 40) |
+                                   ((long)(is.read() & 0xFF) << 48) |
+                                   ((long)(is.read() & 0x7F) << 56);
+            long lastMantissa = firstBits & 0xFFFFFFFFFFFFFL;
+            toRead[0] |= firstBits;
+
+            for (int j = 1; j < toRead.length; j++) { toRead[j] |= (long)(is.read() & 0xFF) <<  0; }
+            for (int j = 1; j < toRead.length; j++) { toRead[j] |= (long)(is.read() & 0xFF) <<  8; }
+            for (int j = 1; j < toRead.length; j++) { toRead[j] |= (long)(is.read() & 0xFF) << 16; }
+            for (int j = 1; j < toRead.length; j++) { toRead[j] |= (long)(is.read() & 0xFF) << 24; }
+            for (int j = 1; j < toRead.length; j++) { toRead[j] |= (long)(is.read() & 0xFF) << 32; }
+            for (int j = 1; j < toRead.length; j++) { toRead[j] |= (long)(is.read() & 0xFF) << 40; }
+            for (int j = 1; j < toRead.length; j++) { toRead[j] |= (long)(is.read() & 0xFF) << 48; }
+            for (int j = 1; j < toRead.length; j++) { toRead[j] |= (long)(is.read() & 0x7F) << 56; }
+
+            // 4. Stick it all together!
+            int j = 0;
+            for (int i = 0; i < xs.length; i++) {
+                final double x = xs[i];
+                if (x != 0.0 && !Double.isNaN(x)) {
+                    final long read = toRead[j];
+                    if (j++ > 0) { lastMantissa = (lastMantissa + unsigned2twos52(read & 0xFFFFFFFFFFFFFL)) & 0xFFFFFFFFFFFFFL; }
+                    xs[i] = Double.longBitsToDouble((x < 0 ? 0x8000000000000000L : 0x0000000000000000L) |
+                                                    read & 0x7FF0000000000000L |
+                                                    lastMantissa);
                 }
             }
         }

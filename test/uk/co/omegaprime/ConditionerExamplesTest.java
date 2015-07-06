@@ -8,7 +8,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -36,22 +35,33 @@ public class ConditionerExamplesTest {
         return result;
     }
 
-    private final float[] xs;
+    private final float[] floats;
+    private final double[] doubles;
 
-    public ConditionerExamplesTest(float[] xs) {
-        this.xs = xs;
+    public ConditionerExamplesTest(float[] floats) {
+        this.floats = floats;
+        this.doubles = Utils.floatsToDoubles(floats);
     }
 
     @Test
-    public void conditionUnconditionIsRoundTrip() throws IOException {
+    public void conditionUnconditionFloatIsRoundTrip() throws IOException {
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        {
-            Conditioner.condition(xs, baos);
-        }
+        Conditioner.condition(floats, baos);
 
-        final float[] ys = new float[xs.length];
+        final float[] ys = new float[floats.length];
         Conditioner.uncondition(ys, new ByteArrayInputStream(baos.toByteArray()));
 
-        assertArrayEquals(xs, ys, 0f);
+        assertArrayEquals(floats, ys, 0f);
+    }
+
+    @Test
+    public void conditionUnconditionDoubleIsRoundTrip() throws IOException {
+        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        Conditioner.condition(doubles, baos);
+
+        final double[] ys = new double[doubles.length];
+        Conditioner.uncondition(ys, new ByteArrayInputStream(baos.toByteArray()));
+
+        assertArrayEquals(doubles, ys, 0.0);
     }
 }

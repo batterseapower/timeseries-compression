@@ -1,5 +1,6 @@
 package uk.co.omegaprime;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -12,13 +13,18 @@ import java.util.Random;
 import static org.junit.Assert.assertArrayEquals;
 
 public class ConditionerRandomTest {
-    @Test
-    public void randomFloatsCanRoundtrip() throws IOException {
-        final Random random = new Random();
+    private Random random;
+
+    @Before
+    public void setUp() {
+        random = new Random();
         final long seed = random.nextLong();
         random.setSeed(seed);
         System.out.println(seed);
+    }
 
+    @Test
+    public void randomFloatsCanRoundtrip() throws IOException {
         for (int trial = 0; trial < 100; trial++) {
             final float[] xs = new float[random.nextInt(16 * 1024)];
             for (int i = 0; i < xs.length; i++) {
@@ -32,6 +38,24 @@ public class ConditionerRandomTest {
             Conditioner.uncondition(ys, new ByteArrayInputStream(baos.toByteArray()));
 
             assertArrayEquals(xs, ys, 0f);
+        }
+    }
+
+    @Test
+    public void randomDoublesCanRoundtrip() throws IOException {
+        for (int trial = 0; trial < 100; trial++) {
+            final double[] xs = new double[random.nextInt(16 * 1024)];
+            for (int i = 0; i < xs.length; i++) {
+                xs[i] = Double.longBitsToDouble(random.nextLong());
+            }
+
+            final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            Conditioner.condition(xs, baos);
+
+            final double[] ys = new double[xs.length];
+            Conditioner.uncondition(ys, new ByteArrayInputStream(baos.toByteArray()));
+
+            assertArrayEquals(xs, ys, 0.0);
         }
     }
 }

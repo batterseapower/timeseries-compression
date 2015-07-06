@@ -19,7 +19,15 @@ public class ConditionerTest {
     }
 
     @Test
-    public void twos2unsigned() {
+    public void smallAbsoluteNumbersEncodeToSmallIntegers() {
+        assertTrue(Conditioner.twos2unsigned23(1) < 10);
+        assertTrue(Conditioner.twos2unsigned23(-1) < 10);
+        assertTrue(Conditioner.twos2unsigned52(1) < 10);
+        assertTrue(Conditioner.twos2unsigned52(-1) < 10);
+    }
+
+    @Test
+    public void twos2unsigned23() {
         for (int i = 0; i < 0x800000; i++) {
             final int u = Conditioner.twos2unsigned23(i);
             assertEquals(u, u & 0x7FFFFF);
@@ -29,16 +37,34 @@ public class ConditionerTest {
     }
 
     @Test
+    public void twos2unsigned52() {
+        for (long i = 0; i < 0x80000000000000L; i += 0x100000000L) {
+            final long u = Conditioner.twos2unsigned52(i);
+            assertEquals(u, u & 0x7FFFFF);
+            final long v = Conditioner.unsigned2twos52(u);
+            assertEquals(Long.toBinaryString(i) + " -> " + Long.toBinaryString(u) + " -> " + Long.toBinaryString(v), i, v);
+        }
+    }
+
+    @Test
     @Ignore
     public void writeSampleFiles() throws IOException {
         final float[] vod = getExampleData();
 
-        try (FileOutputStream fos = new FileOutputStream(createFile("unconditioned"))) {
+        try (FileOutputStream fos = new FileOutputStream(createFile("unconditioned-floats"))) {
             writeUnconditioned(vod, fos);
         }
 
-        try (FileOutputStream fos = new FileOutputStream(createFile("conditioned"))) {
+        try (FileOutputStream fos = new FileOutputStream(createFile("conditioned-floats"))) {
             Conditioner.condition(vod, fos);
+        }
+
+        try (FileOutputStream fos = new FileOutputStream(createFile("unconditioned-doubles"))) {
+            writeUnconditioned(Utils.floatsToDoubles(vod), fos);
+        }
+
+        try (FileOutputStream fos = new FileOutputStream(createFile("conditioned-doubles"))) {
+            Conditioner.condition(Utils.floatsToDoubles(vod), fos);
         }
     }
 
@@ -72,34 +98,44 @@ public class ConditionerTest {
     }
 
     private void assertConditioningBetter(float[] vod, int improvement) throws IOException {
-        final int unconditionedLength;
-        {
-            final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            final SnappyOutputStream sos = new SnappyOutputStream(baos);
-            try {
-                writeUnconditioned(vod, sos);
-            } finally {
-                sos.flush();
+        for (boolean asFloats : new boolean[] { true, false }) {
+            final int unconditionedLength;
+            {
+                final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                final SnappyOutputStream sos = new SnappyOutputStream(baos);
+                try {
+                    if (asFloats) {
+                        writeUnconditioned(vod, sos);
+                    } else {
+                        writeUnconditioned(Utils.floatsToDoubles(vod), sos);
+                    }
+                } finally {
+                    sos.flush();
+                }
+
+                unconditionedLength = baos.size();
             }
 
-            unconditionedLength = baos.size();
-        }
+            final int conditionedLength;
+            {
+                final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                final SnappyOutputStream sos = new SnappyOutputStream(baos);
+                try {
+                    if (asFloats) {
+                        Conditioner.condition(vod, sos);
+                    } else {
+                        Conditioner.condition(Utils.floatsToDoubles(vod), sos);
+                    }
+                } finally {
+                    sos.flush();
+                }
 
-        final int conditionedLength;
-        {
-            final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            final SnappyOutputStream sos = new SnappyOutputStream(baos);
-            try {
-                Conditioner.condition(vod, sos);
-            } finally {
-                sos.flush();
+                conditionedLength = baos.size();
             }
 
-            conditionedLength = baos.size();
+            System.out.println("Conditioned " + (asFloats ? "float" : "double") + " data compressed to " + conditionedLength + " vs " + unconditionedLength + " unconditioned");
+            assertTrue(conditionedLength < unconditionedLength - improvement);
         }
-
-        System.out.println("Conditioned data compressed to " + conditionedLength + " vs " + unconditionedLength + " unconditioned");
-        assertTrue(conditionedLength < unconditionedLength - improvement);
     }
 
     private void writeUnconditioned(float[] vod, OutputStream os) throws IOException {
@@ -107,6 +143,17 @@ public class ConditionerTest {
         try {
             for (float x : vod) {
                 dos.writeFloat(x);
+            }
+        } finally {
+            dos.flush();
+        }
+    }
+
+    private void writeUnconditioned(double[] vod, OutputStream os) throws IOException {
+        final DataOutputStream dos = new DataOutputStream(os);
+        try {
+            for (double x : vod) {
+                dos.writeDouble(x);
             }
         } finally {
             dos.flush();

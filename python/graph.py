@@ -32,3 +32,7 @@ plt.show()
 
 mantissa_delta.plot(kind='kde', title='Distribution of Mantissa Delta')
 plt.show()
+
+modal_exponent = df['exponent'].value_counts().idxmax()
+mants = sorted(set(df[df.exponent == modal_exponent]['mantissa']))
+print pd.Series([y - x for x, y in zip(mants, mants[1:])]).value_counts()
