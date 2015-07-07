@@ -38,9 +38,9 @@ public class ConditionerTest {
 
     @Test
     public void twos2unsigned52() {
-        for (long i = 0; i < 0x80000000000000L; i += 0x100000000L) {
+        for (long i = 0; i < 0x10000000000000L; i += 0x100000000L) {
             final long u = Conditioner.twos2unsigned52(i);
-            assertEquals(u, u & 0x7FFFFF);
+            assertEquals(u, u & 0xFFFFFFFFFFFFFL);
             final long v = Conditioner.unsigned2twos52(u);
             assertEquals(Long.toBinaryString(i) + " -> " + Long.toBinaryString(u) + " -> " + Long.toBinaryString(v), i, v);
         }
