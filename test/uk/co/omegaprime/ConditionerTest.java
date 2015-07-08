@@ -5,7 +5,6 @@ import org.iq80.snappy.SnappyOutputStream;
 import org.junit.Test;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
@@ -49,7 +48,7 @@ public class ConditionerTest {
     @Test
     @Ignore
     public void writeSampleFiles() throws IOException {
-        final float[] vod = getExampleData();
+        final float[] vod = Utils.getExampleData();
 
         try (FileOutputStream fos = new FileOutputStream(createFile("unconditioned-floats"))) {
             writeUnconditioned(vod, fos);
@@ -71,12 +70,12 @@ public class ConditionerTest {
     @Test
     public void conditioningShouldImproveCompression() throws IOException {
         // Unconditioned data is about 22754 bytes long, conditioned 21252 as of time of writing
-        assertConditioningBetter(getExampleData(), 1000);
+        assertConditioningBetter(Utils.getExampleData(), 1000);
     }
 
     @Test
     public void conditioningShouldImproveCompressionWithZeros() throws IOException {
-        float[] vod = getExampleData();
+        float[] vod = Utils.getExampleData();
         float[] returns = new float[vod.length];
         returns[0] = 1f;
         for (int i = 1; i < vod.length; i++) {
@@ -89,7 +88,7 @@ public class ConditionerTest {
     @Test
     public void conditioningShouldImproveCompressionWithNaNs() throws IOException {
         final Random random = new Random();
-        float[] vod = getExampleData();
+        float[] vod = Utils.getExampleData();
         for (int i = 0; i < vod.length; i++) {
             if (random.nextDouble() < 0.05) vod[i] = Float.NaN;
         }
@@ -160,20 +159,4 @@ public class ConditionerTest {
         }
     }
 
-    private static float[] getExampleData() throws IOException {
-        final float[] vod;
-        try (BufferedReader r = new BufferedReader(new InputStreamReader(ConditionerTest.class.getResourceAsStream("Vodafone.csv")))) {
-            final ArrayList<Float> floats = new ArrayList<Float>();
-            String line;
-            while ((line = r.readLine()) != null) {
-                floats.add(Float.parseFloat(line));
-            }
-
-            vod = new float[floats.size()];
-            for (int i = 0; i < floats.size(); i++) {
-                vod[i] = floats.get(i);
-            }
-        }
-        return vod;
-    }
 }

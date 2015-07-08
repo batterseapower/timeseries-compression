@@ -11,15 +11,27 @@ vod = pd.read_csv('VOD.csv').set_index('Date')
 vod.index = pd.DatetimeIndex(vod.index)
 
 xs = vod.reindex(pd.bdate_range(min(vod.index), max(vod.index)))['Adj Close']
-xs = [(y / x) - 1.0 for x, y in zip(xs, xs[1:])] # Returns
+#xs = [(y / x) - 1.0 for x, y in zip(xs, xs[1:])] # Returns
 xs = filter(lambda x: x != 0.0 and x == x, xs) # Sane values only 0s/NaNs
 xs = map(f2l, xs)
 
 df = pd.DataFrame.from_dict({
 		'sign':     [(x & 0x80000000) >> 31 for x in xs],
 		'exponent': [(x & 0x7F800000) >> 23 for x in xs],
-		'mantissa': [(x & 0x00777777) >>  0 for x in xs],
+		'mantissa': [(x & 0x007FFFFF) >>  0 for x in xs],
 	})
+
+pd.DataFrame.from_dict({
+	    'low order':  df['mantissa'].apply(lambda x: (x & 0x00FF) >> 0),
+	    'high order': df['mantissa'].apply(lambda x: (x & 0xFF00) >> 8),
+    }).plot(kind='scatter', title='low order bytes correlation', x='low order', y='high order')
+plt.show()
+
+pd.DataFrame.from_dict({
+	    'low order':  df['mantissa'].apply(lambda x: (x & 0x00FF00) >>  8),
+	    'high order': df['mantissa'].apply(lambda x: (x & 0x7F0000) >> 16),
+    }).plot(kind='scatter', title='high order bytes correlation', x='low order', y='high order')
+plt.show()
 
 for c in ['sign', 'exponent', 'mantissa']:
 	df[c].plot(title=c)
