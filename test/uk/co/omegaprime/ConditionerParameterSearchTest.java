@@ -10,8 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
+import java.util.zip.*;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -78,6 +77,113 @@ public class ConditionerParameterSearchTest {
         }
 
         return result;
+    }
+
+    @Test
+    public void benchmark() throws IOException {
+        /*
+        Snappy compress: 0.156672s
+        Compressed to 10876881 bytes
+        Uncompresses to 12908620 bytes
+        Snappy decompress: 0.162463s
+
+        Deflate Fastest compress: 6.017877s
+        Compressed to 7770401 bytes
+        Uncompresses to 12908620 bytes
+        Deflate Fastest decompress: 4.260146s
+
+        Deflate Slowest compress: 7.06043s
+        Compressed to 7492001 bytes
+        Uncompresses to 12908620 bytes
+        Deflate Slowest decompress: 3.968221s
+
+        Deflate Normal compress: 5.201332s
+        Compressed to 7515522 bytes
+        Uncompresses to 12908620 bytes
+        Deflate Normal decompress: 4.056792s
+         */
+        benchmark("Snappy",          SnappyOutputStream::new,                                                        SnappyInputStream::new);
+        benchmark("Deflate Fastest", os -> new DeflaterOutputStream(os, new Deflater(Deflater.BEST_SPEED)),          InflaterInputStream::new);
+        benchmark("Deflate Slowest", os -> new DeflaterOutputStream(os, new Deflater(Deflater.BEST_COMPRESSION)),    InflaterInputStream::new);
+        benchmark("Deflate Normal",  os -> new DeflaterOutputStream(os, new Deflater(Deflater.DEFAULT_COMPRESSION)), InflaterInputStream::new);
+    }
+
+    private static class Stopwatch implements AutoCloseable {
+        private final String name;
+        private final long start;
+
+        public Stopwatch(String name) {
+            this.name = name;
+            this.start = System.nanoTime();
+        }
+
+        @Override
+        public void close() {
+            final long end = System.nanoTime();
+            System.out.println(name + ": " + (end - start) / 1e9 + "s");
+        }
+    }
+
+    public static void benchmark(String compressor, IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor) throws IOException {
+        final List<float[]> data = loadFullData();
+
+        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        int wrote = 0;
+        try (Stopwatch _ = new Stopwatch(compressor + " compress")) {
+            try (DataOutputStream daos = new DataOutputStream(mkCompressor.apply(baos))) {
+                daos.writeInt(data.size());
+                for (float[] floats : data) {
+                    daos.writeInt(floats.length);
+                    for (float x : floats) {
+                        wrote++;
+                        daos.writeFloat(x);
+                    }
+                }
+            }
+        }
+
+        System.out.println("Compressed to " + baos.size() + " bytes");
+        System.out.println("Uncompresses to " + skipAll(mkUncompressor.apply(new ByteArrayInputStream(baos.toByteArray()))) + " bytes");
+
+        int read = 0;
+        try (Stopwatch _ = new Stopwatch(compressor + " decompress")) {
+            try (DataInputStream dis = new DataInputStream(mkUncompressor.apply(new ByteArrayInputStream(baos.toByteArray())))) {
+                final int length0 = dis.readInt();
+                for (int i = 0; i < length0; i++) {
+                    final int length1 = dis.readInt();
+                    for (int j = 0; j < length1; j++) {
+                        read++;
+                        try {
+                            dis.readFloat();
+                        } catch (EOFException e) {
+                            throw new IOException(read + " of " + wrote, e);
+                        }
+                    }
+                }
+            }
+        }
+
+        if (read != wrote) {
+            throw new IllegalStateException(read + " != " + wrote);
+        }
+
+        System.out.println();
+    }
+
+    private static long skipAll(InputStream is) throws IOException {
+        long skipped;
+        long totalSkipped = 0;
+        do {
+            skipped = is.skip(1024 * 1024);
+            if (skipped == 0) {
+                if (is.read() >= 0) {
+                    skipped = 1;
+                }
+            }
+            totalSkipped += skipped;
+        } while (skipped > 0);
+
+        return totalSkipped;
     }
 
     @Test
