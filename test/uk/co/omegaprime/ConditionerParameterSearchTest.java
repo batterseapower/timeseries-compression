@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -100,12 +101,12 @@ public class ConditionerParameterSearchTest {
                 }
                 size += baos.size();
             }
-            System.out.println(compressor + " baseline: " + size);
+            System.err.println(compressor + " baseline: " + size);
         }
 
         for (Pair<byte[]> exponent : Arrays.<Pair<byte[]>>asList(new Pair<byte[]>("Literal", Conditioner::writeFloatExponentsLiteral, Conditioner::readFloatExponentsLiteral), new Pair<byte[]>("Delta", Conditioner::writeFloatExponentsDelta, Conditioner::readFloatExponentsDelta))) {
             for (Pair<int[]> mantissa : ConditionerParameterSearchTest.<int[]>pairs(3, Conditioner::writeFloatMantissasLiteral, Conditioner::readFloatMantissasLiteral, Conditioner::writeFloatMantissasDelta, Conditioner::readFloatMantissasDelta)) {
-                final String method = String.format("%s / E %s / M %s", compressor, exponent, mantissa);
+                final String method = String.format("%s\t%s\t%s", compressor, exponent, mantissa);
 
                 long size = 0;
                 for (float[] input : inputs) {
@@ -123,7 +124,7 @@ public class ConditionerParameterSearchTest {
                     size += baos.size();
                 }
 
-                System.out.println(method + ": " + size);
+                System.out.println(method + "\t" + size);
             }
         }
     }
@@ -135,8 +136,8 @@ public class ConditionerParameterSearchTest {
     }
 
     public void allDoubleParameterCombinationsWork(String compressor, IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor) throws IOException {
-        final List<double[]> inputs = Arrays.asList(Utils.floatsToDoubles(Utils.getExampleData()));
-        //final List<double[]> inputs = loadFullData();
+        //final List<double[]> inputs = Arrays.asList(Utils.floatsToDoubles(Utils.getExampleData()));
+        final List<double[]> inputs = loadFullData().stream().map(Utils::floatsToDoubles).collect(Collectors.toList());
 
         {
             long size = 0;
@@ -149,12 +150,12 @@ public class ConditionerParameterSearchTest {
                 }
                 size += baos.size();
             }
-            System.out.println(compressor + " baseline: " + size);
+            System.err.println(compressor + " baseline: " + size);
         }
 
         for (Pair<short[]> exponent : ConditionerParameterSearchTest.<short[]>pairs(2, Conditioner::writeDoubleExponentsLiteral, Conditioner::readDoubleExponentsLiteral, Conditioner::writeDoubleExponentsDelta, Conditioner::readDoubleExponentsDelta)) {
             for (Pair<long[]> mantissa : ConditionerParameterSearchTest.<long[]>pairs(7, Conditioner::writeDoubleMantissasLiteral, Conditioner::readDoubleMantissasLiteral, Conditioner::writeDoubleMantissasDelta, Conditioner::readDoubleMantissasDelta)) {
-                final String method = String.format("%s / E %s / M %s", compressor, exponent, mantissa);
+                final String method = String.format("%s\t%s\t%s", compressor, exponent, mantissa);
 
                 long size = 0;
                 for (double[] input : inputs) {
@@ -167,12 +168,12 @@ public class ConditionerParameterSearchTest {
                     final InputStream is = mkUncompressor.apply(new ByteArrayInputStream(baos.toByteArray()));
                     Conditioner.uncondition(exponent.reader, mantissa.reader, output, is);
 
-                    assertArrayEquals(input, output, 0.0);
+                    assertArrayEquals(method, input, output, 0.0);
 
                     size += baos.size();
                 }
 
-                System.out.println(method + ": " + size);
+                System.out.println(method + "\t" + size);
             }
         }
     }

@@ -19,10 +19,22 @@ public class ConditionerTest {
 
     @Test
     public void smallAbsoluteNumbersEncodeToSmallIntegers() {
+        assertTrue(Conditioner.twos2unsigned11((short)1) < 10);
+        assertTrue(Conditioner.twos2unsigned11((short)-1) < 10);
         assertTrue(Conditioner.twos2unsigned23(1) < 10);
         assertTrue(Conditioner.twos2unsigned23(-1) < 10);
         assertTrue(Conditioner.twos2unsigned52(1) < 10);
         assertTrue(Conditioner.twos2unsigned52(-1) < 10);
+    }
+
+    @Test
+    public void twos2unsigned11() {
+        for (short i = 0; i < 0x800; i++) {
+            final short u = Conditioner.twos2unsigned11(i);
+            assertEquals(u, u & 0x7FF);
+            final short v = Conditioner.unsigned2twos11(u);
+            assertEquals(Integer.toBinaryString(i) + " -> " + Integer.toBinaryString(u) + " -> " + Integer.toBinaryString(v), i, v);
+        }
     }
 
     @Test

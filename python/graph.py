@@ -21,23 +21,27 @@ df = pd.DataFrame.from_dict({
 		'mantissa': [(x & 0x007FFFFF) >>  0 for x in xs],
 	})
 
-pd.DataFrame.from_dict({
-	    'low order':  df['mantissa'].apply(lambda x: (x & 0x00FF) >> 0),
-	    'high order': df['mantissa'].apply(lambda x: (x & 0xFF00) >> 8),
-    }).plot(kind='scatter', title='low order bytes correlation', x='low order', y='high order')
-plt.show()
+def show_correlation(mantissa):
+	pd.DataFrame.from_dict({
+		    'low order':  mantissa.apply(lambda x: (x & 0x00FF) >> 0),
+		    'high order': mantissa.apply(lambda x: (x & 0xFF00) >> 8),
+	    }).plot(kind='scatter', title='low order bytes correlation', x='low order', y='high order')
+	plt.show()
 
-pd.DataFrame.from_dict({
-	    'low order':  df['mantissa'].apply(lambda x: (x & 0x00FF00) >>  8),
-	    'high order': df['mantissa'].apply(lambda x: (x & 0x7F0000) >> 16),
-    }).plot(kind='scatter', title='high order bytes correlation', x='low order', y='high order')
-plt.show()
+	pd.DataFrame.from_dict({
+		    'low order':  mantissa.apply(lambda x: (x & 0x00FF00) >>  8),
+		    'high order': mantissa.apply(lambda x: (x & 0x7F0000) >> 16),
+	    }).plot(kind='scatter', title='high order bytes correlation', x='low order', y='high order')
+	plt.show()
+
+mantissa_delta = pd.Series([x - y for x, y in zip(df.mantissa[1:], df.mantissa)])
+
+show_correlation(df['mantissa'])
+show_correlation(mantissa_delta)
 
 for c in ['sign', 'exponent', 'mantissa']:
 	df[c].plot(title=c)
 	plt.show()
-
-mantissa_delta = pd.Series([x - y for x, y in zip(df.mantissa[1:], df.mantissa)])
 
 mantissa_delta.plot(title='Mantissa Delta')
 plt.show()

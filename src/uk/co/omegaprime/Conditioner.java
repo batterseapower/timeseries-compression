@@ -43,7 +43,7 @@ public class Conditioner {
 
     static short unsigned2twos11(short x) {
         return (short)((x & 1) == 0 ?   (x >> 1) & 0x3FF
-                                    : (~(x >> 1) & 0x3FF) | 0x8000);
+                                    : (~(x >> 1) & 0x3FF) | 0x400);
     }
 
     static int twos2unsigned23(int x) {
@@ -289,9 +289,9 @@ public class Conditioner {
 
     // For length == 3, valid codecs are [1, 1, 1], [1, 2], [2, 1], [3] (numbers must be > 0 and sum to 3)
     public static List<int[]> validCodecs(int length) {
-        Set<List<Integer>> work = new HashSet<>(Arrays.<List<Integer>>asList(new ArrayList<Integer>()));
+        Set<List<Integer>> work = new LinkedHashSet<>(Arrays.<List<Integer>>asList(new ArrayList<Integer>()));
         for (int n = 0; n < length; n++) {
-            final Set<List<Integer>> newWork = new HashSet<>();
+            final Set<List<Integer>> newWork = new LinkedHashSet<>();
 
             for (List<Integer> codec : work) {
                 for (int i = 0; i <= codec.size(); i++) {
