@@ -2,9 +2,7 @@ package uk.co.omegaprime;
 
 import sun.misc.IOUtils;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -25,10 +23,18 @@ public class Conditioner {
         return (x ^ m) - m;
     }
 
+    private static int signExtend32(int x) {
+        return x;
+    }
+
     private static long signExtend52(long x) {
-        final long m = 1L << 51;   // Pre-computed mask
+        final long m = 1L << 51;  // Pre-computed mask
         x = x & ((1L << 52) - 1); // Ensure bits in x above bit 52 are already zero.
         return (x ^ m) - m;
+    }
+
+    private static long signExtend64(long x) {
+        return x;
     }
 
     // Zig-zag encoding, as seen in Protocol buffers (https://developers.google.com/protocol-buffers/docs/encoding)
@@ -55,6 +61,15 @@ public class Conditioner {
                             : (~(x >> 1) & 0x3FFFFF) | 0x400000;
     }
 
+    static int twos2unsigned32(int x) {
+        return (x << 1) ^ (signExtend32(x) >> 31);
+    }
+
+    static int unsigned2twos32(int x) {
+        return (x & 1) == 0 ?   (x >> 1) & 0x7FFFFFFF
+                            : (~(x >> 1) & 0x7FFFFFFF) | 0x80000000;
+    }
+
     static long twos2unsigned52(long x) {
         return ((x << 1) ^ (signExtend52(x) >> 51)) & 0xFFFFFFFFFFFFFL;
     }
@@ -62,6 +77,15 @@ public class Conditioner {
     static long unsigned2twos52(long x) {
         return (x & 1) == 0 ?   (x >> 1) & 0x7FFFFFFFFFFFFL
                             : (~(x >> 1) & 0x7FFFFFFFFFFFFL) | 0x8000000000000L;
+    }
+
+    static long twos2unsigned64(long x) {
+        return (x << 1) ^ (signExtend64(x) >> 63);
+    }
+
+    static long unsigned2twos64(long x) {
+        return (x & 1) == 0 ?   (x >> 1) & 0x7FFFFFFFFFFFFFFFL
+                            : (~(x >> 1) & 0x7FFFFFFFFFFFFFFFL) | 0x8000000000000000L;
     }
 
     private static int descriptor(int[] definedByRef, float x) {
@@ -92,6 +116,114 @@ public class Conditioner {
 
     public interface Reader<T> {
         public void read(T into, InputStream is) throws IOException;
+    }
+
+    public static Writer<float[]> writeFloatLiteral(int[] codec) {
+        return (float[] xs, OutputStream os) -> {
+            final int[] bits = new int[xs.length];
+            for (int i = 0; i < bits.length; i++) {
+                bits[i] = Float.floatToRawIntBits(xs[i]);
+            }
+            columnarWrite(codec, bits, os);
+        };
+    }
+
+    public static Reader<float[]> readFloatLiteral(int[] codec) {
+        return (float[] xs, InputStream is) -> {
+            final int[] bits = new int[xs.length];
+            columnarRead(codec, bits, is);
+            for (int i = 0; i < bits.length; i++) {
+                xs[i] = Float.intBitsToFloat(bits[i]);
+            }
+        };
+    }
+
+    public static Writer<double[]> writeDoubleLiteral(int[] codec) {
+        return (double[] xs, OutputStream os) -> {
+            final long[] bits = new long[xs.length];
+            for (int i = 0; i < bits.length; i++) {
+                bits[i] = Double.doubleToRawLongBits(xs[i]);
+            }
+            columnarWrite(codec, bits, os);
+        };
+    }
+
+    public static Reader<double[]> readDoubleLiteral(int[] codec) {
+        return (double[] xs, InputStream is) -> {
+            final long[] bits = new long[xs.length];
+            columnarRead(codec, bits, is);
+            for (int i = 0; i < bits.length; i++) {
+                xs[i] = Double.longBitsToDouble(bits[i]);
+            }
+        };
+    }
+
+    public static Writer<float[]> writeFloatDelta(int[] codec) {
+        return (float[] xs, OutputStream os) -> {
+            if (xs.length == 0) return;
+
+            int lastBits = Float.floatToRawIntBits(xs[0]);
+            new DataOutputStream(os).writeInt(lastBits);
+
+            final int[] toWrite = new int[xs.length - 1];
+            for (int i = 1; i < xs.length; i++) {
+                final int bits = Float.floatToRawIntBits(xs[i]);
+                toWrite[i - 1] = twos2unsigned32(bits - lastBits);
+                lastBits = bits;
+            }
+
+            columnarWrite(codec, toWrite, os);
+        };
+    }
+
+    public static Reader<float[]> readFloatDelta(int[] codec) {
+        return (float[] xs, InputStream is) -> {
+            if (xs.length == 0) return;
+
+            int lastBits = new DataInputStream(is).readInt();
+            xs[0] = Float.intBitsToFloat(lastBits);
+
+            final int[] read = new int[xs.length - 1];
+            columnarRead(codec, read, is);
+
+            for (int i = 1; i < xs.length; i++) {
+                xs[i] = Float.intBitsToFloat(lastBits = lastBits + unsigned2twos32(read[i - 1]));
+            }
+        };
+    }
+
+    public static Writer<double[]> writeDoubleDelta(int[] codec) {
+        return (double[] xs, OutputStream os) -> {
+            if (xs.length == 0) return;
+
+            long lastBits = Double.doubleToRawLongBits(xs[0]);
+            new DataOutputStream(os).writeLong(lastBits);
+
+            final long[] toWrite = new long[xs.length - 1];
+            for (int i = 1; i < xs.length; i++) {
+                final long bits = Double.doubleToRawLongBits(xs[i]);
+                toWrite[i - 1] = twos2unsigned64(bits - lastBits);
+                lastBits = bits;
+            }
+
+            columnarWrite(codec, toWrite, os);
+        };
+    }
+
+    public static Reader<double[]> readDoubleDelta(int[] codec) {
+        return (double[] xs, InputStream is) -> {
+            if (xs.length == 0) return;
+
+            long lastBits = new DataInputStream(is).readLong();
+            xs[0] = Double.longBitsToDouble(lastBits);
+
+            final long[] read = new long[xs.length - 1];
+            columnarRead(codec, read, is);
+
+            for (int i = 1; i < xs.length; i++) {
+                xs[i] = Double.longBitsToDouble(lastBits = lastBits + unsigned2twos64(read[i - 1]));
+            }
+        };
     }
 
     public static void writeFloatExponentsLiteral(byte[] exponents, OutputStream os) throws IOException {

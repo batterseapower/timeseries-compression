@@ -20,10 +20,14 @@ df['Mantissa Method'], df['Mantissa Codec'] = unzip([x.split(' ', 1) for x in df
 print pd.DataFrame.pivot_table(df, values='Size', index=['Exponent Method', 'Mantissa Method'], columns=['Compressor'], aggfunc=np.min)
 print
 
+#print '==== Gzip Only'
+#print
+#df = df[df['Compressor'] == 'Gzip']
+
 # Delta or literal better for the exponent/mantissa?
 def print_both_ways(df):
-	print df.ix[:, 'Delta'].order().head()
-	print df.ix[:, 'Literal'].order().head()
+	print df.ix[:, 'Delta'].order().head(n=10)
+	print df.ix[:, 'Literal'].order().head(n=10)
 	print
 print_both_ways(pd.DataFrame.pivot_table(df, values='Size', index=['Exponent Codec'], columns=['Exponent Method'], aggfunc=np.min))
 print_both_ways(pd.DataFrame.pivot_table(df, values='Size', index=['Mantissa Codec'], columns=['Mantissa Method'], aggfunc=np.min))

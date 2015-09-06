@@ -1,0 +1,34 @@
+Snappy baseline: 10894227
+Snappy	Literal [1, 1, 1, 1]	9033135
+Snappy	Delta [1, 1, 1, 1]	8979988
+Snappy	Literal [2, 1, 1]	8497983
+Snappy	Delta [2, 1, 1]	8883392
+Snappy	Literal [1, 2, 1]	9311863
+Snappy	Delta [1, 2, 1]	9093582
+Snappy	Literal [1, 1, 2]	10842190
+Snappy	Delta [1, 1, 2]	9847987
+Snappy	Literal [3, 1]	9404027
+Snappy	Delta [3, 1]	8847839
+Snappy	Literal [2, 2]	10107042
+Snappy	Delta [2, 2]	9650796
+Snappy	Literal [1, 3]	11722159
+Snappy	Delta [1, 3]	10524215
+Snappy	Literal [4]	10942085
+Snappy	Delta [4]	9659888
+Gzip baseline: 7683716
+Gzip	Literal [1, 1, 1, 1]	7766793
+Gzip	Delta [1, 1, 1, 1]	7268962
+Gzip	Literal [2, 1, 1]	7170411
+Gzip	Delta [2, 1, 1]	6862351
+Gzip	Literal [1, 2, 1]	7990248
+Gzip	Delta [1, 2, 1]	7268072
+Gzip	Literal [1, 1, 2]	8190788
+Gzip	Delta [1, 1, 2]	7755324
+Gzip	Literal [3, 1]	7509192
+Gzip	Delta [3, 1]	6601643
+Gzip	Literal [2, 2]	7547274
+Gzip	Delta [2, 2]	7355110
+Gzip	Literal [1, 3]	8785377
+Gzip	Delta [1, 3]	7765102
+Gzip	Literal [4]	7889631
+Gzip	Delta [4]	7020346

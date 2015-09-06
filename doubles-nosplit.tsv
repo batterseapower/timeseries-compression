@@ -1,0 +1,514 @@
+Snappy baseline: 12375632
+Snappy	Literal [1, 1, 1, 1, 1, 1, 1, 1]	10232996
+Snappy	Delta [1, 1, 1, 1, 1, 1, 1, 1]	13704650
+Snappy	Literal [2, 1, 1, 1, 1, 1, 1]	10232996
+Snappy	Delta [2, 1, 1, 1, 1, 1, 1]	13344566
+Snappy	Literal [1, 2, 1, 1, 1, 1, 1]	10232996
+Snappy	Delta [1, 2, 1, 1, 1, 1, 1]	13347257
+Snappy	Literal [1, 1, 2, 1, 1, 1, 1]	10477174
+Snappy	Delta [1, 1, 2, 1, 1, 1, 1]	12954467
+Snappy	Literal [1, 1, 1, 2, 1, 1, 1]	9985079
+Snappy	Delta [1, 1, 1, 2, 1, 1, 1]	13884336
+Snappy	Literal [1, 1, 1, 1, 2, 1, 1]	10343471
+Snappy	Delta [1, 1, 1, 1, 2, 1, 1]	13576439
+Snappy	Literal [1, 1, 1, 1, 1, 2, 1]	11454652
+Snappy	Delta [1, 1, 1, 1, 1, 2, 1]	14963688
+Snappy	Literal [1, 1, 1, 1, 1, 1, 2]	10838412
+Snappy	Delta [1, 1, 1, 1, 1, 1, 2]	14212871
+Snappy	Literal [3, 1, 1, 1, 1, 1]	10232996
+Snappy	Delta [3, 1, 1, 1, 1, 1]	12409691
+Snappy	Literal [2, 2, 1, 1, 1, 1]	10477174
+Snappy	Delta [2, 2, 1, 1, 1, 1]	12590986
+Snappy	Literal [2, 1, 2, 1, 1, 1]	9985079
+Snappy	Delta [2, 1, 2, 1, 1, 1]	13524266
+Snappy	Literal [2, 1, 1, 2, 1, 1]	10343471
+Snappy	Delta [2, 1, 1, 2, 1, 1]	13216375
+Snappy	Literal [2, 1, 1, 1, 2, 1]	11454652
+Snappy	Delta [2, 1, 1, 1, 2, 1]	14603632
+Snappy	Literal [2, 1, 1, 1, 1, 2]	10838412
+Snappy	Delta [2, 1, 1, 1, 1, 2]	13852894
+Snappy	Literal [1, 3, 1, 1, 1, 1]	10437794
+Snappy	Delta [1, 3, 1, 1, 1, 1]	12280165
+Snappy	Literal [1, 2, 2, 1, 1, 1]	9985079
+Snappy	Delta [1, 2, 2, 1, 1, 1]	13525673
+Snappy	Literal [1, 2, 1, 2, 1, 1]	10343471
+Snappy	Delta [1, 2, 1, 2, 1, 1]	13219271
+Snappy	Literal [1, 2, 1, 1, 2, 1]	11454652
+Snappy	Delta [1, 2, 1, 1, 2, 1]	14606303
+Snappy	Literal [1, 2, 1, 1, 1, 2]	10838412
+Snappy	Delta [1, 2, 1, 1, 1, 2]	13855612
+Snappy	Literal [1, 1, 3, 1, 1, 1]	10641324
+Snappy	Delta [1, 1, 3, 1, 1, 1]	13499536
+Snappy	Literal [1, 1, 2, 2, 1, 1]	10565118
+Snappy	Delta [1, 1, 2, 2, 1, 1]	12798630
+Snappy	Literal [1, 1, 2, 1, 2, 1]	11693618
+Snappy	Delta [1, 1, 2, 1, 2, 1]	14204339
+Snappy	Literal [1, 1, 2, 1, 1, 2]	11081882
+Snappy	Delta [1, 1, 2, 1, 1, 2]	13463272
+Snappy	Literal [1, 1, 1, 3, 1, 1]	10580525
+Snappy	Delta [1, 1, 1, 3, 1, 1]	13738315
+Snappy	Literal [1, 1, 1, 2, 2, 1]	11186525
+Snappy	Delta [1, 1, 1, 2, 2, 1]	15123231
+Snappy	Literal [1, 1, 1, 2, 1, 2]	10589938
+Snappy	Delta [1, 1, 1, 2, 1, 2]	14389201
+Snappy	Literal [1, 1, 1, 1, 3, 1]	11433335
+Snappy	Delta [1, 1, 1, 1, 3, 1]	14192670
+Snappy	Literal [1, 1, 1, 1, 2, 2]	10954468
+Snappy	Delta [1, 1, 1, 1, 2, 2]	14086295
+Snappy	Literal [1, 1, 1, 1, 1, 3]	13636503
+Snappy	Delta [1, 1, 1, 1, 1, 3]	16003714
+Snappy	Literal [4, 1, 1, 1, 1]	12027800
+Snappy	Delta [4, 1, 1, 1, 1]	12399017
+Snappy	Literal [3, 2, 1, 1, 1]	9985079
+Snappy	Delta [3, 2, 1, 1, 1]	12586418
+Snappy	Literal [3, 1, 2, 1, 1]	10343471
+Snappy	Delta [3, 1, 2, 1, 1]	12281694
+Snappy	Literal [3, 1, 1, 2, 1]	11454652
+Snappy	Delta [3, 1, 1, 2, 1]	13668825
+Snappy	Literal [3, 1, 1, 1, 2]	10838412
+Snappy	Delta [3, 1, 1, 1, 2]	12917536
+Snappy	Literal [2, 3, 1, 1, 1]	10641324
+Snappy	Delta [2, 3, 1, 1, 1]	13136236
+Snappy	Literal [2, 2, 2, 1, 1]	10565118
+Snappy	Delta [2, 2, 2, 1, 1]	12434147
+Snappy	Literal [2, 2, 1, 2, 1]	11693618
+Snappy	Delta [2, 2, 1, 2, 1]	13840144
+Snappy	Literal [2, 2, 1, 1, 2]	11081882
+Snappy	Delta [2, 2, 1, 1, 2]	13099284
+Snappy	Literal [2, 1, 3, 1, 1]	10580525
+Snappy	Delta [2, 1, 3, 1, 1]	13378236
+Snappy	Literal [2, 1, 2, 2, 1]	11186525
+Snappy	Delta [2, 1, 2, 2, 1]	14763216
+Snappy	Literal [2, 1, 2, 1, 2]	10589938
+Snappy	Delta [2, 1, 2, 1, 2]	14029210
+Snappy	Literal [2, 1, 1, 3, 1]	11433335
+Snappy	Delta [2, 1, 1, 3, 1]	13832457
+Snappy	Literal [2, 1, 1, 2, 2]	10954468
+Snappy	Delta [2, 1, 1, 2, 2]	13726306
+Snappy	Literal [2, 1, 1, 1, 3]	13636503
+Snappy	Delta [2, 1, 1, 1, 3]	15643626
+Snappy	Literal [1, 4, 1, 1, 1]	11356788
+Snappy	Delta [1, 4, 1, 1, 1]	12834249
+Snappy	Literal [1, 3, 2, 1, 1]	10539380
+Snappy	Delta [1, 3, 2, 1, 1]	12137223
+Snappy	Literal [1, 3, 1, 2, 1]	11653859
+Snappy	Delta [1, 3, 1, 2, 1]	13531206
+Snappy	Literal [1, 3, 1, 1, 2]	11041593
+Snappy	Delta [1, 3, 1, 1, 2]	12788365
+Snappy	Literal [1, 2, 3, 1, 1]	10580525
+Snappy	Delta [1, 2, 3, 1, 1]	13379276
+Snappy	Literal [1, 2, 2, 2, 1]	11186525
+Snappy	Delta [1, 2, 2, 2, 1]	14764824
+Snappy	Literal [1, 2, 2, 1, 2]	10589938
+Snappy	Delta [1, 2, 2, 1, 2]	14030658
+Snappy	Literal [1, 2, 1, 3, 1]	11433335
+Snappy	Delta [1, 2, 1, 3, 1]	13835420
+Snappy	Literal [1, 2, 1, 2, 2]	10954468
+Snappy	Delta [1, 2, 1, 2, 2]	13729143
+Snappy	Literal [1, 2, 1, 1, 3]	13636503
+Snappy	Delta [1, 2, 1, 1, 3]	15646500
+Snappy	Literal [1, 1, 4, 1, 1]	11148403
+Snappy	Delta [1, 1, 4, 1, 1]	13585643
+Snappy	Literal [1, 1, 3, 2, 1]	11841447
+Snappy	Delta [1, 1, 3, 2, 1]	14736470
+Snappy	Literal [1, 1, 3, 1, 2]	11246864
+Snappy	Delta [1, 1, 3, 1, 2]	14004043
+Snappy	Literal [1, 1, 2, 3, 1]	11669561
+Snappy	Delta [1, 1, 2, 3, 1]	13431184
+Snappy	Literal [1, 1, 2, 2, 2]	11175382
+Snappy	Delta [1, 1, 2, 2, 2]	13308217
+Snappy	Literal [1, 1, 2, 1, 3]	13873742
+Snappy	Delta [1, 1, 2, 1, 3]	15245469
+Snappy	Literal [1, 1, 1, 4, 1]	11538618
+Snappy	Delta [1, 1, 1, 4, 1]	13745947
+Snappy	Literal [1, 1, 1, 3, 2]	11178018
+Snappy	Delta [1, 1, 1, 3, 2]	14245104
+Snappy	Literal [1, 1, 1, 2, 3]	13356502
+Snappy	Delta [1, 1, 1, 2, 3]	16166708
+Snappy	Literal [1, 1, 1, 1, 4]	13109764
+Snappy	Delta [1, 1, 1, 1, 4]	14800854
+Snappy	Literal [5, 1, 1, 1]	11330038
+Snappy	Delta [5, 1, 1, 1]	11835533
+Snappy	Literal [4, 2, 1, 1]	12127205
+Snappy	Delta [4, 2, 1, 1]	12253670
+Snappy	Literal [4, 1, 2, 1]	13241033
+Snappy	Delta [4, 1, 2, 1]	13649166
+Snappy	Literal [4, 1, 1, 2]	12630656
+Snappy	Delta [4, 1, 1, 2]	12906823
+Snappy	Literal [3, 3, 1, 1]	10580525
+Snappy	Delta [3, 3, 1, 1]	12439947
+Snappy	Literal [3, 2, 2, 1]	11186525
+Snappy	Delta [3, 2, 2, 1]	13825724
+Snappy	Literal [3, 2, 1, 2]	10589938
+Snappy	Delta [3, 2, 1, 2]	13091139
+Snappy	Literal [3, 1, 3, 1]	11433335
+Snappy	Delta [3, 1, 3, 1]	12897704
+Snappy	Literal [3, 1, 2, 2]	10954468
+Snappy	Delta [3, 1, 2, 2]	12791185
+Snappy	Literal [3, 1, 1, 3]	13636503
+Snappy	Delta [3, 1, 1, 3]	14709027
+Snappy	Literal [2, 4, 1, 1]	11148403
+Snappy	Delta [2, 4, 1, 1]	13222320
+Snappy	Literal [2, 3, 2, 1]	11841447
+Snappy	Delta [2, 3, 2, 1]	14373145
+Snappy	Literal [2, 3, 1, 2]	11246864
+Snappy	Delta [2, 3, 1, 2]	13640748
+Snappy	Literal [2, 2, 3, 1]	11669561
+Snappy	Delta [2, 2, 3, 1]	13066990
+Snappy	Literal [2, 2, 2, 2]	11175382
+Snappy	Delta [2, 2, 2, 2]	12943886
+Snappy	Literal [2, 2, 1, 3]	13873742
+Snappy	Delta [2, 2, 1, 3]	14881888
+Snappy	Literal [2, 1, 4, 1]	11538618
+Snappy	Delta [2, 1, 4, 1]	13385989
+Snappy	Literal [2, 1, 3, 2]	11178018
+Snappy	Delta [2, 1, 3, 2]	13885118
+Snappy	Literal [2, 1, 2, 3]	13356502
+Snappy	Delta [2, 1, 2, 3]	15806681
+Snappy	Literal [2, 1, 1, 4]	13109764
+Snappy	Delta [2, 1, 1, 4]	14440738
+Snappy	Literal [1, 5, 1, 1]	11943811
+Snappy	Delta [1, 5, 1, 1]	13160029
+Snappy	Literal [1, 4, 2, 1]	12556927
+Snappy	Delta [1, 4, 2, 1]	14069770
+Snappy	Literal [1, 4, 1, 2]	11962857
+Snappy	Delta [1, 4, 1, 2]	13337029
+Snappy	Literal [1, 3, 3, 1]	11629536
+Snappy	Delta [1, 3, 3, 1]	12751066
+Snappy	Literal [1, 3, 2, 2]	11149410
+Snappy	Delta [1, 3, 2, 2]	12646643
+Snappy	Literal [1, 3, 1, 3]	13833425
+Snappy	Delta [1, 3, 1, 3]	14566145
+Snappy	Literal [1, 2, 4, 1]	11538618
+Snappy	Delta [1, 2, 4, 1]	13386906
+Snappy	Literal [1, 2, 3, 2]	11178018
+Snappy	Delta [1, 2, 3, 2]	13887841
+Snappy	Literal [1, 2, 2, 3]	13356502
+Snappy	Delta [1, 2, 2, 3]	15808258
+Snappy	Literal [1, 2, 1, 4]	13109764
+Snappy	Delta [1, 2, 1, 4]	14443623
+Snappy	Literal [1, 1, 5, 1]	12732658
+Snappy	Delta [1, 1, 5, 1]	13835281
+Snappy	Literal [1, 1, 4, 2]	11742146
+Snappy	Delta [1, 1, 4, 2]	14079077
+Snappy	Literal [1, 1, 3, 3]	14002062
+Snappy	Delta [1, 1, 3, 3]	15778087
+Snappy	Literal [1, 1, 2, 4]	13345742
+Snappy	Delta [1, 1, 2, 4]	14035670
+Snappy	Literal [1, 1, 1, 5]	12805410
+Snappy	Delta [1, 1, 1, 5]	14743113
+Snappy	Literal [6, 1, 1]	11903694
+Snappy	Delta [6, 1, 1]	12224432
+Snappy	Literal [5, 2, 1]	12530406
+Snappy	Delta [5, 2, 1]	13070256
+Snappy	Literal [5, 1, 2]	11936523
+Snappy	Delta [5, 1, 2]	12338551
+Snappy	Literal [4, 3, 1]	13216912
+Snappy	Delta [4, 3, 1]	12872589
+Snappy	Literal [4, 2, 2]	12736538
+Snappy	Delta [4, 2, 2]	12762791
+Snappy	Literal [4, 1, 3]	15420745
+Snappy	Delta [4, 1, 3]	14686824
+Snappy	Literal [3, 4, 1]	11538618
+Snappy	Delta [3, 4, 1]	12447405
+Snappy	Literal [3, 3, 2]	11178018
+Snappy	Delta [3, 3, 2]	12947517
+Snappy	Literal [3, 2, 3]	13356502
+Snappy	Delta [3, 2, 3]	14868862
+Snappy	Literal [3, 1, 4]	13109764
+Snappy	Delta [3, 1, 4]	13505861
+Snappy	Literal [2, 5, 1]	12732658
+Snappy	Delta [2, 5, 1]	13472283
+Snappy	Literal [2, 4, 2]	11742146
+Snappy	Delta [2, 4, 2]	13716027
+Snappy	Literal [2, 3, 3]	14002062
+Snappy	Delta [2, 3, 3]	15414805
+Snappy	Literal [2, 2, 4]	13345742
+Snappy	Delta [2, 2, 4]	13671470
+Snappy	Literal [2, 1, 5]	12805410
+Snappy	Delta [2, 1, 5]	14382919
+Snappy	Literal [1, 6, 1]	13390030
+Snappy	Delta [1, 6, 1]	13315878
+Snappy	Literal [1, 5, 2]	12529463
+Snappy	Delta [1, 5, 2]	13638986
+Snappy	Literal [1, 4, 3]	14717094
+Snappy	Delta [1, 4, 3]	15112379
+Snappy	Literal [1, 3, 4]	13306010
+Snappy	Delta [1, 3, 4]	13361426
+Snappy	Literal [1, 2, 5]	12805410
+Snappy	Delta [1, 2, 5]	14383611
+Snappy	Literal [1, 1, 6]	13376569
+Snappy	Delta [1, 1, 6]	14027734
+Snappy	Literal [7, 1]	14315355
+Snappy	Delta [7, 1]	12443413
+Snappy	Literal [6, 2]	12489427
+Snappy	Delta [6, 2]	12703680
+Snappy	Literal [5, 3]	14690546
+Snappy	Delta [5, 3]	14113744
+Snappy	Literal [4, 4]	14892890
+Snappy	Delta [4, 4]	13477928
+Snappy	Literal [3, 5]	12805410
+Snappy	Delta [3, 5]	13444336
+Snappy	Literal [2, 6]	13376569
+Snappy	Delta [2, 6]	13664255
+Snappy	Literal [1, 7]	14310192
+Snappy	Delta [1, 7]	13710169
+Snappy	Literal [8]	14242437
+Gzip baseline: 8560507
+Snappy	Delta [8]	12608064
+Gzip	Literal [1, 1, 1, 1, 1, 1, 1, 1]	8080160
+Gzip	Delta [1, 1, 1, 1, 1, 1, 1, 1]	9826481
+Gzip	Literal [2, 1, 1, 1, 1, 1, 1]	8080160
+Gzip	Delta [2, 1, 1, 1, 1, 1, 1]	9408189
+Gzip	Literal [1, 2, 1, 1, 1, 1, 1]	8080160
+Gzip	Delta [1, 2, 1, 1, 1, 1, 1]	9422449
+Gzip	Literal [1, 1, 2, 1, 1, 1, 1]	8302798
+Gzip	Delta [1, 1, 2, 1, 1, 1, 1]	9503969
+Gzip	Literal [1, 1, 1, 2, 1, 1, 1]	7740676
+Gzip	Delta [1, 1, 1, 2, 1, 1, 1]	9713297
+Gzip	Literal [1, 1, 1, 1, 2, 1, 1]	7897960
+Gzip	Delta [1, 1, 1, 1, 2, 1, 1]	9403955
+Gzip	Literal [1, 1, 1, 1, 1, 2, 1]	8968173
+Gzip	Delta [1, 1, 1, 1, 1, 2, 1]	10203786
+Gzip	Literal [1, 1, 1, 1, 1, 1, 2]	8335860
+Gzip	Delta [1, 1, 1, 1, 1, 1, 2]	10046825
+Gzip	Literal [3, 1, 1, 1, 1, 1]	8080160
+Gzip	Delta [3, 1, 1, 1, 1, 1]	8904746
+Gzip	Literal [2, 2, 1, 1, 1, 1]	8302798
+Gzip	Delta [2, 2, 1, 1, 1, 1]	9033054
+Gzip	Literal [2, 1, 2, 1, 1, 1]	7740676
+Gzip	Delta [2, 1, 2, 1, 1, 1]	9281130
+Gzip	Literal [2, 1, 1, 2, 1, 1]	7897960
+Gzip	Delta [2, 1, 1, 2, 1, 1]	8988932
+Gzip	Literal [2, 1, 1, 1, 2, 1]	8968173
+Gzip	Delta [2, 1, 1, 1, 2, 1]	9784669
+Gzip	Literal [2, 1, 1, 1, 1, 2]	8335860
+Gzip	Delta [2, 1, 1, 1, 1, 2]	9622192
+Gzip	Literal [1, 3, 1, 1, 1, 1]	8460679
+Gzip	Delta [1, 3, 1, 1, 1, 1]	9054118
+Gzip	Literal [1, 2, 2, 1, 1, 1]	7740676
+Gzip	Delta [1, 2, 2, 1, 1, 1]	9282448
+Gzip	Literal [1, 2, 1, 2, 1, 1]	7897960
+Gzip	Delta [1, 2, 1, 2, 1, 1]	9003262
+Gzip	Literal [1, 2, 1, 1, 2, 1]	8968173
+Gzip	Delta [1, 2, 1, 1, 2, 1]	9799070
+Gzip	Literal [1, 2, 1, 1, 1, 2]	8335860
+Gzip	Delta [1, 2, 1, 1, 1, 2]	9636347
+Gzip	Literal [1, 1, 3, 1, 1, 1]	8025388
+Gzip	Delta [1, 1, 3, 1, 1, 1]	9547758
+Gzip	Literal [1, 1, 2, 2, 1, 1]	8144989
+Gzip	Delta [1, 1, 2, 2, 1, 1]	9099821
+Gzip	Literal [1, 1, 2, 1, 2, 1]	9262642
+Gzip	Delta [1, 1, 2, 1, 2, 1]	9936938
+Gzip	Literal [1, 1, 2, 1, 1, 2]	8542870
+Gzip	Delta [1, 1, 2, 1, 1, 2]	9726125
+Gzip	Literal [1, 1, 1, 3, 1, 1]	7347473
+Gzip	Delta [1, 1, 1, 3, 1, 1]	9068256
+Gzip	Literal [1, 1, 1, 2, 2, 1]	8636729
+Gzip	Delta [1, 1, 1, 2, 2, 1]	10044347
+Gzip	Literal [1, 1, 1, 2, 1, 2]	7958394
+Gzip	Delta [1, 1, 1, 2, 1, 2]	9909293
+Gzip	Literal [1, 1, 1, 1, 3, 1]	8650738
+Gzip	Delta [1, 1, 1, 1, 3, 1]	9264453
+Gzip	Literal [1, 1, 1, 1, 2, 2]	8163163
+Gzip	Delta [1, 1, 1, 1, 2, 2]	9630546
+Gzip	Literal [1, 1, 1, 1, 1, 3]	9688037
+Gzip	Delta [1, 1, 1, 1, 1, 3]	10633912
+Gzip	Literal [4, 1, 1, 1, 1]	8703039
+Gzip	Delta [4, 1, 1, 1, 1]	8655018
+Gzip	Literal [3, 2, 1, 1, 1]	7740676
+Gzip	Delta [3, 2, 1, 1, 1]	8746390
+Gzip	Literal [3, 1, 2, 1, 1]	7897960
+Gzip	Delta [3, 1, 2, 1, 1]	8483889
+Gzip	Literal [3, 1, 1, 2, 1]	8968173
+Gzip	Delta [3, 1, 1, 2, 1]	9259347
+Gzip	Literal [3, 1, 1, 1, 2]	8335860
+Gzip	Delta [3, 1, 1, 1, 2]	9117413
+Gzip	Literal [2, 3, 1, 1, 1]	8025388
+Gzip	Delta [2, 3, 1, 1, 1]	9063361
+Gzip	Literal [2, 2, 2, 1, 1]	8144989
+Gzip	Delta [2, 2, 2, 1, 1]	8627716
+Gzip	Literal [2, 2, 1, 2, 1]	9262642
+Gzip	Delta [2, 2, 1, 2, 1]	9457450
+Gzip	Literal [2, 2, 1, 1, 2]	8542870
+Gzip	Delta [2, 2, 1, 1, 2]	9251002
+Gzip	Literal [2, 1, 3, 1, 1]	7347473
+Gzip	Delta [2, 1, 3, 1, 1]	8646494
+Gzip	Literal [2, 1, 2, 2, 1]	8636729
+Gzip	Delta [2, 1, 2, 2, 1]	9609542
+Gzip	Literal [2, 1, 2, 1, 2]	7958394
+Gzip	Delta [2, 1, 2, 1, 2]	9468954
+Gzip	Literal [2, 1, 1, 3, 1]	8650738
+Gzip	Delta [2, 1, 1, 3, 1]	8853627
+Gzip	Literal [2, 1, 1, 2, 2]	8163163
+Gzip	Delta [2, 1, 1, 2, 2]	9207915
+Gzip	Literal [2, 1, 1, 1, 3]	9688037
+Gzip	Delta [2, 1, 1, 1, 3]	10229208
+Gzip	Literal [1, 4, 1, 1, 1]	8268017
+Gzip	Delta [1, 4, 1, 1, 1]	9227969
+Gzip	Literal [1, 3, 2, 1, 1]	8324554
+Gzip	Delta [1, 3, 2, 1, 1]	8684484
+Gzip	Literal [1, 3, 1, 2, 1]	9420849
+Gzip	Delta [1, 3, 1, 2, 1]	9503041
+Gzip	Literal [1, 3, 1, 1, 2]	8674453
+Gzip	Delta [1, 3, 1, 1, 2]	9271680
+Gzip	Literal [1, 2, 3, 1, 1]	7347473
+Gzip	Delta [1, 2, 3, 1, 1]	8649795
+Gzip	Literal [1, 2, 2, 2, 1]	8636729
+Gzip	Delta [1, 2, 2, 2, 1]	9610649
+Gzip	Literal [1, 2, 2, 1, 2]	7958394
+Gzip	Delta [1, 2, 2, 1, 2]	9470302
+Gzip	Literal [1, 2, 1, 3, 1]	8650738
+Gzip	Delta [1, 2, 1, 3, 1]	8867119
+Gzip	Literal [1, 2, 1, 2, 2]	8163163
+Gzip	Delta [1, 2, 1, 2, 2]	9221996
+Gzip	Literal [1, 2, 1, 1, 3]	9688037
+Gzip	Delta [1, 2, 1, 1, 3]	10242490
+Gzip	Literal [1, 1, 4, 1, 1]	7768771
+Gzip	Delta [1, 1, 4, 1, 1]	8933151
+Gzip	Literal [1, 1, 3, 2, 1]	8954999
+Gzip	Delta [1, 1, 3, 2, 1]	9870891
+Gzip	Literal [1, 1, 3, 1, 2]	8243551
+Gzip	Delta [1, 1, 3, 1, 2]	9748320
+Gzip	Literal [1, 1, 2, 3, 1]	8961641
+Gzip	Delta [1, 1, 2, 3, 1]	8991901
+Gzip	Literal [1, 1, 2, 2, 2]	8395599
+Gzip	Delta [1, 1, 2, 2, 2]	9329267
+Gzip	Literal [1, 1, 2, 1, 3]	9977436
+Gzip	Delta [1, 1, 2, 1, 3]	10309751
+Gzip	Literal [1, 1, 1, 4, 1]	7995415
+Gzip	Delta [1, 1, 1, 4, 1]	9128433
+Gzip	Literal [1, 1, 1, 3, 2]	7580085
+Gzip	Delta [1, 1, 1, 3, 2]	9280849
+Gzip	Literal [1, 1, 1, 2, 3]	9277977
+Gzip	Delta [1, 1, 1, 2, 3]	10468998
+Gzip	Literal [1, 1, 1, 1, 4]	8987580
+Gzip	Delta [1, 1, 1, 1, 4]	9671597
+Gzip	Literal [5, 1, 1, 1]	8431414
+Gzip	Delta [5, 1, 1, 1]	8808011
+Gzip	Literal [4, 2, 1, 1]	8568529
+Gzip	Delta [4, 2, 1, 1]	8291565
+Gzip	Literal [4, 1, 2, 1]	9676408
+Gzip	Delta [4, 1, 2, 1]	9094682
+Gzip	Literal [4, 1, 1, 2]	8905182
+Gzip	Delta [4, 1, 1, 2]	8869464
+Gzip	Literal [3, 3, 1, 1]	7347473
+Gzip	Delta [3, 3, 1, 1]	8113865
+Gzip	Literal [3, 2, 2, 1]	8636729
+Gzip	Delta [3, 2, 2, 1]	9059383
+Gzip	Literal [3, 2, 1, 2]	7958394
+Gzip	Delta [3, 2, 1, 2]	8930832
+Gzip	Literal [3, 1, 3, 1]	8650738
+Gzip	Delta [3, 1, 3, 1]	8338179
+Gzip	Literal [3, 1, 2, 2]	8163163
+Gzip	Delta [3, 1, 2, 2]	8701717
+Gzip	Literal [3, 1, 1, 3]	9688037
+Gzip	Delta [3, 1, 1, 3]	9724859
+Gzip	Literal [2, 4, 1, 1]	7768771
+Gzip	Delta [2, 4, 1, 1]	8469562
+Gzip	Literal [2, 3, 2, 1]	8954999
+Gzip	Delta [2, 3, 2, 1]	9378242
+Gzip	Literal [2, 3, 1, 2]	8243551
+Gzip	Delta [2, 3, 1, 2]	9255132
+Gzip	Literal [2, 2, 3, 1]	8961641
+Gzip	Delta [2, 2, 3, 1]	8524104
+Gzip	Literal [2, 2, 2, 2]	8395599
+Gzip	Delta [2, 2, 2, 2]	8852762
+Gzip	Literal [2, 2, 1, 3]	9977436
+Gzip	Delta [2, 2, 1, 3]	9843821
+Gzip	Literal [2, 1, 4, 1]	7995415
+Gzip	Delta [2, 1, 4, 1]	8718208
+Gzip	Literal [2, 1, 3, 2]	7580085
+Gzip	Delta [2, 1, 3, 2]	8850155
+Gzip	Literal [2, 1, 2, 3]	9277977
+Gzip	Delta [2, 1, 2, 3]	10053367
+Gzip	Literal [2, 1, 1, 4]	8987580
+Gzip	Delta [2, 1, 1, 4]	9275282
+Gzip	Literal [1, 5, 1, 1]	8033800
+Gzip	Delta [1, 5, 1, 1]	8591607
+Gzip	Literal [1, 4, 2, 1]	9219934
+Gzip	Delta [1, 4, 2, 1]	9574707
+Gzip	Literal [1, 4, 1, 2]	8473019
+Gzip	Delta [1, 4, 1, 2]	9436091
+Gzip	Literal [1, 3, 3, 1]	9125259
+Gzip	Delta [1, 3, 3, 1]	8583046
+Gzip	Literal [1, 3, 2, 2]	8550410
+Gzip	Delta [1, 3, 2, 2]	8909856
+Gzip	Literal [1, 3, 1, 3]	10143454
+Gzip	Delta [1, 3, 1, 3]	9903054
+Gzip	Literal [1, 2, 4, 1]	7995415
+Gzip	Delta [1, 2, 4, 1]	8721621
+Gzip	Literal [1, 2, 3, 2]	7580085
+Gzip	Delta [1, 2, 3, 2]	8853594
+Gzip	Literal [1, 2, 2, 3]	9277977
+Gzip	Delta [1, 2, 2, 3]	10054361
+Gzip	Literal [1, 2, 1, 4]	8987580
+Gzip	Delta [1, 2, 1, 4]	9287769
+Gzip	Literal [1, 1, 5, 1]	8332463
+Gzip	Delta [1, 1, 5, 1]	8968274
+Gzip	Literal [1, 1, 4, 2]	7968177
+Gzip	Delta [1, 1, 4, 2]	9127831
+Gzip	Literal [1, 1, 3, 3]	9582769
+Gzip	Delta [1, 1, 3, 3]	10201035
+Gzip	Literal [1, 1, 2, 4]	9276669
+Gzip	Delta [1, 1, 2, 4]	9357776
+Gzip	Literal [1, 1, 1, 5]	8322028
+Gzip	Delta [1, 1, 1, 5]	9431830
+Gzip	Literal [6, 1, 1]	8270909
+Gzip	Delta [6, 1, 1]	8150855
+Gzip	Literal [5, 2, 1]	9395877
+Gzip	Delta [5, 2, 1]	9174245
+Gzip	Literal [5, 1, 2]	8610927
+Gzip	Delta [5, 1, 2]	9001806
+Gzip	Literal [4, 3, 1]	9383276
+Gzip	Delta [4, 3, 1]	8194454
+Gzip	Literal [4, 2, 2]	8780939
+Gzip	Delta [4, 2, 2]	8515921
+Gzip	Literal [4, 1, 3]	10416092
+Gzip	Delta [4, 1, 3]	9506617
+Gzip	Literal [3, 4, 1]	7995415
+Gzip	Delta [3, 4, 1]	8189890
+Gzip	Literal [3, 3, 2]	7580085
+Gzip	Delta [3, 3, 2]	8315788
+Gzip	Literal [3, 2, 3]	9277977
+Gzip	Delta [3, 2, 3]	9531074
+Gzip	Literal [3, 1, 4]	8987580
+Gzip	Delta [3, 1, 4]	8787764
+Gzip	Literal [2, 5, 1]	8332463
+Gzip	Delta [2, 5, 1]	8512311
+Gzip	Literal [2, 4, 2]	7968177
+Gzip	Delta [2, 4, 2]	8655946
+Gzip	Literal [2, 3, 3]	9582769
+Gzip	Delta [2, 3, 3]	9728145
+Gzip	Literal [2, 2, 4]	9276669
+Gzip	Delta [2, 2, 4]	8907290
+Gzip	Literal [2, 1, 5]	8322028
+Gzip	Delta [2, 1, 5]	9029546
+Gzip	Literal [1, 6, 1]	8498372
+Gzip	Delta [1, 6, 1]	8595281
+Gzip	Literal [1, 5, 2]	8206129
+Gzip	Delta [1, 5, 2]	8775739
+Gzip	Literal [1, 4, 3]	9834122
+Gzip	Delta [1, 4, 3]	9882638
+Gzip	Literal [1, 3, 4]	9471816
+Gzip	Delta [1, 3, 4]	8978695
+Gzip	Literal [1, 2, 5]	8322028
+Gzip	Delta [1, 2, 5]	9032798
+Gzip	Literal [1, 1, 6]	8485015
+Gzip	Delta [1, 1, 6]	9146973
+Gzip	Literal [7, 1]	8707575
+Gzip	Delta [7, 1]	8122085
+Gzip	Literal [6, 2]	8419682
+Gzip	Delta [6, 2]	8324804
+Gzip	Literal [5, 3]	10001252
+Gzip	Delta [5, 3]	9441209
+Gzip	Literal [4, 4]	9721063
+Gzip	Delta [4, 4]	8593172
+Gzip	Literal [3, 5]	8322028
+Gzip	Delta [3, 5]	8521428
+Gzip	Literal [2, 6]	8485015
+Gzip	Delta [2, 6]	8708454
+Gzip	Literal [1, 7]	8690742
+Gzip	Delta [1, 7]	8738646
+Gzip	Literal [8]	8769686
+Gzip	Delta [8]	8239787

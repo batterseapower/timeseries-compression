@@ -48,12 +48,34 @@ public class ConditionerTest {
     }
 
     @Test
+    public void twos2unsigned32() {
+        int i = 0;
+        for (long cnt = 0; cnt < 0x1000000L; cnt++) {
+            final int u = Conditioner.twos2unsigned32(i);
+            final int v = Conditioner.unsigned2twos32(u);
+            assertEquals(Integer.toBinaryString(i) + " -> " + Integer.toBinaryString(u) + " -> " + Integer.toBinaryString(v), i, v);
+            i += 0x100;
+        }
+    }
+
+    @Test
     public void twos2unsigned52() {
         for (long i = 0; i < 0x10000000000000L; i += 0x100000000L) {
             final long u = Conditioner.twos2unsigned52(i);
             assertEquals(u, u & 0xFFFFFFFFFFFFFL);
             final long v = Conditioner.unsigned2twos52(u);
             assertEquals(Long.toBinaryString(i) + " -> " + Long.toBinaryString(u) + " -> " + Long.toBinaryString(v), i, v);
+        }
+    }
+
+    @Test
+    public void twos2unsigned64() {
+        long i = 0;
+        for (int cnt = 0; cnt < 0x1000000; cnt++) {
+            final long u = Conditioner.twos2unsigned64(i);
+            final long v = Conditioner.unsigned2twos64(u);
+            assertEquals(Long.toBinaryString(i) + " -> " + Long.toBinaryString(u) + " -> " + Long.toBinaryString(v), i, v);
+            i += 0x10000000000L;
         }
     }
 

@@ -210,29 +210,46 @@ public class ConditionerParameterSearchTest {
             System.err.println(compressor + " baseline: " + size);
         }
 
+
+        for (Pair<float[]> bits : ConditionerParameterSearchTest.<float[]>pairs(4, Conditioner::writeFloatLiteral, Conditioner::readFloatLiteral, Conditioner::writeFloatDelta, Conditioner::readFloatDelta)) {
+            final String method = String.format("%s\t%s", compressor, bits);
+
+            evaluateFloatPair(method, inputs, mkCompressor, mkUncompressor,
+                              bits.writer, bits.reader);
+        }
+
+        if (true) return; // FIXME
+
         for (Pair<byte[]> exponent : Arrays.<Pair<byte[]>>asList(new Pair<byte[]>("Literal", Conditioner::writeFloatExponentsLiteral, Conditioner::readFloatExponentsLiteral), new Pair<byte[]>("Delta", Conditioner::writeFloatExponentsDelta, Conditioner::readFloatExponentsDelta))) {
             for (Pair<int[]> mantissa : ConditionerParameterSearchTest.<int[]>pairs(3, Conditioner::writeFloatMantissasLiteral, Conditioner::readFloatMantissasLiteral, Conditioner::writeFloatMantissasDelta, Conditioner::readFloatMantissasDelta)) {
                 final String method = String.format("%s\t%s\t%s", compressor, exponent, mantissa);
-
-                long size = 0;
-                for (float[] input : inputs) {
-                    final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    try (final OutputStream os = mkCompressor.apply(baos)) {
-                        Conditioner.condition(exponent.writer, mantissa.writer, input, os);
-                    }
-
-                    final float[] output = new float[input.length];
-                    final InputStream is = mkUncompressor.apply(new ByteArrayInputStream(baos.toByteArray()));
-                    Conditioner.uncondition(exponent.reader, mantissa.reader, output, is);
-
-                    assertArrayEquals(method, input, output, 0f);
-
-                    size += baos.size();
-                }
-
-                System.out.println(method + "\t" + size);
+                evaluateFloatPair(method, inputs, mkCompressor, mkUncompressor,
+                                  (a, b) -> Conditioner.condition  (exponent.writer, mantissa.writer, a, b),
+                                  (a, b) -> Conditioner.uncondition(exponent.reader, mantissa.reader, a, b));
             }
         }
+    }
+
+    private static void evaluateFloatPair(String method, List<float[]> inputs,
+                                          IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor,
+                                          Conditioner.Writer<float[]> writer, Conditioner.Reader<float[]> reader) throws IOException {
+        long size = 0;
+        for (float[] input : inputs) {
+            final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            try (final OutputStream os = mkCompressor.apply(baos)) {
+                writer.write(input, os);
+            }
+
+            final float[] output = new float[input.length];
+            final InputStream is = mkUncompressor.apply(new ByteArrayInputStream(baos.toByteArray()));
+            reader.read(output, is);
+
+            assertArrayEquals(method, input, output, 0f);
+
+            size += baos.size();
+        }
+
+        System.out.println(method + "\t" + size);
     }
 
     @Test
@@ -259,28 +276,44 @@ public class ConditionerParameterSearchTest {
             System.err.println(compressor + " baseline: " + size);
         }
 
+        for (Pair<double[]> bits : ConditionerParameterSearchTest.<double[]>pairs(8, Conditioner::writeDoubleLiteral, Conditioner::readDoubleLiteral, Conditioner::writeDoubleDelta, Conditioner::readDoubleDelta)) {
+            final String method = String.format("%s\t%s", compressor, bits);
+
+            evaluateDoublePair(method, inputs, mkCompressor, mkUncompressor,
+                               bits.writer, bits.reader);
+        }
+
+        if (true) return; // FIXME
+
         for (Pair<short[]> exponent : ConditionerParameterSearchTest.<short[]>pairs(2, Conditioner::writeDoubleExponentsLiteral, Conditioner::readDoubleExponentsLiteral, Conditioner::writeDoubleExponentsDelta, Conditioner::readDoubleExponentsDelta)) {
             for (Pair<long[]> mantissa : ConditionerParameterSearchTest.<long[]>pairs(7, Conditioner::writeDoubleMantissasLiteral, Conditioner::readDoubleMantissasLiteral, Conditioner::writeDoubleMantissasDelta, Conditioner::readDoubleMantissasDelta)) {
                 final String method = String.format("%s\t%s\t%s", compressor, exponent, mantissa);
-
-                long size = 0;
-                for (double[] input : inputs) {
-                    final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    try (final OutputStream os = mkCompressor.apply(baos)) {
-                        Conditioner.condition(exponent.writer, mantissa.writer, input, os);
-                    }
-
-                    final double[] output = new double[input.length];
-                    final InputStream is = mkUncompressor.apply(new ByteArrayInputStream(baos.toByteArray()));
-                    Conditioner.uncondition(exponent.reader, mantissa.reader, output, is);
-
-                    assertArrayEquals(method, input, output, 0.0);
-
-                    size += baos.size();
-                }
-
-                System.out.println(method + "\t" + size);
+                evaluateDoublePair(method, inputs, mkCompressor, mkUncompressor,
+                                   (a, b) -> Conditioner.condition  (exponent.writer, mantissa.writer, a, b),
+                                   (a, b) -> Conditioner.uncondition(exponent.reader, mantissa.reader, a, b));
             }
         }
+    }
+
+    private static void evaluateDoublePair(String method, List<double[]> inputs,
+                                           IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor,
+                                           Conditioner.Writer<double[]> writer, Conditioner.Reader<double[]> reader) throws IOException {
+        long size = 0;
+        for (double[] input : inputs) {
+            final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            try (final OutputStream os = mkCompressor.apply(baos)) {
+                writer.write(input, os);
+            }
+
+            final double[] output = new double[input.length];
+            final InputStream is = mkUncompressor.apply(new ByteArrayInputStream(baos.toByteArray()));
+            reader.read(output, is);
+
+            assertArrayEquals(method, input, output, 0d);
+
+            size += baos.size();
+        }
+
+        System.out.println(method + "\t" + size);
     }
 }
