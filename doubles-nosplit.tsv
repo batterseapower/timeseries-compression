@@ -1,4 +1,3 @@
-Snappy baseline: 12375632
 Snappy	Literal [1, 1, 1, 1, 1, 1, 1, 1]	10232996
 Snappy	Delta [1, 1, 1, 1, 1, 1, 1, 1]	13704650
 Snappy	Literal [2, 1, 1, 1, 1, 1, 1]	10232996
@@ -254,7 +253,6 @@ Snappy	Delta [2, 6]	13664255
 Snappy	Literal [1, 7]	14310192
 Snappy	Delta [1, 7]	13710169
 Snappy	Literal [8]	14242437
-Gzip baseline: 8560507
 Snappy	Delta [8]	12608064
 Gzip	Literal [1, 1, 1, 1, 1, 1, 1, 1]	8080160
 Gzip	Delta [1, 1, 1, 1, 1, 1, 1, 1]	9826481
