@@ -46,10 +46,10 @@ public class ConditionerExamplesTest {
     @Test
     public void conditionUnconditionFloatIsRoundTrip() throws IOException {
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        Conditioner.condition(floats, baos);
+        Conditioner.writeFloat(floats, baos);
 
         final float[] ys = new float[floats.length];
-        Conditioner.uncondition(ys, new ByteArrayInputStream(baos.toByteArray()));
+        Conditioner.readFloat(ys, new ByteArrayInputStream(baos.toByteArray()));
 
         assertArrayEquals(floats, ys, 0f);
     }
@@ -57,10 +57,10 @@ public class ConditionerExamplesTest {
     @Test
     public void conditionUnconditionDoubleIsRoundTrip() throws IOException {
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        Conditioner.condition(doubles, baos);
+        Conditioner.writeDouble(doubles, baos);
 
         final double[] ys = new double[doubles.length];
-        Conditioner.uncondition(ys, new ByteArrayInputStream(baos.toByteArray()));
+        Conditioner.readDouble(ys, new ByteArrayInputStream(baos.toByteArray()));
 
         assertArrayEquals(doubles, ys, 0.0);
     }

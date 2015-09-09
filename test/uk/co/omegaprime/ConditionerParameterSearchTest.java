@@ -220,12 +220,12 @@ public class ConditionerParameterSearchTest {
 
         if (true) return; // FIXME
 
-        for (Pair<byte[]> exponent : Arrays.<Pair<byte[]>>asList(new Pair<byte[]>("Literal", Conditioner::writeFloatExponentsLiteral, Conditioner::readFloatExponentsLiteral), new Pair<byte[]>("Delta", Conditioner::writeFloatExponentsDelta, Conditioner::readFloatExponentsDelta))) {
+        for (Pair<byte[]> exponent : Arrays.<Pair<byte[]>>asList(new Pair<byte[]>("Literal", Conditioner.writeFloatExponentsLiteral(), Conditioner.readFloatExponentsLiteral()), new Pair<byte[]>("Delta", Conditioner.writeFloatExponentsDelta(), Conditioner.readFloatExponentsDelta()))) {
             for (Pair<int[]> mantissa : ConditionerParameterSearchTest.<int[]>pairs(3, Conditioner::writeFloatMantissasLiteral, Conditioner::readFloatMantissasLiteral, Conditioner::writeFloatMantissasDelta, Conditioner::readFloatMantissasDelta)) {
                 final String method = String.format("%s\t%s\t%s", compressor, exponent, mantissa);
                 evaluateFloatPair(method, inputs, mkCompressor, mkUncompressor,
-                                  (a, b) -> Conditioner.condition  (exponent.writer, mantissa.writer, a, b),
-                                  (a, b) -> Conditioner.uncondition(exponent.reader, mantissa.reader, a, b));
+                                  Conditioner.conditionFloat  (exponent.writer, mantissa.writer),
+                                  Conditioner.unconditionFloat(exponent.reader, mantissa.reader));
             }
         }
     }
@@ -289,8 +289,8 @@ public class ConditionerParameterSearchTest {
             for (Pair<long[]> mantissa : ConditionerParameterSearchTest.<long[]>pairs(7, Conditioner::writeDoubleMantissasLiteral, Conditioner::readDoubleMantissasLiteral, Conditioner::writeDoubleMantissasDelta, Conditioner::readDoubleMantissasDelta)) {
                 final String method = String.format("%s\t%s\t%s", compressor, exponent, mantissa);
                 evaluateDoublePair(method, inputs, mkCompressor, mkUncompressor,
-                                   (a, b) -> Conditioner.condition  (exponent.writer, mantissa.writer, a, b),
-                                   (a, b) -> Conditioner.uncondition(exponent.reader, mantissa.reader, a, b));
+                                   Conditioner.conditionDouble  (exponent.writer, mantissa.writer),
+                                   Conditioner.unconditionDouble(exponent.reader, mantissa.reader));
             }
         }
     }

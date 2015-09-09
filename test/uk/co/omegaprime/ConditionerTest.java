@@ -89,7 +89,7 @@ public class ConditionerTest {
         }
 
         try (FileOutputStream fos = new FileOutputStream(createFile("conditioned-floats"))) {
-            Conditioner.condition(vod, fos);
+            Conditioner.writeFloat(vod, fos);
         }
 
         try (FileOutputStream fos = new FileOutputStream(createFile("unconditioned-doubles"))) {
@@ -97,7 +97,7 @@ public class ConditionerTest {
         }
 
         try (FileOutputStream fos = new FileOutputStream(createFile("conditioned-doubles"))) {
-            Conditioner.condition(Utils.floatsToDoubles(vod), fos);
+            Conditioner.writeDouble(Utils.floatsToDoubles(vod), fos);
         }
     }
 
@@ -155,9 +155,9 @@ public class ConditionerTest {
                 final SnappyOutputStream sos = new SnappyOutputStream(baos);
                 try {
                     if (asFloats) {
-                        Conditioner.condition(vod, sos);
+                        Conditioner.writeFloat(vod, sos);
                     } else {
-                        Conditioner.condition(Utils.floatsToDoubles(vod), sos);
+                        Conditioner.writeDouble(Utils.floatsToDoubles(vod), sos);
                     }
                 } finally {
                     sos.flush();

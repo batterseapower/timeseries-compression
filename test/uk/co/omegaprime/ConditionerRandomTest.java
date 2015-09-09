@@ -32,10 +32,10 @@ public class ConditionerRandomTest {
             }
 
             final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            Conditioner.condition(xs, baos);
+            Conditioner.writeFloat(xs, baos);
 
             final float[] ys = new float[xs.length];
-            Conditioner.uncondition(ys, new ByteArrayInputStream(baos.toByteArray()));
+            Conditioner.readFloat(ys, new ByteArrayInputStream(baos.toByteArray()));
 
             assertArrayEquals(xs, ys, 0f);
         }
@@ -50,10 +50,10 @@ public class ConditionerRandomTest {
             }
 
             final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            Conditioner.condition(xs, baos);
+            Conditioner.writeDouble(xs, baos);
 
             final double[] ys = new double[xs.length];
-            Conditioner.uncondition(ys, new ByteArrayInputStream(baos.toByteArray()));
+            Conditioner.readDouble(ys, new ByteArrayInputStream(baos.toByteArray()));
 
             assertArrayEquals(xs, ys, 0.0);
         }

@@ -12,7 +12,7 @@ public class Conditioner {
 
     // https://graphics.stanford.edu/~seander/bithacks.html#VariableSignExtend
     private static short signExtend11(short x) {
-        final short m = (short)(1 << 10);   // Pre-computed mask
+        final short m = (short)(1 << 10); // Pre-computed mask
         x = (short)(x & ((1 << 11) - 1)); // Ensure bits in x above bit 11 are already zero.
         return (short)((x ^ m) - m);
     }
@@ -124,14 +124,14 @@ public class Conditioner {
             for (int i = 0; i < bits.length; i++) {
                 bits[i] = Float.floatToRawIntBits(xs[i]);
             }
-            columnarWrite(codec, bits, os);
+            columnarWriteInt(codec).write(bits, os);
         };
     }
 
     public static Reader<float[]> readFloatLiteral(int[] codec) {
         return (float[] xs, InputStream is) -> {
             final int[] bits = new int[xs.length];
-            columnarRead(codec, bits, is);
+            columnarReadInt(codec).read(bits, is);
             for (int i = 0; i < bits.length; i++) {
                 xs[i] = Float.intBitsToFloat(bits[i]);
             }
@@ -144,14 +144,14 @@ public class Conditioner {
             for (int i = 0; i < bits.length; i++) {
                 bits[i] = Double.doubleToRawLongBits(xs[i]);
             }
-            columnarWrite(codec, bits, os);
+            columnarWriteLong(codec).write(bits, os);
         };
     }
 
     public static Reader<double[]> readDoubleLiteral(int[] codec) {
         return (double[] xs, InputStream is) -> {
             final long[] bits = new long[xs.length];
-            columnarRead(codec, bits, is);
+            columnarReadLong(codec).read(bits, is);
             for (int i = 0; i < bits.length; i++) {
                 xs[i] = Double.longBitsToDouble(bits[i]);
             }
@@ -172,7 +172,7 @@ public class Conditioner {
                 lastBits = bits;
             }
 
-            columnarWrite(codec, toWrite, os);
+            columnarWriteInt(codec).write(toWrite, os);
         };
     }
 
@@ -184,7 +184,7 @@ public class Conditioner {
             xs[0] = Float.intBitsToFloat(lastBits);
 
             final int[] read = new int[xs.length - 1];
-            columnarRead(codec, read, is);
+            columnarReadInt(codec).read(read, is);
 
             for (int i = 1; i < xs.length; i++) {
                 xs[i] = Float.intBitsToFloat(lastBits = lastBits + unsigned2twos32(read[i - 1]));
@@ -206,7 +206,7 @@ public class Conditioner {
                 lastBits = bits;
             }
 
-            columnarWrite(codec, toWrite, os);
+            columnarWriteLong(codec).write(toWrite, os);
         };
     }
 
@@ -218,7 +218,7 @@ public class Conditioner {
             xs[0] = Double.longBitsToDouble(lastBits);
 
             final long[] read = new long[xs.length - 1];
-            columnarRead(codec, read, is);
+            columnarReadLong(codec).read(read, is);
 
             for (int i = 1; i < xs.length; i++) {
                 xs[i] = Double.longBitsToDouble(lastBits = lastBits + unsigned2twos64(read[i - 1]));
@@ -226,52 +226,58 @@ public class Conditioner {
         };
     }
 
-    public static void writeFloatExponentsLiteral(byte[] exponents, OutputStream os) throws IOException {
-        os.write(exponents);
+    public static Writer<byte[]> writeFloatExponentsLiteral() {
+        return (byte[] exponents, OutputStream os) -> os.write(exponents);
     }
 
-    public static void readFloatExponentsLiteral(byte[] exponents, InputStream os) throws IOException {
-        int off = 0;
-        int read;
-        do {
-            read = os.read(exponents, off, exponents.length - off);
-            off += read;
-        } while (read > 0);
+    public static Reader<byte[]> readFloatExponentsLiteral() {
+        return (byte[] exponents, InputStream os) -> {
+            int off = 0;
+            int read;
+            do {
+                read = os.read(exponents, off, exponents.length - off);
+                off += read;
+            } while (read > 0);
+        };
     }
 
     public static Writer<short[]> writeDoubleExponentsLiteral(int[] codec) {
         return (short[] exponents, OutputStream os) -> {
-            columnarWrite(codec, exponents, os);
+            columnarWriteShort(codec).write(exponents, os);
         };
     }
 
     public static Reader<short[]> readDoubleExponentsLiteral(int[] codec) {
         return (short[] exponents, InputStream is) -> {
-            columnarRead(codec, exponents, is);
+            columnarReadShort(codec).read(exponents, is);
         };
     }
 
-    public static void writeFloatExponentsDelta(byte[] exponents, OutputStream os) throws IOException {
-        if (exponents.length == 0) return;
+    public static Writer<byte[]> writeFloatExponentsDelta() {
+        return (byte[] exponents, OutputStream os) -> {
+            if (exponents.length == 0) return;
 
-        byte lastExponent = exponents[0];
-        os.write(((int)lastExponent) & 0xFF);
+            byte lastExponent = exponents[0];
+            os.write(((int)lastExponent) & 0xFF);
 
-        for (int i = 1; i < exponents.length; i++) {
-            final byte exponent = exponents[i];
-            os.write((exponent - lastExponent) & 0xFF);
-            lastExponent = exponent;
-        }
+            for (int i = 1; i < exponents.length; i++) {
+                final byte exponent = exponents[i];
+                os.write((exponent - lastExponent) & 0xFF);
+                lastExponent = exponent;
+            }
+        };
     }
 
-    public static void readFloatExponentsDelta(byte[] exponents, InputStream os) throws IOException {
-        if (exponents.length == 0) return;
+    public static Reader<byte[]> readFloatExponentsDelta() {
+        return (byte[] exponents, InputStream os) -> {
+            if (exponents.length == 0) return;
 
-        byte lastExponent = exponents[0] = (byte)os.read();
-        for (int i = 1; i < exponents.length; i++) {
-            final int delta = os.read();
-            lastExponent = exponents[i] = (byte)((lastExponent + delta) & 0xFF);
-        }
+            byte lastExponent = exponents[0] = (byte)os.read();
+            for (int i = 1; i < exponents.length; i++) {
+                final int delta = os.read();
+                lastExponent = exponents[i] = (byte)((lastExponent + delta) & 0xFF);
+            }
+        };
     }
 
     public static Writer<short[]> writeDoubleExponentsDelta(int[] codec) {
@@ -289,7 +295,7 @@ public class Conditioner {
                 lastExponent = exponent;
             }
 
-            columnarWrite(codec, toWrite, os);
+            columnarWriteShort(codec).write(toWrite, os);
         };
     }
 
@@ -300,7 +306,7 @@ public class Conditioner {
             short lastExponent = exponents[0] = (short)(is.read() | (is.read() << 8));
 
             final short[] read = new short[exponents.length - 1];
-            columnarRead(codec, read, is);
+            columnarReadShort(codec).read(read, is);
 
             for (int i = 1; i < exponents.length; i++) {
                 lastExponent = exponents[i] = (short)((lastExponent + unsigned2twos11(read[i - 1])) & 0x7FF);
@@ -309,15 +315,11 @@ public class Conditioner {
     }
 
     public static Writer<int[]> writeFloatMantissasLiteral(int[] codec) {
-        return (int[] mantissas, OutputStream os) -> {
-            columnarWrite(codec, mantissas, os);
-        };
+        return columnarWriteInt(codec);
     }
 
     public static Reader<int[]> readFloatMantissasLiteral(int[] codec) {
-        return (int[] mantissas, InputStream is) -> {
-            columnarRead(codec, mantissas, is);
-        };
+        return columnarReadInt(codec);
     }
 
     public static Writer<int[]> writeFloatMantissasDelta(int[] codec) {
@@ -336,7 +338,7 @@ public class Conditioner {
                 lastMantissa = mantissa;
             }
 
-            columnarWrite(codec, toWrite, os);
+            columnarWriteInt(codec).write(toWrite, os);
         };
     }
 
@@ -347,7 +349,7 @@ public class Conditioner {
             int lastMantissa = mantissas[0] = is.read() | (is.read() << 8) | (is.read() << 16);
 
             final int[] read = new int[mantissas.length - 1];
-            columnarRead(codec, read, is);
+            columnarReadInt(codec).read(read, is);
 
             for (int i = 1; i < mantissas.length; i++) {
                 lastMantissa = mantissas[i] = ((lastMantissa + unsigned2twos23(read[i - 1])) & 0x7FFFFF);
@@ -356,15 +358,11 @@ public class Conditioner {
     }
 
     public static Writer<long[]> writeDoubleMantissasLiteral(int[] codec) {
-        return (long[] mantissas, OutputStream os) -> {
-            columnarWrite(codec, mantissas, os);
-        };
+        return columnarWriteLong(codec);
     }
 
     public static Reader<long[]> readDoubleMantissasLiteral(int[] codec) {
-        return (long[] mantissas, InputStream is) -> {
-            columnarRead(codec, mantissas, is);
-        };
+        return columnarReadLong(codec);
     }
 
     public static Writer<long[]> writeDoubleMantissasDelta(int[] codec) {
@@ -387,7 +385,7 @@ public class Conditioner {
                 lastMantissa = mantissa;
             }
 
-            columnarWrite(codec, toWrite, os);
+            columnarWriteLong(codec).write(toWrite, os);
         };
     }
 
@@ -404,7 +402,7 @@ public class Conditioner {
                                              | ((long)is.read() << 48);
 
             final long[] read = new long[mantissas.length - 1];
-            columnarRead(codec, read, is);
+            columnarReadLong(codec).read(read, is);
 
             for (int i = 1; i < mantissas.length; i++) {
                 lastMantissa = mantissas[i] = ((lastMantissa + unsigned2twos52(read[i - 1])) & 0xFFFFFFFFFFFFFL);
@@ -453,175 +451,189 @@ public class Conditioner {
         return result;
     }
 
-    public static void columnarWrite(int[] codec, short[] xs, OutputStream os) throws IOException {
-        int pos = 0;
-        for (int n : codec) {
-            for (int x : xs) {
-                for (int i = 0; i < n; i++) {
-                    os.write((x >>> ((pos + i) * 8)) & 0xFF);
+    public static Writer<short[]> columnarWriteShort(int[] codec) {
+        return (short[] xs, OutputStream os) -> {
+            int pos = 0;
+            for (int n : codec) {
+                for (int x : xs) {
+                    for (int i = 0; i < n; i++) {
+                        os.write((x >>> ((pos + i) * 8)) & 0xFF);
+                    }
                 }
+                pos += Math.max(0, n);
             }
-            pos += Math.max(0, n);
-        }
+        };
     }
 
-    public static void columnarWrite(int[] codec, int[] xs, OutputStream os) throws IOException {
-        int pos = 0;
-        for (int n : codec) {
-            for (int x : xs) {
-                for (int i = 0; i < n; i++) {
-                    os.write((x >>> ((pos + i) * 8)) & 0xFF);
+    public static Writer<int[]> columnarWriteInt(int[] codec) {
+        return (int[] xs, OutputStream os) -> {
+            int pos = 0;
+            for (int n : codec) {
+                for (int x : xs) {
+                    for (int i = 0; i < n; i++) {
+                        os.write((x >>> ((pos + i) * 8)) & 0xFF);
+                    }
                 }
+                pos += Math.max(0, n);
             }
-            pos += Math.max(0, n);
-        }
+        };
     }
 
-    public static void columnarWrite(int[] codec, long[] xs, OutputStream os) throws IOException {
-        int pos = 0;
-        for (int n : codec) {
-            for (long x : xs) {
-                for (int i = 0; i < n; i++) {
-                    os.write((int)((x >>> ((pos + i) * 8)) & 0xFF));
+    public static Writer<long[]> columnarWriteLong(int[] codec) {
+        return (long[] xs, OutputStream os) -> {
+            int pos = 0;
+            for (int n : codec) {
+                for (long x : xs) {
+                    for (int i = 0; i < n; i++) {
+                        os.write((int)((x >>> ((pos + i) * 8)) & 0xFF));
+                    }
                 }
+                pos += Math.max(0, n);
             }
-            pos += Math.max(0, n);
-        }
+        };
     }
 
-    public static void columnarRead(int[] codec, short[] xs, InputStream is) throws IOException {
-        int pos = 0;
-        for (int n : codec) {
-            for (int j = 0; j < xs.length; j++) {
-                for (int i = 0; i < n; i++) {
-                    xs[j] |= is.read() << ((pos + i) * 8);
+    public static Reader<short[]> columnarReadShort(int[] codec) {
+        return (short[] xs, InputStream is) -> {
+            int pos = 0;
+            for (int n : codec) {
+                for (int j = 0; j < xs.length; j++) {
+                    for (int i = 0; i < n; i++) {
+                        xs[j] |= is.read() << ((pos + i) * 8);
+                    }
                 }
+                pos += Math.max(0, n);
             }
-            pos += Math.max(0, n);
-        }
+        };
     }
 
-    public static void columnarRead(int[] codec, int[] xs, InputStream is) throws IOException {
-        int pos = 0;
-        for (int n : codec) {
-            for (int j = 0; j < xs.length; j++) {
-                for (int i = 0; i < n; i++) {
-                    xs[j] |= is.read() << ((pos + i) * 8);
+    public static Reader<int[]> columnarReadInt(int[] codec) {
+        return (int[] xs, InputStream is) -> {
+            int pos = 0;
+            for (int n : codec) {
+                for (int j = 0; j < xs.length; j++) {
+                    for (int i = 0; i < n; i++) {
+                        xs[j] |= is.read() << ((pos + i) * 8);
+                    }
                 }
+                pos += Math.max(0, n);
             }
-            pos += Math.max(0, n);
-        }
+        };
     }
 
-    public static void columnarRead(int[] codec, long[] xs, InputStream is) throws IOException {
-        int pos = 0;
-        for (int n : codec) {
-            for (int j = 0; j < xs.length; j++) {
-                for (int i = 0; i < n; i++) {
-                    xs[j] |= (long)is.read() << ((pos + i) * 8);
+    public static Reader<long[]> columnarReadLong(int[] codec) {
+        return (long[] xs, InputStream is) -> {
+            int pos = 0;
+            for (int n : codec) {
+                for (int j = 0; j < xs.length; j++) {
+                    for (int i = 0; i < n; i++) {
+                        xs[j] |= (long)is.read() << ((pos + i) * 8);
+                    }
                 }
+                pos += Math.max(0, n);
             }
-            pos += Math.max(0, n);
-        }
+        };
     }
 
-    public static void condition(float[] xs, OutputStream os) throws IOException {
+    public static void writeFloat(float[] xs, OutputStream os) throws IOException {
         // For the tests. FIXME: use better params
-        condition(Conditioner::writeFloatExponentsLiteral, writeFloatMantissasLiteral(new int[] { 1, 1, 1 }), xs, os);
+        conditionFloat(writeFloatExponentsLiteral(), writeFloatMantissasLiteral(new int[] { 1, 1, 1 })).write(xs, os);
     }
 
-    public static void condition(Writer<byte[]> writeExponents,
-                                 Writer<int[]> writeMantissas,
-                                 float[] xs, OutputStream os) throws IOException {
-        // 1. Write descriptors (0, NaN or else positive/negative flag)
-        final int defined;
-        {
-            final int[] definedByRef = new int[] { 0 };
-            int i;
-            for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
-                os.write((descriptor(definedByRef, xs[i + 0]) << 6) |
-                         (descriptor(definedByRef, xs[i + 1]) << 4) |
-                         (descriptor(definedByRef, xs[i + 2]) << 2) |
-                         (descriptor(definedByRef, xs[i + 3]) << 0));
-            }
-
-            if (i < xs.length) {
-                int acc = 0;
-                for (; i < xs.length; i++) {
-                    acc = (acc << 2) | descriptor(definedByRef, xs[i]);
+    public static Writer<float[]> conditionFloat(Writer<byte[]> writeExponents,
+                                                 Writer<int[]> writeMantissas) {
+        return (float[] xs, OutputStream os) -> {
+            // 1. Write descriptors (0, NaN or else positive/negative flag)
+            final int defined;
+            {
+                final int[] definedByRef = new int[] { 0 };
+                int i;
+                for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
+                    os.write((descriptor(definedByRef, xs[i + 0]) << 6) |
+                             (descriptor(definedByRef, xs[i + 1]) << 4) |
+                             (descriptor(definedByRef, xs[i + 2]) << 2) |
+                             (descriptor(definedByRef, xs[i + 3]) << 0));
                 }
-                os.write(acc);
+
+                if (i < xs.length) {
+                    int acc = 0;
+                    for (; i < xs.length; i++) {
+                        acc = (acc << 2) | descriptor(definedByRef, xs[i]);
+                    }
+                    os.write(acc);
+                }
+
+                defined = definedByRef[0];
             }
 
-            defined = definedByRef[0];
-        }
-
-        // 2. Gather bits
-        int j = 0;
-        final byte[] exponents = new byte[defined];
-        final int[] mantissas = new int[defined];
-        for (final float x : xs) {
-            if (x != 0.0 && !Float.isNaN(x)) {
-                final int bits = Float.floatToRawIntBits(x);
-                exponents[j] = (byte)((bits & 0x7F800000) >>> 23);
-                mantissas[j] = bits & 0x007FFFFF;
-                j++;
+            // 2. Gather bits
+            int j = 0;
+            final byte[] exponents = new byte[defined];
+            final int[] mantissas = new int[defined];
+            for (final float x : xs) {
+                if (x != 0.0 && !Float.isNaN(x)) {
+                    final int bits = Float.floatToRawIntBits(x);
+                    exponents[j] = (byte)((bits & 0x7F800000) >>> 23);
+                    mantissas[j] = bits & 0x007FFFFF;
+                    j++;
+                }
             }
-        }
 
-        // 3. Write
-        writeExponents.write(exponents, os);
-        writeMantissas.write(mantissas, os);
+            // 3. Write
+            writeExponents.write(exponents, os);
+            writeMantissas.write(mantissas, os);
+        };
     }
 
-    public static void condition(double[] xs, OutputStream os) throws IOException {
+    public static void writeDouble(double[] xs, OutputStream os) throws IOException {
         // FIXME: better params
-        condition(writeDoubleExponentsLiteral(new int[] { 1, 1 }), writeDoubleMantissasDelta(new int[] { 1, 1, 1, 1, 1, 1, 1 }), xs, os);
+        conditionDouble(writeDoubleExponentsLiteral(new int[]{1, 1}), writeDoubleMantissasDelta(new int[]{1, 1, 1, 1, 1, 1, 1})).write(xs, os);
     }
 
-    public static void condition(Writer<short[]> writeExponents,
-                                 Writer<long[]> writeMantissas,
-                                 double[] xs, OutputStream os) throws IOException {
-        // 1. Write descriptors (0, NaN or else positive/negative flag)
-        final int defined;
-        {
-            final int[] definedByRef = new int[] { 0 };
-            int i;
-            for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
-                os.write((descriptor(definedByRef, xs[i + 0]) << 6) |
-                         (descriptor(definedByRef, xs[i + 1]) << 4) |
-                         (descriptor(definedByRef, xs[i + 2]) << 2) |
-                         (descriptor(definedByRef, xs[i + 3]) << 0));
-            }
-
-            if (i < xs.length) {
-                int acc = 0;
-                for (; i < xs.length; i++) {
-                    acc = (acc << 2) | descriptor(definedByRef, xs[i]);
+    public static Writer<double[]> conditionDouble(Writer<short[]> writeExponents,
+                                                   Writer<long[]> writeMantissas) {
+        return (double[] xs, OutputStream os) -> {
+            // 1. Write descriptors (0, NaN or else positive/negative flag)
+            final int defined;
+            {
+                final int[] definedByRef = new int[] { 0 };
+                int i;
+                for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
+                    os.write((descriptor(definedByRef, xs[i + 0]) << 6) |
+                             (descriptor(definedByRef, xs[i + 1]) << 4) |
+                             (descriptor(definedByRef, xs[i + 2]) << 2) |
+                             (descriptor(definedByRef, xs[i + 3]) << 0));
                 }
-                os.write(acc);
+
+                if (i < xs.length) {
+                    int acc = 0;
+                    for (; i < xs.length; i++) {
+                        acc = (acc << 2) | descriptor(definedByRef, xs[i]);
+                    }
+                    os.write(acc);
+                }
+
+                defined = definedByRef[0];
             }
 
-            defined = definedByRef[0];
-        }
-
-        // 2. Gather bits. FIXME: try version with exponent and mantissa packed together
-        int j = 0;
-        final short[] exponents = new short[defined];
-        final long[] mantissas = new long[defined];
-        for (int i = 0; i < xs.length; i++) {
-            final double x = xs[i];
-            if (x != 0.0 && !Double.isNaN(x)) {
-                final long bits = Double.doubleToRawLongBits(x) & 0x7FFFFFFFFFFFFFFFL;
-                exponents[j] = (short)((bits >>> 52) & 0x7FFL);
-                mantissas[j] = bits & 0x000FFFFFFFFFFFFFL;
-                j++;
+            // 2. Gather bits. FIXME: try version with exponent and mantissa packed together
+            int j = 0;
+            final short[] exponents = new short[defined];
+            final long[] mantissas = new long[defined];
+            for (int i = 0; i < xs.length; i++) {
+                final double x = xs[i];
+                if (x != 0.0 && !Double.isNaN(x)) {
+                    final long bits = Double.doubleToRawLongBits(x) & 0x7FFFFFFFFFFFFFFFL;
+                    exponents[j] = (short)((bits >>> 52) & 0x7FFL);
+                    mantissas[j] = bits & 0x000FFFFFFFFFFFFFL;
+                    j++;
+                }
             }
-        }
 
-        // 3. Write
-        writeExponents.write(exponents, os);
-        writeMantissas.write(mantissas, os);
+            // 3. Write
+            writeExponents.write(exponents, os);
+            writeMantissas.write(mantissas, os);
+        };
     }
 
     private static int undescriptor(float[] xs, int i, int descriptor) {
@@ -640,120 +652,122 @@ public class Conditioner {
         }
     }
 
-    public static void uncondition(float[] xs, InputStream is) throws IOException {
+    public static void readFloat(float[] xs, InputStream is) throws IOException {
         // FIXME: better params
-        uncondition(Conditioner::readFloatExponentsLiteral, readFloatMantissasLiteral(new int[] { 1, 1, 1 }), xs, is);
+        unconditionFloat(readFloatExponentsLiteral(), readFloatMantissasLiteral(new int[] { 1, 1, 1 })).read(xs, is);
     }
 
-    public static void uncondition(Reader<byte[]> readExponents, Reader<int[]> readMantissas,
-                                   float[] xs, InputStream is) throws IOException {
-        // 1. Read descriptors
-        int defined = 0;
-        {
-            int i;
-            for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
-                final int b = is.read();
+    public static Reader<float[]> unconditionFloat(Reader<byte[]> readExponents, Reader<int[]> readMantissas) {
+        return (float[] xs, InputStream is) -> {
+            // 1. Read descriptors
+            int defined = 0;
+            {
+                int i;
+                for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
+                    final int b = is.read();
 
-                defined += undescriptor(xs, i + 0, b >>> 6);
-                defined += undescriptor(xs, i + 1, b >>> 4);
-                defined += undescriptor(xs, i + 2, b >>> 2);
-                defined += undescriptor(xs, i + 3, b >>> 0);
-            }
+                    defined += undescriptor(xs, i + 0, b >>> 6);
+                    defined += undescriptor(xs, i + 1, b >>> 4);
+                    defined += undescriptor(xs, i + 2, b >>> 2);
+                    defined += undescriptor(xs, i + 3, b >>> 0);
+                }
 
-            if (i < xs.length) {
-                final int b = is.read();
-                switch (xs.length - i) {
-                    case 1:
-                        defined += undescriptor(xs, i + 0, b >>> 0);
-                        break;
-                    case 2:
-                        defined += undescriptor(xs, i + 0, b >>> 2);
-                        defined += undescriptor(xs, i + 1, b >>> 0);
-                        break;
-                    default: // 3
-                        defined += undescriptor(xs, i + 0, b >>> 4);
-                        defined += undescriptor(xs, i + 1, b >>> 2);
-                        defined += undescriptor(xs, i + 2, b >>> 0);
-                        break;
+                if (i < xs.length) {
+                    final int b = is.read();
+                    switch (xs.length - i) {
+                        case 1:
+                            defined += undescriptor(xs, i + 0, b >>> 0);
+                            break;
+                        case 2:
+                            defined += undescriptor(xs, i + 0, b >>> 2);
+                            defined += undescriptor(xs, i + 1, b >>> 0);
+                            break;
+                        default: // 3
+                            defined += undescriptor(xs, i + 0, b >>> 4);
+                            defined += undescriptor(xs, i + 1, b >>> 2);
+                            defined += undescriptor(xs, i + 2, b >>> 0);
+                            break;
+                    }
                 }
             }
-        }
 
-        // 2. Gather bits
-        final byte[] exponents = new byte[defined];
-        readExponents.read(exponents, is);
-        final int[] mantissas = new int[defined];
-        readMantissas.read(mantissas, is);
+            // 2. Gather bits
+            final byte[] exponents = new byte[defined];
+            readExponents.read(exponents, is);
+            final int[] mantissas = new int[defined];
+            readMantissas.read(mantissas, is);
 
-        // 3. Reassemble
-        int j = 0;
-        for (int i = 0; i < xs.length; i++) {
-            final float x = xs[i];
-            if (x != 0.0 && !Float.isNaN(x)) {
-                final byte exponent = exponents[j];
-                final int mantissa = mantissas[j];
-                j++;
-                xs[i] = Float.intBitsToFloat((x < 0 ? 0x80000000 : 0x00000000) | (((int)exponent & 0xFF) << 23) | mantissa);
-            }
-        }
-    }
-
-    public static void uncondition(double[] xs, InputStream is) throws IOException {
-        // FIXME: better params
-        uncondition(readDoubleExponentsLiteral(new int[] { 1, 1 }), readDoubleMantissasDelta(new int[]{1, 1, 1, 1, 1, 1, 1}), xs, is);
-    }
-
-    public static void uncondition(Reader<short[]> readExponents, Reader<long[]> readMantissas,
-                                   double[] xs, InputStream is) throws IOException {
-        // 1. Read descriptors
-        int defined = 0;
-        {
-            int i;
-            for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
-                final int b = is.read();
-
-                defined += undescriptor(xs, i + 0, b >>> 6);
-                defined += undescriptor(xs, i + 1, b >>> 4);
-                defined += undescriptor(xs, i + 2, b >>> 2);
-                defined += undescriptor(xs, i + 3, b >>> 0);
-            }
-
-            if (i < xs.length) {
-                final int b = is.read();
-                switch (xs.length - i) {
-                    case 1:
-                        defined += undescriptor(xs, i + 0, b >>> 0);
-                        break;
-                    case 2:
-                        defined += undescriptor(xs, i + 0, b >>> 2);
-                        defined += undescriptor(xs, i + 1, b >>> 0);
-                        break;
-                    default: // 3
-                        defined += undescriptor(xs, i + 0, b >>> 4);
-                        defined += undescriptor(xs, i + 1, b >>> 2);
-                        defined += undescriptor(xs, i + 2, b >>> 0);
-                        break;
+            // 3. Reassemble
+            int j = 0;
+            for (int i = 0; i < xs.length; i++) {
+                final float x = xs[i];
+                if (x != 0.0 && !Float.isNaN(x)) {
+                    final byte exponent = exponents[j];
+                    final int mantissa = mantissas[j];
+                    j++;
+                    xs[i] = Float.intBitsToFloat((x < 0 ? 0x80000000 : 0x00000000) | (((int)exponent & 0xFF) << 23) | mantissa);
                 }
             }
-        }
+        };
+    }
 
-        // 2. Gather bits
-        final short[] exponents = new short[defined];
-        readExponents.read(exponents, is);
-        final long[] mantissas = new long[defined];
-        readMantissas.read(mantissas, is);
+    public static void readDouble(double[] xs, InputStream is) throws IOException {
+        // FIXME: better params
+        unconditionDouble(readDoubleExponentsLiteral(new int[]{1, 1}), readDoubleMantissasDelta(new int[]{1, 1, 1, 1, 1, 1, 1})).read(xs, is);
+    }
 
-        // 3. Reassemble
-        int j = 0;
-        for (int i = 0; i < xs.length; i++) {
-            final double x = xs[i];
-            if (x != 0.0 && !Double.isNaN(x)) {
-                final short exponent = exponents[j];
-                final long mantissa = mantissas[j];
-                j++;
-                xs[i] = Double.longBitsToDouble((x < 0 ? 0x8000000000000000L : 0x0000000000000000L) |
-                        ((long)exponent << 52) | mantissa);
+    public static Reader<double[]> unconditionDouble(Reader<short[]> readExponents, Reader<long[]> readMantissas) {
+        return (double[] xs, InputStream is) -> {
+            // 1. Read descriptors
+            int defined = 0;
+            {
+                int i;
+                for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
+                    final int b = is.read();
+
+                    defined += undescriptor(xs, i + 0, b >>> 6);
+                    defined += undescriptor(xs, i + 1, b >>> 4);
+                    defined += undescriptor(xs, i + 2, b >>> 2);
+                    defined += undescriptor(xs, i + 3, b >>> 0);
+                }
+
+                if (i < xs.length) {
+                    final int b = is.read();
+                    switch (xs.length - i) {
+                        case 1:
+                            defined += undescriptor(xs, i + 0, b >>> 0);
+                            break;
+                        case 2:
+                            defined += undescriptor(xs, i + 0, b >>> 2);
+                            defined += undescriptor(xs, i + 1, b >>> 0);
+                            break;
+                        default: // 3
+                            defined += undescriptor(xs, i + 0, b >>> 4);
+                            defined += undescriptor(xs, i + 1, b >>> 2);
+                            defined += undescriptor(xs, i + 2, b >>> 0);
+                            break;
+                    }
+                }
             }
-        }
+
+            // 2. Gather bits
+            final short[] exponents = new short[defined];
+            readExponents.read(exponents, is);
+            final long[] mantissas = new long[defined];
+            readMantissas.read(mantissas, is);
+
+            // 3. Reassemble
+            int j = 0;
+            for (int i = 0; i < xs.length; i++) {
+                final double x = xs[i];
+                if (x != 0.0 && !Double.isNaN(x)) {
+                    final short exponent = exponents[j];
+                    final long mantissa = mantissas[j];
+                    j++;
+                    xs[i] = Double.longBitsToDouble((x < 0 ? 0x8000000000000000L : 0x0000000000000000L) |
+                            ((long)exponent << 52) | mantissa);
+                }
+            }
+        };
     }
 }
