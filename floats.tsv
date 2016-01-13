@@ -1,32 +1,32 @@
-Snappy	Literal	Literal [1, 1, 1]	9179752
-Snappy	Literal	Delta [1, 1, 1]	9237825
-Snappy	Literal	Literal [2, 1]	8645013
-Snappy	Literal	Delta [2, 1]	9126259
-Snappy	Literal	Literal [1, 2]	9443566
-Snappy	Literal	Delta [1, 2]	9352687
-Snappy	Literal	Literal [3]	9497171
-Snappy	Literal	Delta [3]	9090597
-Snappy	Delta	Literal [1, 1, 1]	9173848
-Snappy	Delta	Delta [1, 1, 1]	9218668
-Snappy	Delta	Literal [2, 1]	8641431
-Snappy	Delta	Delta [2, 1]	9118381
-Snappy	Delta	Literal [1, 2]	9438968
-Snappy	Delta	Delta [1, 2]	9336315
-Snappy	Delta	Literal [3]	9494124
-Snappy	Delta	Delta [3]	9085851
-Gzip	Literal	Literal [1, 1, 1]	7678105
-Gzip	Literal	Delta [1, 1, 1]	7457249
-Gzip	Literal	Literal [2, 1]	7077907
-Gzip	Literal	Delta [2, 1]	7045335
-Gzip	Literal	Literal [1, 2]	7943725
-Gzip	Literal	Delta [1, 2]	7461832
-Gzip	Literal	Literal [3]	7427208
-Gzip	Literal	Delta [3]	6788601
-Gzip	Delta	Literal [1, 1, 1]	7685757
-Gzip	Delta	Delta [1, 1, 1]	7462826
-Gzip	Delta	Literal [2, 1]	7083026
-Gzip	Delta	Delta [2, 1]	7047238
-Gzip	Delta	Literal [1, 2]	7950851
-Gzip	Delta	Delta [1, 2]	7468062
-Gzip	Delta	Literal [3]	7431267
-Gzip	Delta	Delta [3]	6787804
+Snappy	Literal	Literal [1, 1, 1]	9179881
+Snappy	Literal	Delta [1, 1, 1]	9237974
+Snappy	Literal	Literal [2, 1]	8645157
+Snappy	Literal	Delta [2, 1]	9126400
+Snappy	Literal	Literal [1, 2]	9443713
+Snappy	Literal	Delta [1, 2]	9352863
+Snappy	Literal	Literal [3]	9497325
+Snappy	Literal	Delta [3]	9091019
+Snappy	Delta	Literal [1, 1, 1]	9173908
+Snappy	Delta	Delta [1, 1, 1]	9218767
+Snappy	Delta	Literal [2, 1]	8641531
+Snappy	Delta	Delta [2, 1]	9118457
+Snappy	Delta	Literal [1, 2]	9439046
+Snappy	Delta	Delta [1, 2]	9336439
+Snappy	Delta	Literal [3]	9494299
+Snappy	Delta	Delta [3]	9086024
+BZ2	Literal	Literal [1, 1, 1]	7259807
+BZ2	Literal	Delta [1, 1, 1]	7348579
+BZ2	Literal	Literal [2, 1]	6310842
+BZ2	Literal	Delta [2, 1]	6535360
+BZ2	Literal	Literal [1, 2]	7848692
+BZ2	Literal	Delta [1, 2]	7415670
+BZ2	Literal	Literal [3]	6770400
+BZ2	Literal	Delta [3]	6377208
+BZ2	Delta	Literal [1, 1, 1]	7233786
+BZ2	Delta	Delta [1, 1, 1]	7329725
+BZ2	Delta	Literal [2, 1]	6289658
+BZ2	Delta	Delta [2, 1]	6521122
+BZ2	Delta	Literal [1, 2]	7831480
+BZ2	Delta	Delta [1, 2]	7401774
+BZ2	Delta	Literal [3]	6758919
+BZ2	Delta	Delta [3]	6371009

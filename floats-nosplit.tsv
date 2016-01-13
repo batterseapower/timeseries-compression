@@ -14,19 +14,19 @@ Snappy	Literal [1, 3]	11722159
 Snappy	Delta [1, 3]	10524215
 Snappy	Literal [4]	10942085
 Snappy	Delta [4]	9659888
-Gzip	Literal [1, 1, 1, 1]	7766793
-Gzip	Delta [1, 1, 1, 1]	7268962
-Gzip	Literal [2, 1, 1]	7170411
-Gzip	Delta [2, 1, 1]	6862351
-Gzip	Literal [1, 2, 1]	7990248
-Gzip	Delta [1, 2, 1]	7268072
-Gzip	Literal [1, 1, 2]	8190788
-Gzip	Delta [1, 1, 2]	7755324
-Gzip	Literal [3, 1]	7509192
-Gzip	Delta [3, 1]	6601643
-Gzip	Literal [2, 2]	7547274
-Gzip	Delta [2, 2]	7355110
-Gzip	Literal [1, 3]	8785377
-Gzip	Delta [1, 3]	7765102
-Gzip	Literal [4]	7889631
-Gzip	Delta [4]	7020346
+BZ2	Literal [1, 1, 1, 1]	7327437
+BZ2	Delta [1, 1, 1, 1]	7136612
+BZ2	Literal [2, 1, 1]	6438215
+BZ2	Delta [2, 1, 1]	6402354
+BZ2	Literal [1, 2, 1]	8039403
+BZ2	Delta [1, 2, 1]	7227282
+BZ2	Literal [1, 1, 2]	7405128
+BZ2	Delta [1, 1, 2]	7285350
+BZ2	Literal [3, 1]	7033810
+BZ2	Delta [3, 1]	6260446
+BZ2	Literal [2, 2]	6366714
+BZ2	Delta [2, 2]	6395954
+BZ2	Literal [1, 3]	8386647
+BZ2	Delta [1, 3]	7337277
+BZ2	Literal [4]	7109668
+BZ2	Delta [4]	6254386

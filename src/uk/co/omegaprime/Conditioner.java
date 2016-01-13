@@ -8,7 +8,11 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 public class Conditioner {
-    private Conditioner() {}
+    private final boolean specialCases;
+
+    Conditioner(boolean specialCases) {
+        this.specialCases = specialCases;
+    }
 
     // https://graphics.stanford.edu/~seander/bithacks.html#VariableSignExtend
     private static short signExtend11(short x) {
@@ -88,25 +92,33 @@ public class Conditioner {
                             : (~(x >> 1) & 0x7FFFFFFFFFFFFFFFL) | 0x8000000000000000L;
     }
 
-    private static int descriptor(int[] definedByRef, float x) {
-        if (x == 0f) {
+    private int shortDescriptor(float x) {
+        return (Float.floatToRawIntBits(x) & 0x80000000) >>> 31;
+    }
+
+    private int shortDescriptor(double x) {
+        return (int)((Double.doubleToRawLongBits(x) & 0x8000000000000000L) >>> 63);
+    }
+
+    private int descriptor(int[] definedByRef, float x) {
+        if (specialCases && x == 0f) {
             return 0;
-        } else if (Float.isNaN(x)) {
+        } else if (specialCases && Float.isNaN(x)) {
             return 1;
         } else {
             definedByRef[0]++;
-            return 2 | ((Float.floatToRawIntBits(x) & 0x80000000) >>> 31);
+            return 2 | shortDescriptor(x);
         }
     }
 
-    private static int descriptor(int[] definedByRef, double x) {
-        if (x == 0.0) {
+    private int descriptor(int[] definedByRef, double x) {
+        if (specialCases && x == 0.0) {
             return 0;
-        } else if (Double.isNaN(x)) {
+        } else if (specialCases && Double.isNaN(x)) {
             return 1;
         } else {
             definedByRef[0]++;
-            return 2 | (int)((Double.doubleToRawLongBits(x) & 0x8000000000000000L) >>> 63);
+            return 2 | shortDescriptor(x);
         }
     }
 
@@ -537,15 +549,15 @@ public class Conditioner {
 
     public static void writeFloat(float[] xs, OutputStream os) throws IOException {
         // For the tests. FIXME: use better params
-        conditionFloat(writeFloatExponentsLiteral(), writeFloatMantissasLiteral(new int[] { 1, 1, 1 })).write(xs, os);
+        new Conditioner(true).conditionFloat(writeFloatExponentsLiteral(), writeFloatMantissasLiteral(new int[] { 1, 1, 1 })).write(xs, os);
     }
 
-    public static Writer<float[]> conditionFloat(Writer<byte[]> writeExponents,
-                                                 Writer<int[]> writeMantissas) {
+    public Writer<float[]> conditionFloat(Writer<byte[]> writeExponents,
+                                          Writer<int[]> writeMantissas) {
         return (float[] xs, OutputStream os) -> {
             // 1. Write descriptors (0, NaN or else positive/negative flag)
             final int defined;
-            {
+            if (specialCases) {
                 final int[] definedByRef = new int[] { 0 };
                 int i;
                 for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
@@ -564,6 +576,28 @@ public class Conditioner {
                 }
 
                 defined = definedByRef[0];
+            } else {
+                int i;
+                for (i = 0; i < (xs.length >>> 3) << 3; i += 8) {
+                    os.write((shortDescriptor(xs[i + 0]) << 7) |
+                             (shortDescriptor(xs[i + 1]) << 6) |
+                             (shortDescriptor(xs[i + 2]) << 5) |
+                             (shortDescriptor(xs[i + 3]) << 4) |
+                             (shortDescriptor(xs[i + 4]) << 3) |
+                             (shortDescriptor(xs[i + 5]) << 2) |
+                             (shortDescriptor(xs[i + 6]) << 1) |
+                             (shortDescriptor(xs[i + 7]) << 0));
+                }
+
+                if (i < xs.length) {
+                    int acc = 0;
+                    for (; i < xs.length; i++) {
+                        acc = (acc << 1) | shortDescriptor(xs[i]);
+                    }
+                    os.write(acc);
+                }
+
+                defined = xs.length;
             }
 
             // 2. Gather bits
@@ -571,7 +605,7 @@ public class Conditioner {
             final byte[] exponents = new byte[defined];
             final int[] mantissas = new int[defined];
             for (final float x : xs) {
-                if (x != 0.0 && !Float.isNaN(x)) {
+                if (!specialCases || (x != 0.0 && !Float.isNaN(x))) {
                     final int bits = Float.floatToRawIntBits(x);
                     exponents[j] = (byte)((bits & 0x7F800000) >>> 23);
                     mantissas[j] = bits & 0x007FFFFF;
@@ -587,15 +621,15 @@ public class Conditioner {
 
     public static void writeDouble(double[] xs, OutputStream os) throws IOException {
         // FIXME: better params
-        conditionDouble(writeDoubleExponentsLiteral(new int[]{1, 1}), writeDoubleMantissasDelta(new int[]{1, 1, 1, 1, 1, 1, 1})).write(xs, os);
+        new Conditioner(true).conditionDouble(writeDoubleExponentsLiteral(new int[]{1, 1}), writeDoubleMantissasDelta(new int[]{1, 1, 1, 1, 1, 1, 1})).write(xs, os);
     }
 
-    public static Writer<double[]> conditionDouble(Writer<short[]> writeExponents,
-                                                   Writer<long[]> writeMantissas) {
+    public Writer<double[]> conditionDouble(Writer<short[]> writeExponents,
+                                            Writer<long[]> writeMantissas) {
         return (double[] xs, OutputStream os) -> {
             // 1. Write descriptors (0, NaN or else positive/negative flag)
             final int defined;
-            {
+            if (specialCases) {
                 final int[] definedByRef = new int[] { 0 };
                 int i;
                 for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
@@ -614,6 +648,28 @@ public class Conditioner {
                 }
 
                 defined = definedByRef[0];
+            } else {
+                int i;
+                for (i = 0; i < (xs.length >>> 3) << 3; i += 8) {
+                    os.write((shortDescriptor(xs[i + 0]) << 7) |
+                             (shortDescriptor(xs[i + 1]) << 6) |
+                             (shortDescriptor(xs[i + 2]) << 5) |
+                             (shortDescriptor(xs[i + 3]) << 4) |
+                             (shortDescriptor(xs[i + 4]) << 3) |
+                             (shortDescriptor(xs[i + 5]) << 2) |
+                             (shortDescriptor(xs[i + 6]) << 1) |
+                             (shortDescriptor(xs[i + 7]) << 0));
+                }
+
+                if (i < xs.length) {
+                    int acc = 0;
+                    for (; i < xs.length; i++) {
+                        acc = (acc << 1) | shortDescriptor(xs[i]);
+                    }
+                    os.write(acc);
+                }
+
+                defined = xs.length;
             }
 
             // 2. Gather bits. FIXME: try version with exponent and mantissa packed together
@@ -622,7 +678,7 @@ public class Conditioner {
             final long[] mantissas = new long[defined];
             for (int i = 0; i < xs.length; i++) {
                 final double x = xs[i];
-                if (x != 0.0 && !Double.isNaN(x)) {
+                if (!specialCases || (x != 0.0 && !Double.isNaN(x))) {
                     final long bits = Double.doubleToRawLongBits(x) & 0x7FFFFFFFFFFFFFFFL;
                     exponents[j] = (short)((bits >>> 52) & 0x7FFL);
                     mantissas[j] = bits & 0x000FFFFFFFFFFFFFL;
@@ -636,32 +692,40 @@ public class Conditioner {
         };
     }
 
-    private static int undescriptor(float[] xs, int i, int descriptor) {
-        switch (descriptor & 0x3) {
+    private void undescriptorShort(float[] xs, int i, int descriptor) {
+        xs[i] = (descriptor & 0x1) == 0 ? 1f : -1f;
+    }
+
+    private int undescriptor(float[] xs, int i, int descriptor) {
+        switch (specialCases ? descriptor & 0x3 : 2) {
             case 0: return 0;
             case 1: xs[i] = Float.NaN; return 0;
-            default: xs[i] = (descriptor & 0x1) == 0 ? 1f : -1f; return 1;
+            default: undescriptorShort(xs, i, descriptor); return 1;
         }
     }
 
-    private static int undescriptor(double[] xs, int i, int descriptor) {
-        switch (descriptor & 0x3) {
+    private void undescriptorShort(double[]xs, int i, int descriptor) {
+        xs[i] = (descriptor & 0x1) == 0 ? 1.0 : -1.0;
+    }
+
+    private int undescriptor(double[] xs, int i, int descriptor) {
+        switch (specialCases ? descriptor & 0x3 : 2) {
             case 0: return 0;
             case 1: xs[i] = Double.NaN; return 0;
-            default: xs[i] = (descriptor & 0x1) == 0 ? 1.0 : -1.0; return 1;
+            default: undescriptorShort(xs, i, descriptor); return 1;
         }
     }
 
     public static void readFloat(float[] xs, InputStream is) throws IOException {
         // FIXME: better params
-        unconditionFloat(readFloatExponentsLiteral(), readFloatMantissasLiteral(new int[] { 1, 1, 1 })).read(xs, is);
+        new Conditioner(true).unconditionFloat(readFloatExponentsLiteral(), readFloatMantissasLiteral(new int[] { 1, 1, 1 })).read(xs, is);
     }
 
-    public static Reader<float[]> unconditionFloat(Reader<byte[]> readExponents, Reader<int[]> readMantissas) {
+    public Reader<float[]> unconditionFloat(Reader<byte[]> readExponents, Reader<int[]> readMantissas) {
         return (float[] xs, InputStream is) -> {
             // 1. Read descriptors
             int defined = 0;
-            {
+            if (specialCases) {
                 int i;
                 for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
                     final int b = is.read();
@@ -689,6 +753,31 @@ public class Conditioner {
                             break;
                     }
                 }
+            } else {
+                int i;
+                for (i = 0; i < (xs.length >>> 3) << 3; i += 8) {
+                    final int b = is.read();
+
+                    undescriptorShort(xs, i + 0, b >>> 7);
+                    undescriptorShort(xs, i + 1, b >>> 6);
+                    undescriptorShort(xs, i + 2, b >>> 5);
+                    undescriptorShort(xs, i + 3, b >>> 4);
+                    undescriptorShort(xs, i + 4, b >>> 3);
+                    undescriptorShort(xs, i + 5, b >>> 2);
+                    undescriptorShort(xs, i + 6, b >>> 1);
+                    undescriptorShort(xs, i + 7, b >>> 0);
+                }
+
+                if (i < xs.length) {
+                    final int b = is.read();
+                    int shift = xs.length - i - 1;
+                    while (i < xs.length) {
+                        undescriptorShort(xs, i, b >>> shift);
+                        i++; shift--;
+                    }
+                }
+
+                defined = xs.length;
             }
 
             // 2. Gather bits
@@ -701,7 +790,7 @@ public class Conditioner {
             int j = 0;
             for (int i = 0; i < xs.length; i++) {
                 final float x = xs[i];
-                if (x != 0.0 && !Float.isNaN(x)) {
+                if (!specialCases || (x != 0.0 && !Float.isNaN(x))) {
                     final byte exponent = exponents[j];
                     final int mantissa = mantissas[j];
                     j++;
@@ -713,14 +802,14 @@ public class Conditioner {
 
     public static void readDouble(double[] xs, InputStream is) throws IOException {
         // FIXME: better params
-        unconditionDouble(readDoubleExponentsLiteral(new int[]{1, 1}), readDoubleMantissasDelta(new int[]{1, 1, 1, 1, 1, 1, 1})).read(xs, is);
+        new Conditioner(true).unconditionDouble(readDoubleExponentsLiteral(new int[]{1, 1}), readDoubleMantissasDelta(new int[]{1, 1, 1, 1, 1, 1, 1})).read(xs, is);
     }
 
-    public static Reader<double[]> unconditionDouble(Reader<short[]> readExponents, Reader<long[]> readMantissas) {
+    public Reader<double[]> unconditionDouble(Reader<short[]> readExponents, Reader<long[]> readMantissas) {
         return (double[] xs, InputStream is) -> {
             // 1. Read descriptors
             int defined = 0;
-            {
+            if (specialCases) {
                 int i;
                 for (i = 0; i < (xs.length >>> 2) << 2; i += 4) {
                     final int b = is.read();
@@ -748,6 +837,31 @@ public class Conditioner {
                             break;
                     }
                 }
+            } else {
+                int i;
+                for (i = 0; i < (xs.length >>> 3) << 3; i += 8) {
+                    final int b = is.read();
+
+                    undescriptorShort(xs, i + 0, b >>> 7);
+                    undescriptorShort(xs, i + 1, b >>> 6);
+                    undescriptorShort(xs, i + 2, b >>> 5);
+                    undescriptorShort(xs, i + 3, b >>> 4);
+                    undescriptorShort(xs, i + 4, b >>> 3);
+                    undescriptorShort(xs, i + 5, b >>> 2);
+                    undescriptorShort(xs, i + 6, b >>> 1);
+                    undescriptorShort(xs, i + 7, b >>> 0);
+                }
+
+                if (i < xs.length) {
+                    final int b = is.read();
+                    int shift = xs.length - i - 1;
+                    while (i < xs.length) {
+                        undescriptorShort(xs, i, b >>> shift);
+                        i++; shift--;
+                    }
+                }
+
+                defined = xs.length;
             }
 
             // 2. Gather bits
@@ -760,7 +874,7 @@ public class Conditioner {
             int j = 0;
             for (int i = 0; i < xs.length; i++) {
                 final double x = xs[i];
-                if (x != 0.0 && !Double.isNaN(x)) {
+                if (!specialCases || (x != 0.0 && !Double.isNaN(x))) {
                     final short exponent = exponents[j];
                     final long mantissa = mantissas[j];
                     j++;

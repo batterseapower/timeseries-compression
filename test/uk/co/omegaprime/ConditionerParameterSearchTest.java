@@ -1,18 +1,25 @@
 package uk.co.omegaprime;
 
+import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
+import org.apache.commons.compress.compressors.bzip2.BZip2CompressorOutputStream;
+import org.apache.commons.compress.compressors.xz.XZCompressorInputStream;
+import org.apache.commons.compress.compressors.xz.XZCompressorOutputStream;
 import org.iq80.snappy.SnappyInputStream;
 import org.iq80.snappy.SnappyOutputStream;
 import org.junit.Test;
+import org.tukaani.xz.LZMA2Options;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.zip.*;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assume.assumeTrue;
 
 public class ConditionerParameterSearchTest {
     private static class Pair<T> {
@@ -56,7 +63,7 @@ public class ConditionerParameterSearchTest {
         return result;
     }
 
-    private static List<float[]> loadFullData() throws IOException {
+    static List<float[]> loadFullFloatData() throws IOException {
         final List<float[]> result = new ArrayList<>();
 
         final File root = new File("/Users/mbolingbroke/Programming/yahoo-sample-data");
@@ -76,7 +83,12 @@ public class ConditionerParameterSearchTest {
             }
         }
 
+        System.out.println(result.stream().mapToInt(xs -> xs.length).sum());
         return result;
+    }
+
+    private List<double[]> loadFullDoubleData() throws IOException {
+        return loadFullFloatData().stream().map(Utils::floatsToDoubles).collect(Collectors.toList());
     }
 
     @Test
@@ -102,10 +114,18 @@ public class ConditionerParameterSearchTest {
         Uncompresses to 12908620 bytes
         Deflate Normal decompress: 4.056792s
          */
+        benchmark("None",            x -> x,                                                                         x -> x);
+        benchmark("None",            x -> x,                                                                         x -> x);
         benchmark("Snappy",          SnappyOutputStream::new,                                                        SnappyInputStream::new);
+        benchmark("GZip",            GZIPOutputStream::new,                                                          GZIPInputStream::new);
         benchmark("Deflate Fastest", os -> new DeflaterOutputStream(os, new Deflater(Deflater.BEST_SPEED)),          InflaterInputStream::new);
-        benchmark("Deflate Slowest", os -> new DeflaterOutputStream(os, new Deflater(Deflater.BEST_COMPRESSION)),    InflaterInputStream::new);
         benchmark("Deflate Normal",  os -> new DeflaterOutputStream(os, new Deflater(Deflater.DEFAULT_COMPRESSION)), InflaterInputStream::new);
+        benchmark("Deflate Slowest", os -> new DeflaterOutputStream(os, new Deflater(Deflater.BEST_COMPRESSION)),    InflaterInputStream::new);
+        benchmark("BZip2 Fastest",   os -> new BZip2CompressorOutputStream(os, BZip2CompressorOutputStream.MIN_BLOCKSIZE), BZip2CompressorInputStream::new);
+        benchmark("BZip2 Slowest",   os -> new BZip2CompressorOutputStream(os, BZip2CompressorOutputStream.MAX_BLOCKSIZE), BZip2CompressorInputStream::new);
+        benchmark("XZ Fastest",      os -> new XZCompressorOutputStream(os, LZMA2Options.PRESET_MIN),                      XZCompressorInputStream::new);
+        benchmark("XZ Normal",       os -> new XZCompressorOutputStream(os, LZMA2Options.PRESET_DEFAULT),                  XZCompressorInputStream::new);
+        benchmark("XZ Slowest",      os -> new XZCompressorOutputStream(os, LZMA2Options.PRESET_MAX),                      XZCompressorInputStream::new);
     }
 
     private static class Stopwatch implements AutoCloseable {
@@ -125,7 +145,7 @@ public class ConditionerParameterSearchTest {
     }
 
     public static void benchmark(String compressor, IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor) throws IOException {
-        final List<float[]> data = loadFullData();
+        final List<float[]> data = loadFullFloatData();
 
         final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         int wrote = 0;
@@ -142,8 +162,10 @@ public class ConditionerParameterSearchTest {
             }
         }
 
+        final long uncompressedSize = Utils.skipAll(mkUncompressor.apply(new ByteArrayInputStream(baos.toByteArray())));
         System.out.println("Compressed to " + baos.size() + " bytes");
-        System.out.println("Uncompresses to " + skipAll(mkUncompressor.apply(new ByteArrayInputStream(baos.toByteArray()))) + " bytes");
+        System.out.println("Uncompresses to " + uncompressedSize + " bytes");
+        System.out.println(String.format("Ratio %.3f", (double)baos.size() / uncompressedSize));
 
         int read = 0;
         try (Stopwatch _ = new Stopwatch(compressor + " decompress")) {
@@ -170,32 +192,33 @@ public class ConditionerParameterSearchTest {
         System.out.println();
     }
 
-    private static long skipAll(InputStream is) throws IOException {
-        long skipped;
-        long totalSkipped = 0;
-        do {
-            skipped = is.skip(1024 * 1024);
-            if (skipped == 0) {
-                if (is.read() >= 0) {
-                    skipped = 1;
-                }
-            }
-            totalSkipped += skipped;
-        } while (skipped > 0);
+    @Test
+    public void allFloatParameterCombinationsKnockout() throws IOException {
+        final List<float[]> fullData = loadFullFloatData();
 
-        return totalSkipped;
+        for (float knockout : new float[] { 0.1f, 0.25f, 0.5f, 0.75f }) {
+            final Random r = new Random(1337);
+            final List<float[]> check = fullData.stream().map(xs -> {
+                final float[] ys = xs.clone();
+                for (int i = 0; i < ys.length; i++) {
+                    if (r.nextDouble() < knockout) {
+                        ys[i] = Float.NaN;
+                    }
+                }
+                return ys;
+            }).collect(Collectors.toList());
+
+            allFloatParameterCombinationsWork(check, "Snappy\t" + knockout, SnappyOutputStream::new, SnappyInputStream::new);
+        }
     }
 
     @Test
     public void allFloatParameterCombinationsWork() throws IOException {
-        allFloatParameterCombinationsWork("Snappy", SnappyOutputStream::new, SnappyInputStream::new);
-        allFloatParameterCombinationsWork("Gzip",   GZIPOutputStream::new,   GZIPInputStream::new);
+        allFloatParameterCombinationsWork(loadFullFloatData(), "Snappy", SnappyOutputStream::new,                                                              SnappyInputStream::new);
+        allFloatParameterCombinationsWork(loadFullFloatData(), "BZ2", os -> new BZip2CompressorOutputStream(os, BZip2CompressorOutputStream.MIN_BLOCKSIZE), BZip2CompressorInputStream::new);
     }
 
-    public void allFloatParameterCombinationsWork(String compressor, IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor) throws IOException {
-        //final List<float[]> inputs = Arrays.asList(Utils.getExampleData());
-        final List<float[]> inputs = loadFullData();
-
+    public void allFloatParameterCombinationsWork(List<float[]> inputs, String compressor, IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor) throws IOException {
         {
             long size = 0;
             for (float[] input : inputs) {
@@ -218,14 +241,15 @@ public class ConditionerParameterSearchTest {
                               bits.writer, bits.reader);
         }
 
-        if (true) return; // FIXME
-
-        for (Pair<byte[]> exponent : Arrays.<Pair<byte[]>>asList(new Pair<byte[]>("Literal", Conditioner.writeFloatExponentsLiteral(), Conditioner.readFloatExponentsLiteral()), new Pair<byte[]>("Delta", Conditioner.writeFloatExponentsDelta(), Conditioner.readFloatExponentsDelta()))) {
-            for (Pair<int[]> mantissa : ConditionerParameterSearchTest.<int[]>pairs(3, Conditioner::writeFloatMantissasLiteral, Conditioner::readFloatMantissasLiteral, Conditioner::writeFloatMantissasDelta, Conditioner::readFloatMantissasDelta)) {
-                final String method = String.format("%s\t%s\t%s", compressor, exponent, mantissa);
-                evaluateFloatPair(method, inputs, mkCompressor, mkUncompressor,
-                                  Conditioner.conditionFloat  (exponent.writer, mantissa.writer),
-                                  Conditioner.unconditionFloat(exponent.reader, mantissa.reader));
+        for (boolean specialCases : new boolean[] { false, true }) {
+            final Conditioner conditioner = new Conditioner(specialCases);
+            for (Pair<byte[]> exponent : Arrays.<Pair<byte[]>>asList(new Pair<byte[]>("Literal", Conditioner.writeFloatExponentsLiteral(), Conditioner.readFloatExponentsLiteral()), new Pair<byte[]>("Delta", Conditioner.writeFloatExponentsDelta(), Conditioner.readFloatExponentsDelta()))) {
+                for (Pair<int[]> mantissa : ConditionerParameterSearchTest.<int[]>pairs(3, Conditioner::writeFloatMantissasLiteral, Conditioner::readFloatMantissasLiteral, Conditioner::writeFloatMantissasDelta, Conditioner::readFloatMantissasDelta)) {
+                    final String method = String.format("%s\t%s\t%s\t%s", specialCases, compressor, exponent, mantissa);
+                    evaluateFloatPair(method, inputs, mkCompressor, mkUncompressor,
+                                      conditioner.conditionFloat  (exponent.writer, mantissa.writer),
+                                      conditioner.unconditionFloat(exponent.reader, mantissa.reader));
+                }
             }
         }
     }
@@ -253,15 +277,32 @@ public class ConditionerParameterSearchTest {
     }
 
     @Test
-    public void allDoubleParameterCombinationsWork() throws IOException {
-        allDoubleParameterCombinationsWork("Snappy", SnappyOutputStream::new, SnappyInputStream::new);
-        allDoubleParameterCombinationsWork("Gzip",   GZIPOutputStream::new,   GZIPInputStream::new);
+    public void allDoubleParameterCombinationsKnockout() throws IOException {
+        final List<double[]> fullData = loadFullDoubleData();
+
+        for (float knockout : new float[] { 0.1f, 0.25f, 0.5f, 0.75f }) {
+            final Random r = new Random(1337);
+            final List<double[]> check = fullData.stream().map(xs -> {
+                final double[] ys = xs.clone();
+                for (int i = 0; i < ys.length; i++) {
+                    if (r.nextDouble() < knockout) {
+                        ys[i] = Double.NaN;
+                    }
+                }
+                return ys;
+            }).collect(Collectors.toList());
+
+            allDoubleParameterCombinationsWork(check, "Snappy\t" + knockout, SnappyOutputStream::new, SnappyInputStream::new);
+        }
     }
 
-    public void allDoubleParameterCombinationsWork(String compressor, IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor) throws IOException {
-        //final List<double[]> inputs = Arrays.asList(Utils.floatsToDoubles(Utils.getExampleData()));
-        final List<double[]> inputs = loadFullData().stream().map(Utils::floatsToDoubles).collect(Collectors.toList());
+    @Test
+    public void allDoubleParameterCombinationsWork() throws IOException {
+        allDoubleParameterCombinationsWork(loadFullDoubleData(), "Snappy", SnappyOutputStream::new,                                                              SnappyInputStream::new);
+        allDoubleParameterCombinationsWork(loadFullDoubleData(), "BZ2",    os -> new BZip2CompressorOutputStream(os, BZip2CompressorOutputStream.MIN_BLOCKSIZE), BZip2CompressorInputStream::new);
+    }
 
+    public void allDoubleParameterCombinationsWork(List<double[]> inputs, String compressor, IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor) throws IOException {
         {
             long size = 0;
             for (double[] input : inputs) {
@@ -283,14 +324,15 @@ public class ConditionerParameterSearchTest {
                                bits.writer, bits.reader);
         }
 
-        if (true) return; // FIXME
-
-        for (Pair<short[]> exponent : ConditionerParameterSearchTest.<short[]>pairs(2, Conditioner::writeDoubleExponentsLiteral, Conditioner::readDoubleExponentsLiteral, Conditioner::writeDoubleExponentsDelta, Conditioner::readDoubleExponentsDelta)) {
-            for (Pair<long[]> mantissa : ConditionerParameterSearchTest.<long[]>pairs(7, Conditioner::writeDoubleMantissasLiteral, Conditioner::readDoubleMantissasLiteral, Conditioner::writeDoubleMantissasDelta, Conditioner::readDoubleMantissasDelta)) {
-                final String method = String.format("%s\t%s\t%s", compressor, exponent, mantissa);
-                evaluateDoublePair(method, inputs, mkCompressor, mkUncompressor,
-                                   Conditioner.conditionDouble  (exponent.writer, mantissa.writer),
-                                   Conditioner.unconditionDouble(exponent.reader, mantissa.reader));
+        for (boolean specialCases : new boolean[] { false, true }) {
+            final Conditioner conditioner = new Conditioner(specialCases);
+            for (Pair<short[]> exponent : ConditionerParameterSearchTest.<short[]>pairs(2, Conditioner::writeDoubleExponentsLiteral, Conditioner::readDoubleExponentsLiteral, Conditioner::writeDoubleExponentsDelta, Conditioner::readDoubleExponentsDelta)) {
+                for (Pair<long[]> mantissa : ConditionerParameterSearchTest.<long[]>pairs(7, Conditioner::writeDoubleMantissasLiteral, Conditioner::readDoubleMantissasLiteral, Conditioner::writeDoubleMantissasDelta, Conditioner::readDoubleMantissasDelta)) {
+                    final String method = String.format("%s\t%s\t%s\t%s", specialCases, compressor, exponent, mantissa);
+                    evaluateDoublePair(method, inputs, mkCompressor, mkUncompressor,
+                                       conditioner.conditionDouble  (exponent.writer, mantissa.writer),
+                                       conditioner.unconditionDouble(exponent.reader, mantissa.reader));
+                }
             }
         }
     }

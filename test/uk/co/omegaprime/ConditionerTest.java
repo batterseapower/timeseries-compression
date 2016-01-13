@@ -9,6 +9,7 @@ import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assume.assumeTrue;
 
 public class ConditionerTest {
     private static File createFile(String which) throws IOException {

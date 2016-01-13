@@ -2,6 +2,7 @@ package uk.co.omegaprime;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
@@ -29,5 +30,21 @@ public class Utils {
             }
         }
         return vod;
+    }
+
+    static long skipAll(InputStream is) throws IOException {
+        long skipped;
+        long totalSkipped = 0;
+        do {
+            skipped = is.skip(1024 * 1024);
+            if (skipped == 0) {
+                if (is.read() >= 0) {
+                    skipped = 1;
+                }
+            }
+            totalSkipped += skipped;
+        } while (skipped > 0);
+
+        return totalSkipped;
     }
 }
