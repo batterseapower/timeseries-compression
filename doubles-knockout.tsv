@@ -1,0 +1,1024 @@
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 1, 1, 1, 1]	8622916
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 1, 1, 1, 1]	12411247
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 1, 1, 1, 1]	8622916
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 1, 1, 1, 1]	12136209
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 1, 1, 1, 1]	8622916
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 1, 1, 1, 1]	12137210
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 2, 1, 1, 1]	8834389
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 2, 1, 1, 1]	12021019
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 2, 1, 1]	8258143
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 2, 1, 1]	12021382
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 1, 2, 1]	8127009
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 1, 2, 1]	11853475
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 1, 1, 2]	8524712
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 1, 1, 2]	12492326
+false	Snappy	0.75	Literal [1, 1]	Literal [3, 1, 1, 1, 1]	8622916
+false	Snappy	0.75	Literal [1, 1]	Delta [3, 1, 1, 1, 1]	11277049
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 2, 1, 1, 1]	8834389
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 2, 1, 1, 1]	11616773
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 2, 1, 1]	8258143
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 2, 1, 1]	11743691
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 1, 2, 1]	8127009
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 1, 2, 1]	11578604
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 1, 1, 2]	8524712
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 1, 1, 2]	12217301
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 3, 1, 1, 1]	8881421
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 3, 1, 1, 1]	11353414
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 2, 1, 1]	8258143
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 2, 1, 1]	11743273
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 1, 2, 1]	8127009
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 1, 2, 1]	11581295
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 1, 1, 2]	8524712
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 1, 1, 2]	12218313
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 3, 1, 1]	8411168
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 3, 1, 1]	11647261
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 2, 2, 1]	8334212
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 2, 2, 1]	11435301
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 2, 1, 2]	8734090
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 2, 1, 2]	12095429
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 3, 1]	7757178
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 3, 1]	11561541
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 2, 2]	8149331
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 2, 2]	12067205
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 1, 3]	7962488
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 1, 3]	11953882
+false	Snappy	0.75	Literal [1, 1]	Literal [4, 1, 1, 1]	9056867
+false	Snappy	0.75	Literal [1, 1]	Delta [4, 1, 1, 1]	10750450
+false	Snappy	0.75	Literal [1, 1]	Literal [3, 2, 1, 1]	8258143
+false	Snappy	0.75	Literal [1, 1]	Delta [3, 2, 1, 1]	10882607
+false	Snappy	0.75	Literal [1, 1]	Literal [3, 1, 2, 1]	8127009
+false	Snappy	0.75	Literal [1, 1]	Delta [3, 1, 2, 1]	10721026
+false	Snappy	0.75	Literal [1, 1]	Literal [3, 1, 1, 2]	8524712
+false	Snappy	0.75	Literal [1, 1]	Delta [3, 1, 1, 2]	11358123
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 3, 1, 1]	8411168
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 3, 1, 1]	11243214
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 2, 2, 1]	8334212
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 2, 2, 1]	11030775
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 2, 1, 2]	8734090
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 2, 1, 2]	11691193
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 3, 1]	7757178
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 3, 1]	11283853
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 2, 2]	8149331
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 2, 2]	11789506
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 1, 3]	7962488
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 1, 3]	11679023
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 4, 1, 1]	8495854
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 4, 1, 1]	11137837
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 3, 2, 1]	8384988
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 3, 2, 1]	10779459
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 3, 1, 2]	8781969
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 3, 1, 2]	11427629
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 3, 1]	7757178
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 3, 1]	11283710
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 2, 2]	8149331
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 2, 2]	11789079
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 1, 3]	7962488
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 1, 3]	11681818
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 4, 1]	7880710
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 4, 1]	11355514
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 3, 2]	8306071
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 3, 2]	11695038
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 2, 3]	8172317
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 2, 3]	11548805
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 4]	7637414
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 4]	11731913
+false	Snappy	0.75	Literal [1, 1]	Literal [5, 1, 1]	8446315
+false	Snappy	0.75	Literal [1, 1]	Delta [5, 1, 1]	10414006
+false	Snappy	0.75	Literal [1, 1]	Literal [4, 2, 1]	8559213
+false	Snappy	0.75	Literal [1, 1]	Delta [4, 2, 1]	10174887
+false	Snappy	0.75	Literal [1, 1]	Literal [4, 1, 2]	8953641
+false	Snappy	0.75	Literal [1, 1]	Delta [4, 1, 2]	10824768
+false	Snappy	0.75	Literal [1, 1]	Literal [3, 3, 1]	7757178
+false	Snappy	0.75	Literal [1, 1]	Delta [3, 3, 1]	10421693
+false	Snappy	0.75	Literal [1, 1]	Literal [3, 2, 2]	8149331
+false	Snappy	0.75	Literal [1, 1]	Delta [3, 2, 2]	10928389
+false	Snappy	0.75	Literal [1, 1]	Literal [3, 1, 3]	7962488
+false	Snappy	0.75	Literal [1, 1]	Delta [3, 1, 3]	10821506
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 4, 1]	7880710
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 4, 1]	10951529
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 3, 2]	8306071
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 3, 2]	11290919
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 2, 3]	8172317
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 2, 3]	11144295
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 4]	7637414
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 4]	11454288
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 5, 1]	7957175
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 5, 1]	10909218
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 4, 2]	8388283
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 4, 2]	11183332
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 3, 3]	8219625
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 3, 3]	10878705
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 4]	7637414
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 4]	11454461
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 5]	7833659
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 5]	11442128
+false	Snappy	0.75	Literal [1, 1]	Literal [6, 1]	8025467
+false	Snappy	0.75	Literal [1, 1]	Delta [6, 1]	10153535
+false	Snappy	0.75	Literal [1, 1]	Literal [5, 2]	8334448
+false	Snappy	0.75	Literal [1, 1]	Delta [5, 2]	10457989
+false	Snappy	0.75	Literal [1, 1]	Literal [4, 3]	8391439
+false	Snappy	0.75	Literal [1, 1]	Delta [4, 3]	10276399
+false	Snappy	0.75	Literal [1, 1]	Literal [3, 4]	7637414
+false	Snappy	0.75	Literal [1, 1]	Delta [3, 4]	10592889
+false	Snappy	0.75	Literal [1, 1]	Literal [2, 5]	7833659
+false	Snappy	0.75	Literal [1, 1]	Delta [2, 5]	11038322
+false	Snappy	0.75	Literal [1, 1]	Literal [1, 6]	7970669
+false	Snappy	0.75	Literal [1, 1]	Delta [1, 6]	10956324
+false	Snappy	0.75	Literal [1, 1]	Literal [7]	8060534
+false	Snappy	0.75	Literal [1, 1]	Delta [7]	10303789
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 1, 1, 1, 1]	8718137
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 1, 1, 1, 1]	12516698
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 1, 1, 1, 1]	8718137
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 1, 1, 1, 1]	12231007
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 1, 1, 1, 1]	8718137
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 1, 1, 1, 1]	12231921
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 2, 1, 1, 1]	8929287
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 2, 1, 1, 1]	12120846
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 2, 1, 1]	8353233
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 2, 1, 1]	12127596
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 1, 2, 1]	8222588
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 1, 2, 1]	11958952
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 1, 1, 2]	8620055
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 1, 1, 2]	12597809
+false	Snappy	0.75	Delta [1, 1]	Literal [3, 1, 1, 1, 1]	8718137
+false	Snappy	0.75	Delta [1, 1]	Delta [3, 1, 1, 1, 1]	11372173
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 2, 1, 1, 1]	8929287
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 2, 1, 1, 1]	11711619
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 2, 1, 1]	8353233
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 2, 1, 1]	11838592
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 1, 2, 1]	8222588
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 1, 2, 1]	11673430
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 1, 1, 2]	8620055
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 1, 1, 2]	12312135
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 3, 1, 1, 1]	8976347
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 3, 1, 1, 1]	11448176
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 2, 1, 1]	8353233
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 2, 1, 1]	11838091
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 1, 2, 1]	8222588
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 1, 2, 1]	11676027
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 1, 1, 2]	8620055
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 1, 1, 2]	12313056
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 3, 1, 1]	8506213
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 3, 1, 1]	11747068
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 2, 2, 1]	8429483
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 2, 2, 1]	11535144
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 2, 1, 2]	8829115
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 2, 1, 2]	12195300
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 3, 1]	7852897
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 3, 1]	11667918
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 2, 2]	8244573
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 2, 2]	12173474
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 1, 3]	8057979
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 1, 3]	12059361
+false	Snappy	0.75	Delta [1, 1]	Literal [4, 1, 1, 1]	9151966
+false	Snappy	0.75	Delta [1, 1]	Delta [4, 1, 1, 1]	10845779
+false	Snappy	0.75	Delta [1, 1]	Literal [3, 2, 1, 1]	8353233
+false	Snappy	0.75	Delta [1, 1]	Delta [3, 2, 1, 1]	10977981
+false	Snappy	0.75	Delta [1, 1]	Literal [3, 1, 2, 1]	8222588
+false	Snappy	0.75	Delta [1, 1]	Delta [3, 1, 2, 1]	10816271
+false	Snappy	0.75	Delta [1, 1]	Literal [3, 1, 1, 2]	8620055
+false	Snappy	0.75	Delta [1, 1]	Delta [3, 1, 1, 2]	11453278
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 3, 1, 1]	8506213
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 3, 1, 1]	11338016
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 2, 2, 1]	8429483
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 2, 2, 1]	11125663
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 2, 1, 2]	8829115
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 2, 1, 2]	11786087
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 3, 1]	7852897
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 3, 1]	11378885
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 2, 2]	8244573
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 2, 2]	11884467
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 1, 3]	8057979
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 1, 3]	11773848
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 4, 1, 1]	8591170
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 4, 1, 1]	11232547
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 3, 2, 1]	8480310
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 3, 2, 1]	10874224
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 3, 1, 2]	8877038
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 3, 1, 2]	11522429
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 3, 1]	7852897
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 3, 1]	11378641
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 2, 2]	8244573
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 2, 2]	11883955
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 1, 3]	8057979
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 1, 3]	11776554
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 4, 1]	7976807
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 4, 1]	11455815
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 3, 2]	8401265
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 3, 2]	11794919
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 2, 3]	8267499
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 2, 3]	11648639
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 4]	7732908
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 4]	11838069
+false	Snappy	0.75	Delta [1, 1]	Literal [5, 1, 1]	8541659
+false	Snappy	0.75	Delta [1, 1]	Delta [5, 1, 1]	10508784
+false	Snappy	0.75	Delta [1, 1]	Literal [4, 2, 1]	8654684
+false	Snappy	0.75	Delta [1, 1]	Delta [4, 2, 1]	10270295
+false	Snappy	0.75	Delta [1, 1]	Literal [4, 1, 2]	9048890
+false	Snappy	0.75	Delta [1, 1]	Delta [4, 1, 2]	10920156
+false	Snappy	0.75	Delta [1, 1]	Literal [3, 3, 1]	7852897
+false	Snappy	0.75	Delta [1, 1]	Delta [3, 3, 1]	10517200
+false	Snappy	0.75	Delta [1, 1]	Literal [3, 2, 2]	8244573
+false	Snappy	0.75	Delta [1, 1]	Delta [3, 2, 2]	11023828
+false	Snappy	0.75	Delta [1, 1]	Literal [3, 1, 3]	8057979
+false	Snappy	0.75	Delta [1, 1]	Delta [3, 1, 3]	10916737
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 4, 1]	7976807
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 4, 1]	11046897
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 3, 2]	8401265
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 3, 2]	11385808
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 2, 3]	8267499
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 2, 3]	11239167
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 4]	7732908
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 4]	11549133
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 5, 1]	8053410
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 5, 1]	11003640
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 4, 2]	8483745
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 4, 2]	11278163
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 3, 3]	8314849
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 3, 3]	10973433
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 4]	7732908
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 4]	11549221
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 5]	7929069
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 5]	11541243
+false	Snappy	0.75	Delta [1, 1]	Literal [6, 1]	8122292
+false	Snappy	0.75	Delta [1, 1]	Delta [6, 1]	10249452
+false	Snappy	0.75	Delta [1, 1]	Literal [5, 2]	8429993
+false	Snappy	0.75	Delta [1, 1]	Delta [5, 2]	10552882
+false	Snappy	0.75	Delta [1, 1]	Literal [4, 3]	8486835
+false	Snappy	0.75	Delta [1, 1]	Delta [4, 3]	10371780
+false	Snappy	0.75	Delta [1, 1]	Literal [3, 4]	7732908
+false	Snappy	0.75	Delta [1, 1]	Delta [3, 4]	10688220
+false	Snappy	0.75	Delta [1, 1]	Literal [2, 5]	7929069
+false	Snappy	0.75	Delta [1, 1]	Delta [2, 5]	11132442
+false	Snappy	0.75	Delta [1, 1]	Literal [1, 6]	8066365
+false	Snappy	0.75	Delta [1, 1]	Delta [1, 6]	11050567
+false	Snappy	0.75	Delta [1, 1]	Literal [7]	8157654
+false	Snappy	0.75	Delta [1, 1]	Delta [7]	10397759
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 1, 1, 1, 1]	8228461
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 1, 1, 1, 1]	12030813
+false	Snappy	0.75	Literal [2]	Literal [2, 1, 1, 1, 1, 1]	8228461
+false	Snappy	0.75	Literal [2]	Delta [2, 1, 1, 1, 1, 1]	11742144
+false	Snappy	0.75	Literal [2]	Literal [1, 2, 1, 1, 1, 1]	8228461
+false	Snappy	0.75	Literal [2]	Delta [1, 2, 1, 1, 1, 1]	11742920
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 2, 1, 1, 1]	8439940
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 2, 1, 1, 1]	11633680
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 2, 1, 1]	7863674
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 2, 1, 1]	11641595
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 1, 2, 1]	7732557
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 1, 2, 1]	11472997
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 1, 1, 2]	8130257
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 1, 1, 2]	12111806
+false	Snappy	0.75	Literal [2]	Literal [3, 1, 1, 1, 1]	8228461
+false	Snappy	0.75	Literal [2]	Delta [3, 1, 1, 1, 1]	10883141
+false	Snappy	0.75	Literal [2]	Literal [2, 2, 1, 1, 1]	8439940
+false	Snappy	0.75	Literal [2]	Delta [2, 2, 1, 1, 1]	11222685
+false	Snappy	0.75	Literal [2]	Literal [2, 1, 2, 1, 1]	7863674
+false	Snappy	0.75	Literal [2]	Delta [2, 1, 2, 1, 1]	11349611
+false	Snappy	0.75	Literal [2]	Literal [2, 1, 1, 2, 1]	7732557
+false	Snappy	0.75	Literal [2]	Delta [2, 1, 1, 2, 1]	11184480
+false	Snappy	0.75	Literal [2]	Literal [2, 1, 1, 1, 2]	8130257
+false	Snappy	0.75	Literal [2]	Delta [2, 1, 1, 1, 2]	11823144
+false	Snappy	0.75	Literal [2]	Literal [1, 3, 1, 1, 1]	8486983
+false	Snappy	0.75	Literal [2]	Delta [1, 3, 1, 1, 1]	10959139
+false	Snappy	0.75	Literal [2]	Literal [1, 2, 2, 1, 1]	7863674
+false	Snappy	0.75	Literal [2]	Delta [1, 2, 2, 1, 1]	11348966
+false	Snappy	0.75	Literal [2]	Literal [1, 2, 1, 2, 1]	7732557
+false	Snappy	0.75	Literal [2]	Delta [1, 2, 1, 2, 1]	11186951
+false	Snappy	0.75	Literal [2]	Literal [1, 2, 1, 1, 2]	8130257
+false	Snappy	0.75	Literal [2]	Delta [1, 2, 1, 1, 2]	11823937
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 3, 1, 1]	8016689
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 3, 1, 1]	11259836
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 2, 2, 1]	7939769
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 2, 2, 1]	11047914
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 2, 1, 2]	8339637
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 2, 1, 2]	11707999
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 3, 1]	7362708
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 3, 1]	11181783
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 2, 2]	7754851
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 2, 2]	11687339
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 1, 3]	7568040
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 1, 3]	11573310
+false	Snappy	0.75	Literal [2]	Literal [4, 1, 1, 1]	8662435
+false	Snappy	0.75	Literal [2]	Delta [4, 1, 1, 1]	10356840
+false	Snappy	0.75	Literal [2]	Literal [3, 2, 1, 1]	7863674
+false	Snappy	0.75	Literal [2]	Delta [3, 2, 1, 1]	10488811
+false	Snappy	0.75	Literal [2]	Literal [3, 1, 2, 1]	7732557
+false	Snappy	0.75	Literal [2]	Delta [3, 1, 2, 1]	10327160
+false	Snappy	0.75	Literal [2]	Literal [3, 1, 1, 2]	8130257
+false	Snappy	0.75	Literal [2]	Delta [3, 1, 1, 2]	10964116
+false	Snappy	0.75	Literal [2]	Literal [2, 3, 1, 1]	8016689
+false	Snappy	0.75	Literal [2]	Delta [2, 3, 1, 1]	10849038
+false	Snappy	0.75	Literal [2]	Literal [2, 2, 2, 1]	7939769
+false	Snappy	0.75	Literal [2]	Delta [2, 2, 2, 1]	10636629
+false	Snappy	0.75	Literal [2]	Literal [2, 2, 1, 2]	8339637
+false	Snappy	0.75	Literal [2]	Delta [2, 2, 1, 2]	11297016
+false	Snappy	0.75	Literal [2]	Literal [2, 1, 3, 1]	7362708
+false	Snappy	0.75	Literal [2]	Delta [2, 1, 3, 1]	10889765
+false	Snappy	0.75	Literal [2]	Literal [2, 1, 2, 2]	7754851
+false	Snappy	0.75	Literal [2]	Delta [2, 1, 2, 2]	11395344
+false	Snappy	0.75	Literal [2]	Literal [2, 1, 1, 3]	7568040
+false	Snappy	0.75	Literal [2]	Delta [2, 1, 1, 3]	11284815
+false	Snappy	0.75	Literal [2]	Literal [1, 4, 1, 1]	8101391
+false	Snappy	0.75	Literal [2]	Delta [1, 4, 1, 1]	10743568
+false	Snappy	0.75	Literal [2]	Literal [1, 3, 2, 1]	7990554
+false	Snappy	0.75	Literal [2]	Delta [1, 3, 2, 1]	10385133
+false	Snappy	0.75	Literal [2]	Literal [1, 3, 1, 2]	8387527
+false	Snappy	0.75	Literal [2]	Delta [1, 3, 1, 2]	11033263
+false	Snappy	0.75	Literal [2]	Literal [1, 2, 3, 1]	7362708
+false	Snappy	0.75	Literal [2]	Delta [1, 2, 3, 1]	10889396
+false	Snappy	0.75	Literal [2]	Literal [1, 2, 2, 2]	7754851
+false	Snappy	0.75	Literal [2]	Delta [1, 2, 2, 2]	11394694
+false	Snappy	0.75	Literal [2]	Literal [1, 2, 1, 3]	7568040
+false	Snappy	0.75	Literal [2]	Delta [1, 2, 1, 3]	11287389
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 4, 1]	7486227
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 4, 1]	10968207
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 3, 2]	7911587
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 3, 2]	11307536
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 2, 3]	7777878
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 2, 3]	11161321
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 4]	7242944
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 4]	11351968
+false	Snappy	0.75	Literal [2]	Literal [5, 1, 1]	8051851
+false	Snappy	0.75	Literal [2]	Delta [5, 1, 1]	10019892
+false	Snappy	0.75	Literal [2]	Literal [4, 2, 1]	8164779
+false	Snappy	0.75	Literal [2]	Delta [4, 2, 1]	9781235
+false	Snappy	0.75	Literal [2]	Literal [4, 1, 2]	8559205
+false	Snappy	0.75	Literal [2]	Delta [4, 1, 2]	10431064
+false	Snappy	0.75	Literal [2]	Literal [3, 3, 1]	7362708
+false	Snappy	0.75	Literal [2]	Delta [3, 3, 1]	10027867
+false	Snappy	0.75	Literal [2]	Literal [3, 2, 2]	7754851
+false	Snappy	0.75	Literal [2]	Delta [3, 2, 2]	10534500
+false	Snappy	0.75	Literal [2]	Literal [3, 1, 3]	7568040
+false	Snappy	0.75	Literal [2]	Delta [3, 1, 3]	10427550
+false	Snappy	0.75	Literal [2]	Literal [2, 4, 1]	7486227
+false	Snappy	0.75	Literal [2]	Delta [2, 4, 1]	10557467
+false	Snappy	0.75	Literal [2]	Literal [2, 3, 2]	7911587
+false	Snappy	0.75	Literal [2]	Delta [2, 3, 2]	10896650
+false	Snappy	0.75	Literal [2]	Literal [2, 2, 3]	7777878
+false	Snappy	0.75	Literal [2]	Delta [2, 2, 3]	10750048
+false	Snappy	0.75	Literal [2]	Literal [2, 1, 4]	7242944
+false	Snappy	0.75	Literal [2]	Delta [2, 1, 4]	11060043
+false	Snappy	0.75	Literal [2]	Literal [1, 5, 1]	7562689
+false	Snappy	0.75	Literal [2]	Delta [1, 5, 1]	10514678
+false	Snappy	0.75	Literal [2]	Literal [1, 4, 2]	7993815
+false	Snappy	0.75	Literal [2]	Delta [1, 4, 2]	10789016
+false	Snappy	0.75	Literal [2]	Literal [1, 3, 3]	7825190
+false	Snappy	0.75	Literal [2]	Delta [1, 3, 3]	10484288
+false	Snappy	0.75	Literal [2]	Literal [1, 2, 4]	7242944
+false	Snappy	0.75	Literal [2]	Delta [1, 2, 4]	11059984
+false	Snappy	0.75	Literal [2]	Literal [1, 1, 5]	7439191
+false	Snappy	0.75	Literal [2]	Delta [1, 1, 5]	11053852
+false	Snappy	0.75	Literal [2]	Literal [6, 1]	7630977
+false	Snappy	0.75	Literal [2]	Delta [6, 1]	9758763
+false	Snappy	0.75	Literal [2]	Literal [5, 2]	7939979
+false	Snappy	0.75	Literal [2]	Delta [5, 2]	10063787
+false	Snappy	0.75	Literal [2]	Literal [4, 3]	7997010
+false	Snappy	0.75	Literal [2]	Delta [4, 3]	9882651
+false	Snappy	0.75	Literal [2]	Literal [3, 4]	7242944
+false	Snappy	0.75	Literal [2]	Delta [3, 4]	10198916
+false	Snappy	0.75	Literal [2]	Literal [2, 5]	7439191
+false	Snappy	0.75	Literal [2]	Delta [2, 5]	10643236
+false	Snappy	0.75	Literal [2]	Literal [1, 6]	7576188
+false	Snappy	0.75	Literal [2]	Delta [1, 6]	10561171
+false	Snappy	0.75	Literal [2]	Literal [7]	7666197
+false	Snappy	0.75	Literal [2]	Delta [7]	9908018
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 1, 1, 1, 1]	8203260
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 1, 1, 1, 1]	12005165
+false	Snappy	0.75	Delta [2]	Literal [2, 1, 1, 1, 1, 1]	8203260
+false	Snappy	0.75	Delta [2]	Delta [2, 1, 1, 1, 1, 1]	11716418
+false	Snappy	0.75	Delta [2]	Literal [1, 2, 1, 1, 1, 1]	8203260
+false	Snappy	0.75	Delta [2]	Delta [1, 2, 1, 1, 1, 1]	11717288
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 2, 1, 1, 1]	8414460
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 2, 1, 1, 1]	11608028
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 2, 1, 1]	7838436
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 2, 1, 1]	11615983
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 1, 2, 1]	7707424
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 1, 2, 1]	11447254
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 1, 1, 2]	8105093
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 1, 1, 2]	12086093
+false	Snappy	0.75	Delta [2]	Literal [3, 1, 1, 1, 1]	8203260
+false	Snappy	0.75	Delta [2]	Delta [3, 1, 1, 1, 1]	10857458
+false	Snappy	0.75	Delta [2]	Literal [2, 2, 1, 1, 1]	8414460
+false	Snappy	0.75	Delta [2]	Delta [2, 2, 1, 1, 1]	11196955
+false	Snappy	0.75	Delta [2]	Literal [2, 1, 2, 1, 1]	7838436
+false	Snappy	0.75	Delta [2]	Delta [2, 1, 2, 1, 1]	11323922
+false	Snappy	0.75	Delta [2]	Literal [2, 1, 1, 2, 1]	7707424
+false	Snappy	0.75	Delta [2]	Delta [2, 1, 1, 2, 1]	11158662
+false	Snappy	0.75	Delta [2]	Literal [2, 1, 1, 1, 2]	8105093
+false	Snappy	0.75	Delta [2]	Delta [2, 1, 1, 1, 2]	11797353
+false	Snappy	0.75	Delta [2]	Literal [1, 3, 1, 1, 1]	8461529
+false	Snappy	0.75	Delta [2]	Delta [1, 3, 1, 1, 1]	10933479
+false	Snappy	0.75	Delta [2]	Literal [1, 2, 2, 1, 1]	7838436
+false	Snappy	0.75	Delta [2]	Delta [1, 2, 2, 1, 1]	11323351
+false	Snappy	0.75	Delta [2]	Literal [1, 2, 1, 2, 1]	7707424
+false	Snappy	0.75	Delta [2]	Delta [1, 2, 1, 2, 1]	11161223
+false	Snappy	0.75	Delta [2]	Literal [1, 2, 1, 1, 2]	8105093
+false	Snappy	0.75	Delta [2]	Delta [1, 2, 1, 1, 2]	11798239
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 3, 1, 1]	7991535
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 3, 1, 1]	11234208
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 2, 2, 1]	7914366
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 2, 2, 1]	11022166
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 2, 1, 2]	8314195
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 2, 1, 2]	11682275
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 3, 1]	7337623
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 3, 1]	11156147
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 2, 2]	7729663
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 2, 2]	11661659
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 1, 3]	7543028
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 1, 3]	11547621
+false	Snappy	0.75	Delta [2]	Literal [4, 1, 1, 1]	8637150
+false	Snappy	0.75	Delta [2]	Delta [4, 1, 1, 1]	10331131
+false	Snappy	0.75	Delta [2]	Literal [3, 2, 1, 1]	7838436
+false	Snappy	0.75	Delta [2]	Delta [3, 2, 1, 1]	10463147
+false	Snappy	0.75	Delta [2]	Literal [3, 1, 2, 1]	7707424
+false	Snappy	0.75	Delta [2]	Delta [3, 1, 2, 1]	10301387
+false	Snappy	0.75	Delta [2]	Literal [3, 1, 1, 2]	8105093
+false	Snappy	0.75	Delta [2]	Delta [3, 1, 1, 2]	10938368
+false	Snappy	0.75	Delta [2]	Literal [2, 3, 1, 1]	7991535
+false	Snappy	0.75	Delta [2]	Delta [2, 3, 1, 1]	10823313
+false	Snappy	0.75	Delta [2]	Literal [2, 2, 2, 1]	7914366
+false	Snappy	0.75	Delta [2]	Delta [2, 2, 2, 1]	10610803
+false	Snappy	0.75	Delta [2]	Literal [2, 2, 1, 2]	8314195
+false	Snappy	0.75	Delta [2]	Delta [2, 2, 1, 2]	11271219
+false	Snappy	0.75	Delta [2]	Literal [2, 1, 3, 1]	7337623
+false	Snappy	0.75	Delta [2]	Delta [2, 1, 3, 1]	10864043
+false	Snappy	0.75	Delta [2]	Literal [2, 1, 2, 2]	7729663
+false	Snappy	0.75	Delta [2]	Delta [2, 1, 2, 2]	11369584
+false	Snappy	0.75	Delta [2]	Literal [2, 1, 1, 3]	7543028
+false	Snappy	0.75	Delta [2]	Delta [2, 1, 1, 3]	11259033
+false	Snappy	0.75	Delta [2]	Literal [1, 4, 1, 1]	8076134
+false	Snappy	0.75	Delta [2]	Delta [1, 4, 1, 1]	10717741
+false	Snappy	0.75	Delta [2]	Literal [1, 3, 2, 1]	7965186
+false	Snappy	0.75	Delta [2]	Delta [1, 3, 2, 1]	10359387
+false	Snappy	0.75	Delta [2]	Literal [1, 3, 1, 2]	8362118
+false	Snappy	0.75	Delta [2]	Delta [1, 3, 1, 2]	11007535
+false	Snappy	0.75	Delta [2]	Literal [1, 2, 3, 1]	7337623
+false	Snappy	0.75	Delta [2]	Delta [1, 2, 3, 1]	10863766
+false	Snappy	0.75	Delta [2]	Literal [1, 2, 2, 2]	7729663
+false	Snappy	0.75	Delta [2]	Delta [1, 2, 2, 2]	11369011
+false	Snappy	0.75	Delta [2]	Literal [1, 2, 1, 3]	7543028
+false	Snappy	0.75	Delta [2]	Delta [1, 2, 1, 3]	11261714
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 4, 1]	7461296
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 4, 1]	10942515
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 3, 2]	7886460
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 3, 2]	11281850
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 2, 3]	7752593
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 2, 3]	11135652
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 4]	7218287
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 4]	11326384
+false	Snappy	0.75	Delta [2]	Literal [5, 1, 1]	8026706
+false	Snappy	0.75	Delta [2]	Delta [5, 1, 1]	9994171
+false	Snappy	0.75	Delta [2]	Literal [4, 2, 1]	8139582
+false	Snappy	0.75	Delta [2]	Delta [4, 2, 1]	9755444
+false	Snappy	0.75	Delta [2]	Literal [4, 1, 2]	8533976
+false	Snappy	0.75	Delta [2]	Delta [4, 1, 2]	10405291
+false	Snappy	0.75	Delta [2]	Literal [3, 3, 1]	7337623
+false	Snappy	0.75	Delta [2]	Delta [3, 3, 1]	10002180
+false	Snappy	0.75	Delta [2]	Literal [3, 2, 2]	7729663
+false	Snappy	0.75	Delta [2]	Delta [3, 2, 2]	10508766
+false	Snappy	0.75	Delta [2]	Literal [3, 1, 3]	7543028
+false	Snappy	0.75	Delta [2]	Delta [3, 1, 3]	10401819
+false	Snappy	0.75	Delta [2]	Literal [2, 4, 1]	7461296
+false	Snappy	0.75	Delta [2]	Delta [2, 4, 1]	10531681
+false	Snappy	0.75	Delta [2]	Literal [2, 3, 2]	7886460
+false	Snappy	0.75	Delta [2]	Delta [2, 3, 2]	10870868
+false	Snappy	0.75	Delta [2]	Literal [2, 2, 3]	7752593
+false	Snappy	0.75	Delta [2]	Delta [2, 2, 3]	10724286
+false	Snappy	0.75	Delta [2]	Literal [2, 1, 4]	7218287
+false	Snappy	0.75	Delta [2]	Delta [2, 1, 4]	11034374
+false	Snappy	0.75	Delta [2]	Literal [1, 5, 1]	7537821
+false	Snappy	0.75	Delta [2]	Delta [1, 5, 1]	10488824
+false	Snappy	0.75	Delta [2]	Literal [1, 4, 2]	7968604
+false	Snappy	0.75	Delta [2]	Delta [1, 4, 2]	10763140
+false	Snappy	0.75	Delta [2]	Literal [1, 3, 3]	7799942
+false	Snappy	0.75	Delta [2]	Delta [1, 3, 3]	10458570
+false	Snappy	0.75	Delta [2]	Literal [1, 2, 4]	7218287
+false	Snappy	0.75	Delta [2]	Delta [1, 2, 4]	11034443
+false	Snappy	0.75	Delta [2]	Literal [1, 1, 5]	7414754
+false	Snappy	0.75	Delta [2]	Delta [1, 1, 5]	11028239
+false	Snappy	0.75	Delta [2]	Literal [6, 1]	7606232
+false	Snappy	0.75	Delta [2]	Delta [6, 1]	9733392
+false	Snappy	0.75	Delta [2]	Literal [5, 2]	7914908
+false	Snappy	0.75	Delta [2]	Delta [5, 2]	10038013
+false	Snappy	0.75	Delta [2]	Literal [4, 3]	7971938
+false	Snappy	0.75	Delta [2]	Delta [4, 3]	9856902
+false	Snappy	0.75	Delta [2]	Literal [3, 4]	7218287
+false	Snappy	0.75	Delta [2]	Delta [3, 4]	10173292
+false	Snappy	0.75	Delta [2]	Literal [2, 5]	7414754
+false	Snappy	0.75	Delta [2]	Delta [2, 5]	10617529
+false	Snappy	0.75	Delta [2]	Literal [1, 6]	7551721
+false	Snappy	0.75	Delta [2]	Delta [1, 6]	10535679
+false	Snappy	0.75	Delta [2]	Literal [7]	7643761
+false	Snappy	0.75	Delta [2]	Delta [7]	9883113
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 1, 1, 1, 1]	3650395
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 1, 1, 1, 1]	4574802
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 1, 1, 1, 1]	3650395
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 1, 1, 1, 1]	4484144
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 1, 1, 1, 1]	3650395
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 1, 1, 1, 1]	4486619
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 2, 1, 1, 1]	3676883
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 2, 1, 1, 1]	4375543
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 2, 1, 1]	3628543
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 2, 1, 1]	4636222
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 1, 2, 1]	3708362
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 1, 2, 1]	4588594
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 1, 1, 2]	3857199
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 1, 1, 2]	4828820
+true	Snappy	0.75	Literal [1, 1]	Literal [3, 1, 1, 1, 1]	3650395
+true	Snappy	0.75	Literal [1, 1]	Delta [3, 1, 1, 1, 1]	4249013
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 2, 1, 1, 1]	3676883
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 2, 1, 1, 1]	4281196
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 2, 1, 1]	3628543
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 2, 1, 1]	4545150
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 1, 2, 1]	3708362
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 1, 2, 1]	4497970
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 1, 1, 2]	3857199
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 1, 1, 2]	4738239
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 3, 1, 1, 1]	3688737
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 3, 1, 1, 1]	4194661
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 2, 1, 1]	3628543
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 2, 1, 1]	4546375
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 1, 2, 1]	3708362
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 1, 2, 1]	4500278
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 1, 1, 2]	3857199
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 1, 1, 2]	4740820
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 3, 1, 1]	3818500
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 3, 1, 1]	4591540
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 2, 2, 1]	3720898
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 2, 2, 1]	4370243
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 2, 1, 2]	3880520
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 2, 1, 2]	4624604
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 3, 1]	3776869
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 3, 1]	4629627
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 2, 2]	3829589
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 2, 2]	4884142
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 1, 3]	3893770
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 1, 3]	4716086
+true	Snappy	0.75	Literal [1, 1]	Literal [4, 1, 1, 1]	4047519
+true	Snappy	0.75	Literal [1, 1]	Delta [4, 1, 1, 1]	4194907
+true	Snappy	0.75	Literal [1, 1]	Literal [3, 2, 1, 1]	3628543
+true	Snappy	0.75	Literal [1, 1]	Delta [3, 2, 1, 1]	4307160
+true	Snappy	0.75	Literal [1, 1]	Literal [3, 1, 2, 1]	3708362
+true	Snappy	0.75	Literal [1, 1]	Delta [3, 1, 2, 1]	4262840
+true	Snappy	0.75	Literal [1, 1]	Literal [3, 1, 1, 2]	3857199
+true	Snappy	0.75	Literal [1, 1]	Delta [3, 1, 1, 2]	4503479
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 3, 1, 1]	3818500
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 3, 1, 1]	4497297
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 2, 2, 1]	3720898
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 2, 2, 1]	4275241
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 2, 1, 2]	3880520
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 2, 1, 2]	4530121
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 3, 1]	3776869
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 3, 1]	4538575
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 2, 2]	3829589
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 2, 2]	4793270
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 1, 3]	3893770
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 1, 3]	4625347
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 4, 1, 1]	3939180
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 4, 1, 1]	4434829
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 3, 2, 1]	3745035
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 3, 2, 1]	4202168
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 3, 1, 2]	3893964
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 3, 1, 2]	4445145
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 3, 1]	3776869
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 3, 1]	4539616
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 2, 2]	3829589
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 2, 2]	4794436
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 1, 3]	3893770
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 1, 3]	4627880
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 4, 1]	3974157
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 4, 1]	4655897
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 3, 2]	4020677
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 3, 2]	4838614
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 2, 3]	3917618
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 2, 3]	4510156
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 1, 4]	3937276
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 1, 4]	4651773
+true	Snappy	0.75	Literal [1, 1]	Literal [5, 1, 1]	3942908
+true	Snappy	0.75	Literal [1, 1]	Delta [5, 1, 1]	4188547
+true	Snappy	0.75	Literal [1, 1]	Literal [4, 2, 1]	4103424
+true	Snappy	0.75	Literal [1, 1]	Delta [4, 2, 1]	4200141
+true	Snappy	0.75	Literal [1, 1]	Literal [4, 1, 2]	4251614
+true	Snappy	0.75	Literal [1, 1]	Delta [4, 1, 2]	4445501
+true	Snappy	0.75	Literal [1, 1]	Literal [3, 3, 1]	3776869
+true	Snappy	0.75	Literal [1, 1]	Delta [3, 3, 1]	4299752
+true	Snappy	0.75	Literal [1, 1]	Literal [3, 2, 2]	3829589
+true	Snappy	0.75	Literal [1, 1]	Delta [3, 2, 2]	4555475
+true	Snappy	0.75	Literal [1, 1]	Literal [3, 1, 3]	3893770
+true	Snappy	0.75	Literal [1, 1]	Delta [3, 1, 3]	4390163
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 4, 1]	3974157
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 4, 1]	4561484
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 3, 2]	4020677
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 3, 2]	4744503
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 2, 3]	3917618
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 2, 3]	4415282
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 1, 4]	3937276
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 1, 4]	4561059
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 5, 1]	4237591
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 5, 1]	4584619
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 4, 2]	4140704
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 4, 2]	4681492
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 3, 3]	3928446
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 3, 3]	4326481
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 2, 4]	3937276
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 2, 4]	4562158
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 1, 5]	4237088
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 1, 5]	4717616
+true	Snappy	0.75	Literal [1, 1]	Literal [6, 1]	4242312
+true	Snappy	0.75	Literal [1, 1]	Delta [6, 1]	4397041
+true	Snappy	0.75	Literal [1, 1]	Literal [5, 2]	4144573
+true	Snappy	0.75	Literal [1, 1]	Delta [5, 2]	4435074
+true	Snappy	0.75	Literal [1, 1]	Literal [4, 3]	4287866
+true	Snappy	0.75	Literal [1, 1]	Delta [4, 3]	4328417
+true	Snappy	0.75	Literal [1, 1]	Literal [3, 4]	3937276
+true	Snappy	0.75	Literal [1, 1]	Delta [3, 4]	4322621
+true	Snappy	0.75	Literal [1, 1]	Literal [2, 5]	4237088
+true	Snappy	0.75	Literal [1, 1]	Delta [2, 5]	4623033
+true	Snappy	0.75	Literal [1, 1]	Literal [1, 6]	4442745
+true	Snappy	0.75	Literal [1, 1]	Delta [1, 6]	4593692
+true	Snappy	0.75	Literal [1, 1]	Literal [7]	4745077
+true	Snappy	0.75	Literal [1, 1]	Delta [7]	4472953
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 1, 1, 1, 1]	3656926
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 1, 1, 1, 1]	4564477
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 1, 1, 1, 1]	3656926
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 1, 1, 1, 1]	4473680
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 1, 1, 1, 1]	3656926
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 1, 1, 1, 1]	4476364
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 2, 1, 1, 1]	3685939
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 2, 1, 1, 1]	4365372
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 2, 1, 1]	3638130
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 2, 1, 1]	4625342
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 1, 2, 1]	3715200
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 1, 2, 1]	4577749
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 1, 1, 2]	3852777
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 1, 1, 2]	4823671
+true	Snappy	0.75	Delta [1, 1]	Literal [3, 1, 1, 1, 1]	3656926
+true	Snappy	0.75	Delta [1, 1]	Delta [3, 1, 1, 1, 1]	4238613
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 2, 1, 1, 1]	3685939
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 2, 1, 1, 1]	4270378
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 2, 1, 1]	3638130
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 2, 1, 1]	4534268
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 1, 2, 1]	3715200
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 1, 2, 1]	4486929
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 1, 1, 2]	3852777
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 1, 1, 2]	4732985
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 3, 1, 1, 1]	3697806
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 3, 1, 1, 1]	4183597
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 2, 1, 1]	3638130
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 2, 1, 1]	4535627
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 1, 2, 1]	3715200
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 1, 2, 1]	4489560
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 1, 1, 2]	3852777
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 1, 1, 2]	4735799
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 3, 1, 1]	3825466
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 3, 1, 1]	4582620
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 2, 2, 1]	3728592
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 2, 2, 1]	4359637
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 2, 1, 2]	3876118
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 2, 1, 2]	4619655
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 3, 1]	3780107
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 3, 1]	4622124
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 2, 2]	3825337
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 2, 2]	4879202
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 1, 3]	3889310
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 1, 3]	4710916
+true	Snappy	0.75	Delta [1, 1]	Literal [4, 1, 1, 1]	4056302
+true	Snappy	0.75	Delta [1, 1]	Delta [4, 1, 1, 1]	4183721
+true	Snappy	0.75	Delta [1, 1]	Literal [3, 2, 1, 1]	3638130
+true	Snappy	0.75	Delta [1, 1]	Delta [3, 2, 1, 1]	4296104
+true	Snappy	0.75	Delta [1, 1]	Literal [3, 1, 2, 1]	3715200
+true	Snappy	0.75	Delta [1, 1]	Delta [3, 1, 2, 1]	4251693
+true	Snappy	0.75	Delta [1, 1]	Literal [3, 1, 1, 2]	3852777
+true	Snappy	0.75	Delta [1, 1]	Delta [3, 1, 1, 2]	4498080
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 3, 1, 1]	3825466
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 3, 1, 1]	4488336
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 2, 2, 1]	3728592
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 2, 2, 1]	4264466
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 2, 1, 2]	3876118
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 2, 1, 2]	4524884
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 3, 1]	3780107
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 3, 1]	4531006
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 2, 2]	3825337
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 2, 2]	4788165
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 1, 3]	3889310
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 1, 3]	4620123
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 4, 1, 1]	3945149
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 4, 1, 1]	4425713
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 3, 2, 1]	3753710
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 3, 2, 1]	4190785
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 3, 1, 2]	3889760
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 3, 1, 2]	4440238
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 3, 1]	3780107
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 3, 1]	4532172
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 2, 2]	3825337
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 2, 2]	4789357
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 1, 3]	3889310
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 1, 3]	4622790
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 4, 1]	3975057
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 4, 1]	4649859
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 3, 2]	4016288
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 3, 2]	4834010
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 2, 3]	3913089
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 2, 3]	4505247
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 1, 4]	3932823
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 1, 4]	4646876
+true	Snappy	0.75	Delta [1, 1]	Literal [5, 1, 1]	3948770
+true	Snappy	0.75	Delta [1, 1]	Delta [5, 1, 1]	4179397
+true	Snappy	0.75	Delta [1, 1]	Literal [4, 2, 1]	4112082
+true	Snappy	0.75	Delta [1, 1]	Delta [4, 2, 1]	4189064
+true	Snappy	0.75	Delta [1, 1]	Literal [4, 1, 2]	4247401
+true	Snappy	0.75	Delta [1, 1]	Delta [4, 1, 2]	4439847
+true	Snappy	0.75	Delta [1, 1]	Literal [3, 3, 1]	3780107
+true	Snappy	0.75	Delta [1, 1]	Delta [3, 3, 1]	4292103
+true	Snappy	0.75	Delta [1, 1]	Literal [3, 2, 2]	3825337
+true	Snappy	0.75	Delta [1, 1]	Delta [3, 2, 2]	4550108
+true	Snappy	0.75	Delta [1, 1]	Literal [3, 1, 3]	3889310
+true	Snappy	0.75	Delta [1, 1]	Delta [3, 1, 3]	4385023
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 4, 1]	3975057
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 4, 1]	4555166
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 3, 2]	4016288
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 3, 2]	4739825
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 2, 3]	3913089
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 2, 3]	4410091
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 1, 4]	3932823
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 1, 4]	4555915
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 5, 1]	4235637
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 5, 1]	4579725
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 4, 2]	4136445
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 4, 2]	4676899
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 3, 3]	3924184
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 3, 3]	4321887
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 2, 4]	3932823
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 2, 4]	4557216
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 1, 5]	4232455
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 1, 5]	4712619
+true	Snappy	0.75	Delta [1, 1]	Literal [6, 1]	4239974
+true	Snappy	0.75	Delta [1, 1]	Delta [6, 1]	4391791
+true	Snappy	0.75	Delta [1, 1]	Literal [5, 2]	4140047
+true	Snappy	0.75	Delta [1, 1]	Delta [5, 2]	4430163
+true	Snappy	0.75	Delta [1, 1]	Literal [4, 3]	4283661
+true	Snappy	0.75	Delta [1, 1]	Delta [4, 3]	4323151
+true	Snappy	0.75	Delta [1, 1]	Literal [3, 4]	3932823
+true	Snappy	0.75	Delta [1, 1]	Delta [3, 4]	4317564
+true	Snappy	0.75	Delta [1, 1]	Literal [2, 5]	4232455
+true	Snappy	0.75	Delta [1, 1]	Delta [2, 5]	4618100
+true	Snappy	0.75	Delta [1, 1]	Literal [1, 6]	4439434
+true	Snappy	0.75	Delta [1, 1]	Delta [1, 6]	4589343
+true	Snappy	0.75	Delta [1, 1]	Literal [7]	4740680
+true	Snappy	0.75	Delta [1, 1]	Delta [7]	4467878
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 1, 1, 1, 1]	3687818
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 1, 1, 1, 1]	4603540
+true	Snappy	0.75	Literal [2]	Literal [2, 1, 1, 1, 1, 1]	3687818
+true	Snappy	0.75	Literal [2]	Delta [2, 1, 1, 1, 1, 1]	4513098
+true	Snappy	0.75	Literal [2]	Literal [1, 2, 1, 1, 1, 1]	3687818
+true	Snappy	0.75	Literal [2]	Delta [1, 2, 1, 1, 1, 1]	4515446
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 2, 1, 1, 1]	3715611
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 2, 1, 1, 1]	4404168
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 2, 1, 1]	3667881
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 2, 1, 1]	4665425
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 1, 2, 1]	3745483
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 1, 2, 1]	4617367
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 1, 1, 2]	3884744
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 1, 1, 2]	4856314
+true	Snappy	0.75	Literal [2]	Literal [3, 1, 1, 1, 1]	3687818
+true	Snappy	0.75	Literal [2]	Delta [3, 1, 1, 1, 1]	4277909
+true	Snappy	0.75	Literal [2]	Literal [2, 2, 1, 1, 1]	3715611
+true	Snappy	0.75	Literal [2]	Delta [2, 2, 1, 1, 1]	4309998
+true	Snappy	0.75	Literal [2]	Literal [2, 1, 2, 1, 1]	3667881
+true	Snappy	0.75	Literal [2]	Delta [2, 1, 2, 1, 1]	4574445
+true	Snappy	0.75	Literal [2]	Literal [2, 1, 1, 2, 1]	3745483
+true	Snappy	0.75	Literal [2]	Delta [2, 1, 1, 2, 1]	4526834
+true	Snappy	0.75	Literal [2]	Literal [2, 1, 1, 1, 2]	3884744
+true	Snappy	0.75	Literal [2]	Delta [2, 1, 1, 1, 2]	4765808
+true	Snappy	0.75	Literal [2]	Literal [1, 3, 1, 1, 1]	3727110
+true	Snappy	0.75	Literal [2]	Delta [1, 3, 1, 1, 1]	4223602
+true	Snappy	0.75	Literal [2]	Literal [1, 2, 2, 1, 1]	3667881
+true	Snappy	0.75	Literal [2]	Delta [1, 2, 2, 1, 1]	4575169
+true	Snappy	0.75	Literal [2]	Literal [1, 2, 1, 2, 1]	3745483
+true	Snappy	0.75	Literal [2]	Delta [1, 2, 1, 2, 1]	4528954
+true	Snappy	0.75	Literal [2]	Literal [1, 2, 1, 1, 2]	3884744
+true	Snappy	0.75	Literal [2]	Delta [1, 2, 1, 1, 2]	4768246
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 3, 1, 1]	3856042
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 3, 1, 1]	4619991
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 2, 2, 1]	3758564
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 2, 2, 1]	4398605
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 2, 1, 2]	3908060
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 2, 1, 2]	4652082
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 3, 1]	3810539
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 3, 1]	4657905
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 2, 2]	3856975
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 2, 2]	4911606
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 1, 3]	3921215
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 1, 3]	4743604
+true	Snappy	0.75	Literal [2]	Literal [4, 1, 1, 1]	4085710
+true	Snappy	0.75	Literal [2]	Delta [4, 1, 1, 1]	4223571
+true	Snappy	0.75	Literal [2]	Literal [3, 2, 1, 1]	3667881
+true	Snappy	0.75	Literal [2]	Delta [3, 2, 1, 1]	4336414
+true	Snappy	0.75	Literal [2]	Literal [3, 1, 2, 1]	3745483
+true	Snappy	0.75	Literal [2]	Delta [3, 1, 2, 1]	4291602
+true	Snappy	0.75	Literal [2]	Literal [3, 1, 1, 2]	3884744
+true	Snappy	0.75	Literal [2]	Delta [3, 1, 1, 2]	4531055
+true	Snappy	0.75	Literal [2]	Literal [2, 3, 1, 1]	3856042
+true	Snappy	0.75	Literal [2]	Delta [2, 3, 1, 1]	4525773
+true	Snappy	0.75	Literal [2]	Literal [2, 2, 2, 1]	3758564
+true	Snappy	0.75	Literal [2]	Delta [2, 2, 2, 1]	4303842
+true	Snappy	0.75	Literal [2]	Literal [2, 2, 1, 2]	3908060
+true	Snappy	0.75	Literal [2]	Delta [2, 2, 1, 2]	4557799
+true	Snappy	0.75	Literal [2]	Literal [2, 1, 3, 1]	3810539
+true	Snappy	0.75	Literal [2]	Delta [2, 1, 3, 1]	4566964
+true	Snappy	0.75	Literal [2]	Literal [2, 1, 2, 2]	3856975
+true	Snappy	0.75	Literal [2]	Delta [2, 1, 2, 2]	4820816
+true	Snappy	0.75	Literal [2]	Literal [2, 1, 1, 3]	3921215
+true	Snappy	0.75	Literal [2]	Delta [2, 1, 1, 3]	4652955
+true	Snappy	0.75	Literal [2]	Literal [1, 4, 1, 1]	3975694
+true	Snappy	0.75	Literal [2]	Delta [1, 4, 1, 1]	4462938
+true	Snappy	0.75	Literal [2]	Literal [1, 3, 2, 1]	3783598
+true	Snappy	0.75	Literal [2]	Delta [1, 3, 2, 1]	4230519
+true	Snappy	0.75	Literal [2]	Literal [1, 3, 1, 2]	3921414
+true	Snappy	0.75	Literal [2]	Delta [1, 3, 1, 2]	4472673
+true	Snappy	0.75	Literal [2]	Literal [1, 2, 3, 1]	3810539
+true	Snappy	0.75	Literal [2]	Delta [1, 2, 3, 1]	4567671
+true	Snappy	0.75	Literal [2]	Literal [1, 2, 2, 2]	3856975
+true	Snappy	0.75	Literal [2]	Delta [1, 2, 2, 2]	4821805
+true	Snappy	0.75	Literal [2]	Literal [1, 2, 1, 3]	3921215
+true	Snappy	0.75	Literal [2]	Delta [1, 2, 1, 3]	4655337
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 4, 1]	4005599
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 4, 1]	4684094
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 3, 2]	4048074
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 3, 2]	4866144
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 2, 3]	3945058
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 2, 3]	4537719
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 1, 4]	3964733
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 1, 4]	4679203
+true	Snappy	0.75	Literal [2]	Literal [5, 1, 1]	3979296
+true	Snappy	0.75	Literal [2]	Delta [5, 1, 1]	4217011
+true	Snappy	0.75	Literal [2]	Literal [4, 2, 1]	4141674
+true	Snappy	0.75	Literal [2]	Delta [4, 2, 1]	4228688
+true	Snappy	0.75	Literal [2]	Literal [4, 1, 2]	4279099
+true	Snappy	0.75	Literal [2]	Delta [4, 1, 2]	4473117
+true	Snappy	0.75	Literal [2]	Literal [3, 3, 1]	3810539
+true	Snappy	0.75	Literal [2]	Delta [3, 3, 1]	4328120
+true	Snappy	0.75	Literal [2]	Literal [3, 2, 2]	3856975
+true	Snappy	0.75	Literal [2]	Delta [3, 2, 2]	4582993
+true	Snappy	0.75	Literal [2]	Literal [3, 1, 3]	3921215
+true	Snappy	0.75	Literal [2]	Delta [3, 1, 3]	4417778
+true	Snappy	0.75	Literal [2]	Literal [2, 4, 1]	4005599
+true	Snappy	0.75	Literal [2]	Delta [2, 4, 1]	4589766
+true	Snappy	0.75	Literal [2]	Literal [2, 3, 2]	4048074
+true	Snappy	0.75	Literal [2]	Delta [2, 3, 2]	4772156
+true	Snappy	0.75	Literal [2]	Literal [2, 2, 3]	3945058
+true	Snappy	0.75	Literal [2]	Delta [2, 2, 3]	4442961
+true	Snappy	0.75	Literal [2]	Literal [2, 1, 4]	3964733
+true	Snappy	0.75	Literal [2]	Delta [2, 1, 4]	4588583
+true	Snappy	0.75	Literal [2]	Literal [1, 5, 1]	4267035
+true	Snappy	0.75	Literal [2]	Delta [1, 5, 1]	4612126
+true	Snappy	0.75	Literal [2]	Literal [1, 4, 2]	4168055
+true	Snappy	0.75	Literal [2]	Delta [1, 4, 2]	4708916
+true	Snappy	0.75	Literal [2]	Literal [1, 3, 3]	3955880
+true	Snappy	0.75	Literal [2]	Delta [1, 3, 3]	4353945
+true	Snappy	0.75	Literal [2]	Literal [1, 2, 4]	3964733
+true	Snappy	0.75	Literal [2]	Delta [1, 2, 4]	4589562
+true	Snappy	0.75	Literal [2]	Literal [1, 1, 5]	4264527
+true	Snappy	0.75	Literal [2]	Delta [1, 1, 5]	4745108
+true	Snappy	0.75	Literal [2]	Literal [6, 1]	4271510
+true	Snappy	0.75	Literal [2]	Delta [6, 1]	4424541
+true	Snappy	0.75	Literal [2]	Literal [5, 2]	4171873
+true	Snappy	0.75	Literal [2]	Delta [5, 2]	4462584
+true	Snappy	0.75	Literal [2]	Literal [4, 3]	4315316
+true	Snappy	0.75	Literal [2]	Delta [4, 3]	4356134
+true	Snappy	0.75	Literal [2]	Literal [3, 4]	3964733
+true	Snappy	0.75	Literal [2]	Delta [3, 4]	4350142
+true	Snappy	0.75	Literal [2]	Literal [2, 5]	4264527
+true	Snappy	0.75	Literal [2]	Delta [2, 5]	4650608
+true	Snappy	0.75	Literal [2]	Literal [1, 6]	4470138
+true	Snappy	0.75	Literal [2]	Delta [1, 6]	4621103
+true	Snappy	0.75	Literal [2]	Literal [7]	4772514
+true	Snappy	0.75	Literal [2]	Delta [7]	4500454
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 1, 1, 1, 1]	3687141
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 1, 1, 1, 1]	4594936
+true	Snappy	0.75	Delta [2]	Literal [2, 1, 1, 1, 1, 1]	3687141
+true	Snappy	0.75	Delta [2]	Delta [2, 1, 1, 1, 1, 1]	4504194
+true	Snappy	0.75	Delta [2]	Literal [1, 2, 1, 1, 1, 1]	3687141
+true	Snappy	0.75	Delta [2]	Delta [1, 2, 1, 1, 1, 1]	4506795
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 2, 1, 1, 1]	3716241
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 2, 1, 1, 1]	4395521
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 2, 1, 1]	3669160
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 2, 1, 1]	4655812
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 1, 2, 1]	3746075
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 1, 2, 1]	4608413
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 1, 1, 2]	3882277
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 1, 1, 2]	4853256
+true	Snappy	0.75	Delta [2]	Literal [3, 1, 1, 1, 1]	3687141
+true	Snappy	0.75	Delta [2]	Delta [3, 1, 1, 1, 1]	4269072
+true	Snappy	0.75	Delta [2]	Literal [2, 2, 1, 1, 1]	3716241
+true	Snappy	0.75	Delta [2]	Delta [2, 2, 1, 1, 1]	4300915
+true	Snappy	0.75	Delta [2]	Literal [2, 1, 2, 1, 1]	3669160
+true	Snappy	0.75	Delta [2]	Delta [2, 1, 2, 1, 1]	4564716
+true	Snappy	0.75	Delta [2]	Literal [2, 1, 1, 2, 1]	3746075
+true	Snappy	0.75	Delta [2]	Delta [2, 1, 1, 2, 1]	4517649
+true	Snappy	0.75	Delta [2]	Literal [2, 1, 1, 1, 2]	3882277
+true	Snappy	0.75	Delta [2]	Delta [2, 1, 1, 1, 2]	4762540
+true	Snappy	0.75	Delta [2]	Literal [1, 3, 1, 1, 1]	3727747
+true	Snappy	0.75	Delta [2]	Delta [1, 3, 1, 1, 1]	4214111
+true	Snappy	0.75	Delta [2]	Literal [1, 2, 2, 1, 1]	3669160
+true	Snappy	0.75	Delta [2]	Delta [1, 2, 2, 1, 1]	4566119
+true	Snappy	0.75	Delta [2]	Literal [1, 2, 1, 2, 1]	3746075
+true	Snappy	0.75	Delta [2]	Delta [1, 2, 1, 2, 1]	4520192
+true	Snappy	0.75	Delta [2]	Literal [1, 2, 1, 1, 2]	3882277
+true	Snappy	0.75	Delta [2]	Delta [1, 2, 1, 1, 2]	4765138
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 3, 1, 1]	3856195
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 3, 1, 1]	4612978
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 2, 2, 1]	3759791
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 2, 2, 1]	4390247
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 2, 1, 2]	3905642
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 2, 1, 2]	4649116
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 3, 1]	3810019
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 3, 1]	4651853
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 2, 2]	3854724
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 2, 2]	4908496
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 1, 3]	3918888
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 1, 3]	4740504
+true	Snappy	0.75	Delta [2]	Literal [4, 1, 1, 1]	4086874
+true	Snappy	0.75	Delta [2]	Delta [4, 1, 1, 1]	4214564
+true	Snappy	0.75	Delta [2]	Literal [3, 2, 1, 1]	3669160
+true	Snappy	0.75	Delta [2]	Delta [3, 2, 1, 1]	4326678
+true	Snappy	0.75	Delta [2]	Literal [3, 1, 2, 1]	3746075
+true	Snappy	0.75	Delta [2]	Delta [3, 1, 2, 1]	4282362
+true	Snappy	0.75	Delta [2]	Literal [3, 1, 1, 2]	3882277
+true	Snappy	0.75	Delta [2]	Delta [3, 1, 1, 2]	4527686
+true	Snappy	0.75	Delta [2]	Literal [2, 3, 1, 1]	3856195
+true	Snappy	0.75	Delta [2]	Delta [2, 3, 1, 1]	4518616
+true	Snappy	0.75	Delta [2]	Literal [2, 2, 2, 1]	3759791
+true	Snappy	0.75	Delta [2]	Delta [2, 2, 2, 1]	4295136
+true	Snappy	0.75	Delta [2]	Literal [2, 2, 1, 2]	3905642
+true	Snappy	0.75	Delta [2]	Delta [2, 2, 1, 2]	4554378
+true	Snappy	0.75	Delta [2]	Literal [2, 1, 3, 1]	3810019
+true	Snappy	0.75	Delta [2]	Delta [2, 1, 3, 1]	4560761
+true	Snappy	0.75	Delta [2]	Literal [2, 1, 2, 2]	3854724
+true	Snappy	0.75	Delta [2]	Delta [2, 1, 2, 2]	4817505
+true	Snappy	0.75	Delta [2]	Literal [2, 1, 1, 3]	3918888
+true	Snappy	0.75	Delta [2]	Delta [2, 1, 1, 3]	4649710
+true	Snappy	0.75	Delta [2]	Literal [1, 4, 1, 1]	3975876
+true	Snappy	0.75	Delta [2]	Delta [1, 4, 1, 1]	4456128
+true	Snappy	0.75	Delta [2]	Literal [1, 3, 2, 1]	3784962
+true	Snappy	0.75	Delta [2]	Delta [1, 3, 2, 1]	4221205
+true	Snappy	0.75	Delta [2]	Literal [1, 3, 1, 2]	3919130
+true	Snappy	0.75	Delta [2]	Delta [1, 3, 1, 2]	4469504
+true	Snappy	0.75	Delta [2]	Literal [1, 2, 3, 1]	3810019
+true	Snappy	0.75	Delta [2]	Delta [1, 2, 3, 1]	4561968
+true	Snappy	0.75	Delta [2]	Literal [1, 2, 2, 2]	3854724
+true	Snappy	0.75	Delta [2]	Delta [1, 2, 2, 2]	4818620
+true	Snappy	0.75	Delta [2]	Literal [1, 2, 1, 3]	3918888
+true	Snappy	0.75	Delta [2]	Delta [1, 2, 1, 3]	4652393
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 4, 1]	4004761
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 4, 1]	4679450
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 3, 2]	4045644
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 3, 2]	4863423
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 2, 3]	3942674
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 2, 3]	4534699
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 1, 4]	3962055
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 1, 4]	4676115
+true	Snappy	0.75	Delta [2]	Literal [5, 1, 1]	3979688
+true	Snappy	0.75	Delta [2]	Delta [5, 1, 1]	4209681
+true	Snappy	0.75	Delta [2]	Literal [4, 2, 1]	4142906
+true	Snappy	0.75	Delta [2]	Delta [4, 2, 1]	4219654
+true	Snappy	0.75	Delta [2]	Literal [4, 1, 2]	4276883
+true	Snappy	0.75	Delta [2]	Delta [4, 1, 2]	4469462
+true	Snappy	0.75	Delta [2]	Literal [3, 3, 1]	3810019
+true	Snappy	0.75	Delta [2]	Delta [3, 3, 1]	4321824
+true	Snappy	0.75	Delta [2]	Literal [3, 2, 2]	3854724
+true	Snappy	0.75	Delta [2]	Delta [3, 2, 2]	4579408
+true	Snappy	0.75	Delta [2]	Literal [3, 1, 3]	3918888
+true	Snappy	0.75	Delta [2]	Delta [3, 1, 3]	4414611
+true	Snappy	0.75	Delta [2]	Literal [2, 4, 1]	4004761
+true	Snappy	0.75	Delta [2]	Delta [2, 4, 1]	4584811
+true	Snappy	0.75	Delta [2]	Literal [2, 3, 2]	4045644
+true	Snappy	0.75	Delta [2]	Delta [2, 3, 2]	4769177
+true	Snappy	0.75	Delta [2]	Literal [2, 2, 3]	3942674
+true	Snappy	0.75	Delta [2]	Delta [2, 2, 3]	4439616
+true	Snappy	0.75	Delta [2]	Literal [2, 1, 4]	3962055
+true	Snappy	0.75	Delta [2]	Delta [2, 1, 4]	4585181
+true	Snappy	0.75	Delta [2]	Literal [1, 5, 1]	4264803
+true	Snappy	0.75	Delta [2]	Delta [1, 5, 1]	4609279
+true	Snappy	0.75	Delta [2]	Literal [1, 4, 2]	4165541
+true	Snappy	0.75	Delta [2]	Delta [1, 4, 2]	4706156
+true	Snappy	0.75	Delta [2]	Literal [1, 3, 3]	3953625
+true	Snappy	0.75	Delta [2]	Delta [1, 3, 3]	4351332
+true	Snappy	0.75	Delta [2]	Literal [1, 2, 4]	3962055
+true	Snappy	0.75	Delta [2]	Delta [1, 2, 4]	4586486
+true	Snappy	0.75	Delta [2]	Literal [1, 1, 5]	4261760
+true	Snappy	0.75	Delta [2]	Delta [1, 1, 5]	4741771
+true	Snappy	0.75	Delta [2]	Literal [6, 1]	4269264
+true	Snappy	0.75	Delta [2]	Delta [6, 1]	4421398
+true	Snappy	0.75	Delta [2]	Literal [5, 2]	4169136
+true	Snappy	0.75	Delta [2]	Delta [5, 2]	4459291
+true	Snappy	0.75	Delta [2]	Literal [4, 3]	4313229
+true	Snappy	0.75	Delta [2]	Delta [4, 3]	4352721
+true	Snappy	0.75	Delta [2]	Literal [3, 4]	3962055
+true	Snappy	0.75	Delta [2]	Delta [3, 4]	4346851
+true	Snappy	0.75	Delta [2]	Literal [2, 5]	4261760
+true	Snappy	0.75	Delta [2]	Delta [2, 5]	4647238
+true	Snappy	0.75	Delta [2]	Literal [1, 6]	4467339
+true	Snappy	0.75	Delta [2]	Delta [1, 6]	4617388
+true	Snappy	0.75	Delta [2]	Literal [7]	4768873
+true	Snappy	0.75	Delta [2]	Delta [7]	4496438

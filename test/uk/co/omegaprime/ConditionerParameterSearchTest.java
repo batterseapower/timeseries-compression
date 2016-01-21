@@ -192,6 +192,10 @@ public class ConditionerParameterSearchTest {
         System.out.println();
     }
 
+    private BufferedWriter openWriter(String what) throws IOException {
+        return new BufferedWriter(new FileWriter("/Users/mbolingbroke/Programming/timeseries-compression/" + what + ".tsv"));
+    }
+
     @Test
     public void allFloatParameterCombinationsKnockout() throws IOException {
         final List<float[]> fullData = loadFullFloatData();
@@ -208,17 +212,24 @@ public class ConditionerParameterSearchTest {
                 return ys;
             }).collect(Collectors.toList());
 
-            allFloatParameterCombinationsWork(check, "Snappy\t" + knockout, SnappyOutputStream::new, SnappyInputStream::new);
+            try (BufferedWriter noSplitWriter = openWriter("floats-knockout-nosplit");
+                 BufferedWriter splitWriter = openWriter("floats-knockout")) {
+                allFloatParameterCombinationsWork(check, "Snappy\t" + knockout, SnappyOutputStream::new, SnappyInputStream::new, noSplitWriter, splitWriter);
+            }
         }
     }
 
     @Test
     public void allFloatParameterCombinationsWork() throws IOException {
-        allFloatParameterCombinationsWork(loadFullFloatData(), "Snappy", SnappyOutputStream::new,                                                              SnappyInputStream::new);
-        allFloatParameterCombinationsWork(loadFullFloatData(), "BZ2", os -> new BZip2CompressorOutputStream(os, BZip2CompressorOutputStream.MIN_BLOCKSIZE), BZip2CompressorInputStream::new);
+        try (BufferedWriter noSplitWriter = openWriter("floats-nosplit");
+             BufferedWriter splitWriter = openWriter("floats")) {
+            allFloatParameterCombinationsWork(loadFullFloatData(), "Snappy", SnappyOutputStream::new,                                                              SnappyInputStream::new,          noSplitWriter, splitWriter);
+            allFloatParameterCombinationsWork(loadFullFloatData(), "BZ2",    os -> new BZip2CompressorOutputStream(os, BZip2CompressorOutputStream.MIN_BLOCKSIZE), BZip2CompressorInputStream::new, noSplitWriter, splitWriter);
+        }
     }
 
-    public void allFloatParameterCombinationsWork(List<float[]> inputs, String compressor, IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor) throws IOException {
+    public void allFloatParameterCombinationsWork(List<float[]> inputs, String compressor, IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor,
+                                                  BufferedWriter noSplitWriter, BufferedWriter splitWriter) throws IOException {
         {
             long size = 0;
             for (float[] input : inputs) {
@@ -237,8 +248,11 @@ public class ConditionerParameterSearchTest {
         for (Pair<float[]> bits : ConditionerParameterSearchTest.<float[]>pairs(4, Conditioner::writeFloatLiteral, Conditioner::readFloatLiteral, Conditioner::writeFloatDelta, Conditioner::readFloatDelta)) {
             final String method = String.format("%s\t%s", compressor, bits);
 
-            evaluateFloatPair(method, inputs, mkCompressor, mkUncompressor,
-                              bits.writer, bits.reader);
+            noSplitWriter.write(method);
+            noSplitWriter.write('\t');
+            noSplitWriter.write(Long.toString(evaluateFloatPair(method, inputs, mkCompressor, mkUncompressor,
+                                                                bits.writer, bits.reader)));
+            noSplitWriter.write('\n');
         }
 
         for (boolean specialCases : new boolean[] { false, true }) {
@@ -246,15 +260,19 @@ public class ConditionerParameterSearchTest {
             for (Pair<byte[]> exponent : Arrays.<Pair<byte[]>>asList(new Pair<byte[]>("Literal", Conditioner.writeFloatExponentsLiteral(), Conditioner.readFloatExponentsLiteral()), new Pair<byte[]>("Delta", Conditioner.writeFloatExponentsDelta(), Conditioner.readFloatExponentsDelta()))) {
                 for (Pair<int[]> mantissa : ConditionerParameterSearchTest.<int[]>pairs(3, Conditioner::writeFloatMantissasLiteral, Conditioner::readFloatMantissasLiteral, Conditioner::writeFloatMantissasDelta, Conditioner::readFloatMantissasDelta)) {
                     final String method = String.format("%s\t%s\t%s\t%s", specialCases, compressor, exponent, mantissa);
-                    evaluateFloatPair(method, inputs, mkCompressor, mkUncompressor,
-                                      conditioner.conditionFloat  (exponent.writer, mantissa.writer),
-                                      conditioner.unconditionFloat(exponent.reader, mantissa.reader));
+
+                    splitWriter.write(method);
+                    splitWriter.write('\t');
+                    splitWriter.write(Long.toString(evaluateFloatPair(method, inputs, mkCompressor, mkUncompressor,
+                                                                      conditioner.conditionFloat  (exponent.writer, mantissa.writer),
+                                                                      conditioner.unconditionFloat(exponent.reader, mantissa.reader))));
+                    splitWriter.write('\n');
                 }
             }
         }
     }
 
-    private static void evaluateFloatPair(String method, List<float[]> inputs,
+    private static long evaluateFloatPair(String method, List<float[]> inputs,
                                           IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor,
                                           Conditioner.Writer<float[]> writer, Conditioner.Reader<float[]> reader) throws IOException {
         long size = 0;
@@ -273,7 +291,7 @@ public class ConditionerParameterSearchTest {
             size += baos.size();
         }
 
-        System.out.println(method + "\t" + size);
+        return size;
     }
 
     @Test
@@ -292,17 +310,24 @@ public class ConditionerParameterSearchTest {
                 return ys;
             }).collect(Collectors.toList());
 
-            allDoubleParameterCombinationsWork(check, "Snappy\t" + knockout, SnappyOutputStream::new, SnappyInputStream::new);
+            try (BufferedWriter noSplitWriter = openWriter("doubles-knockout-nosplit");
+                 BufferedWriter splitWriter = openWriter("doubles-knockout")) {
+                allDoubleParameterCombinationsWork(check, "Snappy\t" + knockout, SnappyOutputStream::new, SnappyInputStream::new, noSplitWriter, splitWriter);
+            }
         }
     }
 
     @Test
     public void allDoubleParameterCombinationsWork() throws IOException {
-        allDoubleParameterCombinationsWork(loadFullDoubleData(), "Snappy", SnappyOutputStream::new,                                                              SnappyInputStream::new);
-        allDoubleParameterCombinationsWork(loadFullDoubleData(), "BZ2",    os -> new BZip2CompressorOutputStream(os, BZip2CompressorOutputStream.MIN_BLOCKSIZE), BZip2CompressorInputStream::new);
+        try (BufferedWriter noSplitWriter = openWriter("doubles-nosplit");
+             BufferedWriter splitWriter = openWriter("doubles")) {
+            allDoubleParameterCombinationsWork(loadFullDoubleData(), "Snappy", SnappyOutputStream::new,                                                              SnappyInputStream::new,          noSplitWriter, splitWriter);
+            allDoubleParameterCombinationsWork(loadFullDoubleData(), "BZ2",    os -> new BZip2CompressorOutputStream(os, BZip2CompressorOutputStream.MIN_BLOCKSIZE), BZip2CompressorInputStream::new, noSplitWriter, splitWriter);
+        }
     }
 
-    public void allDoubleParameterCombinationsWork(List<double[]> inputs, String compressor, IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor) throws IOException {
+    public void allDoubleParameterCombinationsWork(List<double[]> inputs, String compressor, IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor,
+                                                   BufferedWriter noSplitWriter, BufferedWriter splitWriter) throws IOException {
         {
             long size = 0;
             for (double[] input : inputs) {
@@ -317,11 +342,15 @@ public class ConditionerParameterSearchTest {
             System.err.println(compressor + " baseline: " + size);
         }
 
+
         for (Pair<double[]> bits : ConditionerParameterSearchTest.<double[]>pairs(8, Conditioner::writeDoubleLiteral, Conditioner::readDoubleLiteral, Conditioner::writeDoubleDelta, Conditioner::readDoubleDelta)) {
             final String method = String.format("%s\t%s", compressor, bits);
 
-            evaluateDoublePair(method, inputs, mkCompressor, mkUncompressor,
-                               bits.writer, bits.reader);
+            noSplitWriter.write(method);
+            noSplitWriter.write('\t');
+            noSplitWriter.write(Long.toString(evaluateDoublePair(method, inputs, mkCompressor, mkUncompressor,
+                                                                 bits.writer, bits.reader)));
+            noSplitWriter.write('\n');
         }
 
         for (boolean specialCases : new boolean[] { false, true }) {
@@ -329,15 +358,19 @@ public class ConditionerParameterSearchTest {
             for (Pair<short[]> exponent : ConditionerParameterSearchTest.<short[]>pairs(2, Conditioner::writeDoubleExponentsLiteral, Conditioner::readDoubleExponentsLiteral, Conditioner::writeDoubleExponentsDelta, Conditioner::readDoubleExponentsDelta)) {
                 for (Pair<long[]> mantissa : ConditionerParameterSearchTest.<long[]>pairs(7, Conditioner::writeDoubleMantissasLiteral, Conditioner::readDoubleMantissasLiteral, Conditioner::writeDoubleMantissasDelta, Conditioner::readDoubleMantissasDelta)) {
                     final String method = String.format("%s\t%s\t%s\t%s", specialCases, compressor, exponent, mantissa);
-                    evaluateDoublePair(method, inputs, mkCompressor, mkUncompressor,
-                                       conditioner.conditionDouble  (exponent.writer, mantissa.writer),
-                                       conditioner.unconditionDouble(exponent.reader, mantissa.reader));
+
+                    splitWriter.write(method);
+                    splitWriter.write('\t');
+                    splitWriter.write(Long.toString(evaluateDoublePair(method, inputs, mkCompressor, mkUncompressor,
+                                                                       conditioner.conditionDouble  (exponent.writer, mantissa.writer),
+                                                                       conditioner.unconditionDouble(exponent.reader, mantissa.reader))));
+                    splitWriter.write('\n');
                 }
             }
         }
     }
 
-    private static void evaluateDoublePair(String method, List<double[]> inputs,
+    private static long evaluateDoublePair(String method, List<double[]> inputs,
                                            IOFunction<OutputStream, OutputStream> mkCompressor, IOFunction<InputStream, InputStream> mkUncompressor,
                                            Conditioner.Writer<double[]> writer, Conditioner.Reader<double[]> reader) throws IOException {
         long size = 0;
@@ -356,6 +389,6 @@ public class ConditionerParameterSearchTest {
             size += baos.size();
         }
 
-        System.out.println(method + "\t" + size);
+        return size;
     }
 }
