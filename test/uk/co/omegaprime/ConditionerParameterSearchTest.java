@@ -200,20 +200,20 @@ public class ConditionerParameterSearchTest {
     public void allFloatParameterCombinationsKnockout() throws IOException {
         final List<float[]> fullData = loadFullFloatData();
 
-        for (float knockout : new float[] { 0.1f, 0.25f, 0.5f, 0.75f }) {
-            final Random r = new Random(1337);
-            final List<float[]> check = fullData.stream().map(xs -> {
-                final float[] ys = xs.clone();
-                for (int i = 0; i < ys.length; i++) {
-                    if (r.nextDouble() < knockout) {
-                        ys[i] = Float.NaN;
+        try (BufferedWriter noSplitWriter = openWriter("floats-knockout-nosplit");
+             BufferedWriter splitWriter = openWriter("floats-knockout")) {
+            for (float knockout : new float[] { 0.1f, 0.25f, 0.5f, 0.75f }) {
+                final Random r = new Random(1337);
+                final List<float[]> check = fullData.stream().map(xs -> {
+                    final float[] ys = xs.clone();
+                    for (int i = 0; i < ys.length; i++) {
+                        if (r.nextDouble() < knockout) {
+                            ys[i] = Float.NaN;
+                        }
                     }
-                }
-                return ys;
-            }).collect(Collectors.toList());
+                    return ys;
+                }).collect(Collectors.toList());
 
-            try (BufferedWriter noSplitWriter = openWriter("floats-knockout-nosplit");
-                 BufferedWriter splitWriter = openWriter("floats-knockout")) {
                 allFloatParameterCombinationsWork(check, "Snappy\t" + knockout, SnappyOutputStream::new, SnappyInputStream::new, noSplitWriter, splitWriter);
             }
         }
@@ -298,20 +298,20 @@ public class ConditionerParameterSearchTest {
     public void allDoubleParameterCombinationsKnockout() throws IOException {
         final List<double[]> fullData = loadFullDoubleData();
 
-        for (float knockout : new float[] { 0.1f, 0.25f, 0.5f, 0.75f }) {
-            final Random r = new Random(1337);
-            final List<double[]> check = fullData.stream().map(xs -> {
-                final double[] ys = xs.clone();
-                for (int i = 0; i < ys.length; i++) {
-                    if (r.nextDouble() < knockout) {
-                        ys[i] = Double.NaN;
+        try (BufferedWriter noSplitWriter = openWriter("doubles-knockout-nosplit");
+             BufferedWriter splitWriter = openWriter("doubles-knockout")) {
+            for (float knockout : new float[] { 0.1f, 0.25f, 0.5f, 0.75f }) {
+                final Random r = new Random(1337);
+                final List<double[]> check = fullData.stream().map(xs -> {
+                    final double[] ys = xs.clone();
+                    for (int i = 0; i < ys.length; i++) {
+                        if (r.nextDouble() < knockout) {
+                            ys[i] = Double.NaN;
+                        }
                     }
-                }
-                return ys;
-            }).collect(Collectors.toList());
+                    return ys;
+                }).collect(Collectors.toList());
 
-            try (BufferedWriter noSplitWriter = openWriter("doubles-knockout-nosplit");
-                 BufferedWriter splitWriter = openWriter("doubles-knockout")) {
                 allDoubleParameterCombinationsWork(check, "Snappy\t" + knockout, SnappyOutputStream::new, SnappyInputStream::new, noSplitWriter, splitWriter);
             }
         }
