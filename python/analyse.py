@@ -50,14 +50,14 @@ if args.only_compressors:
     df = df[df['Compressor'].apply(lambda x: x in compressors)]
 
 for field in fields:
-    if len(set(df[field + ' Codec'])) > 10:
+    if len(set(df[field + ' Codec'])) > 5:
         for compressor in set(df['Compressor']):
             print '== Delta or literal better for the', field.lower() + ' when using ' + compressor + '?'
             transpositions = pd.DataFrame.pivot_table(df[df['Compressor'] == compressor], values='Size', index=[field + ' Codec'], columns=[field + ' Method'], aggfunc=np.min)
 
             dl = []
             for delta_or_literal in ['Delta', 'Literal']:
-                frame = transpositions.ix[:, delta_or_literal].order().head(n=20)
+                frame = transpositions.ix[:, delta_or_literal].order().head(n=10)
                 frame.columns = [delta_or_literal + ' Size']
                 dl.append(frame.reset_index())
 
@@ -69,9 +69,13 @@ for field in fields:
             print
     else:
         print '== Delta or literal better for the', field.lower() + '?'
-        printable_df = pd.DataFrame.pivot_table(df, values='Size', index=[field + ' Codec'], columns=[field + ' Method'], aggfunc=np.min)
-        print grid_to_string(printable_df.ix[:, 'Delta'].order().head(n=10))
-        print grid_to_string(printable_df.ix[:, 'Literal'].order().head(n=10))
+        if True:
+            printable_df = pd.DataFrame.pivot_table(df, values='Size', index=[field + ' Codec', field + ' Method'], columns=['Compressor'], aggfunc=np.min)
+            print grid_to_string(printable_df)
+        else:
+            printable_df = pd.DataFrame.pivot_table(df, values='Size', index=[field + ' Codec'], columns=[field + ' Method'], aggfunc=np.min)
+            print grid_to_string(printable_df.ix[:, 'Delta'].order().head(n=10))
+            print grid_to_string(printable_df.ix[:, 'Literal'].order().head(n=10))
         print
 
 for field in fields:

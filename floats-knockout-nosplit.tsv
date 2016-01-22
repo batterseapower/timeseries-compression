@@ -1,3 +1,51 @@
+Snappy	0.0	Literal [1, 1, 1, 1]	9033135
+Snappy	0.0	Delta [1, 1, 1, 1]	8979988
+Snappy	0.0	Literal [2, 1, 1]	8497983
+Snappy	0.0	Delta [2, 1, 1]	8883392
+Snappy	0.0	Literal [1, 2, 1]	9311863
+Snappy	0.0	Delta [1, 2, 1]	9093582
+Snappy	0.0	Literal [1, 1, 2]	10842190
+Snappy	0.0	Delta [1, 1, 2]	9847987
+Snappy	0.0	Literal [3, 1]	9404027
+Snappy	0.0	Delta [3, 1]	8847839
+Snappy	0.0	Literal [2, 2]	10107042
+Snappy	0.0	Delta [2, 2]	9650796
+Snappy	0.0	Literal [1, 3]	11722159
+Snappy	0.0	Delta [1, 3]	10524215
+Snappy	0.0	Literal [4]	10942085
+Snappy	0.0	Delta [4]	9659888
+Snappy	0.1	Literal [1, 1, 1, 1]	9568682
+Snappy	0.1	Delta [1, 1, 1, 1]	9773061
+Snappy	0.1	Literal [2, 1, 1]	8967432
+Snappy	0.1	Delta [2, 1, 1]	9658981
+Snappy	0.1	Literal [1, 2, 1]	9825408
+Snappy	0.1	Delta [1, 2, 1]	9923261
+Snappy	0.1	Literal [1, 1, 2]	10937250
+Snappy	0.1	Delta [1, 1, 2]	10609444
+Snappy	0.1	Literal [3, 1]	9696502
+Snappy	0.1	Delta [3, 1]	9779972
+Snappy	0.1	Literal [2, 2]	10151831
+Snappy	0.1	Delta [2, 2]	10342108
+Snappy	0.1	Literal [1, 3]	11431186
+Snappy	0.1	Delta [1, 3]	11178629
+Snappy	0.1	Literal [4]	10483706
+Snappy	0.1	Delta [4]	10378381
+Snappy	0.5	Literal [1, 1, 1, 1]	8717952
+Snappy	0.5	Delta [1, 1, 1, 1]	9691942
+Snappy	0.5	Literal [2, 1, 1]	7980875
+Snappy	0.5	Delta [2, 1, 1]	9051434
+Snappy	0.5	Literal [1, 2, 1]	8555413
+Snappy	0.5	Delta [1, 2, 1]	9718698
+Snappy	0.5	Literal [1, 1, 2]	8596622
+Snappy	0.5	Delta [1, 1, 2]	10315931
+Snappy	0.5	Literal [3, 1]	7951684
+Snappy	0.5	Delta [3, 1]	9347482
+Snappy	0.5	Literal [2, 2]	7859628
+Snappy	0.5	Delta [2, 2]	9683750
+Snappy	0.5	Literal [1, 3]	8325491
+Snappy	0.5	Delta [1, 3]	10073611
+Snappy	0.5	Literal [4]	7517662
+Snappy	0.5	Delta [4]	9597481
 Snappy	0.75	Literal [1, 1, 1, 1]	6264368
 Snappy	0.75	Delta [1, 1, 1, 1]	7188114
 Snappy	0.75	Literal [2, 1, 1]	5670731

@@ -202,7 +202,7 @@ public class ConditionerParameterSearchTest {
 
         try (BufferedWriter noSplitWriter = openWriter("floats-knockout-nosplit");
              BufferedWriter splitWriter = openWriter("floats-knockout")) {
-            for (float knockout : new float[] { 0.1f, 0.25f, 0.5f, 0.75f }) {
+            for (float knockout : new float[] { 0f, 0.1f, 0.5f, 0.75f }) {
                 final Random r = new Random(1337);
                 final List<float[]> check = fullData.stream().map(xs -> {
                     final float[] ys = xs.clone();
@@ -300,7 +300,7 @@ public class ConditionerParameterSearchTest {
 
         try (BufferedWriter noSplitWriter = openWriter("doubles-knockout-nosplit");
              BufferedWriter splitWriter = openWriter("doubles-knockout")) {
-            for (float knockout : new float[] { 0.1f, 0.25f, 0.5f, 0.75f }) {
+            for (float knockout : new float[] { 0f, 0.1f, 0.5f, 0.75f }) {
                 final Random r = new Random(1337);
                 final List<double[]> check = fullData.stream().map(xs -> {
                     final double[] ys = xs.clone();
